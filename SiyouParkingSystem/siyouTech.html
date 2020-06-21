@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://www.siyoutechnology.online/img/right-home-image.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SiyouTech</title>
+    <!-- Owl-Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+          integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+          integrity="sha256-kksNxjDRxd/5+jGurZUJd1sdR2v+ClrCl3svESBaJqw=" crossorigin="anonymous" />
+
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/23412c6a8d.js"></script>
+    <!-- Custom Style-->
+    <link rel="stylesheet" href="sheet.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="panel">
+            <div class="row">
+                <div class="col liquid">
+                    <h4><i class="fas fa-feather-alt"></i> SiyouTech.</h4>
+
+                    <!--Owl-carousel-->
+                    <div class="owl-carousel owl-theme">
+                        <img src="assets/undraw_press_play_bx2d.svg" alt="" class="login_img">
+                        <img src="assets/undraw_sign_in_e6hj.svg" alt="" class="login_img">
+                        <img src="assets/undraw_fingerprint_swrc.svg" alt="" class="login_img">
+                        <img src="assets/undraw_thought_process_67my.svg" alt="" class="login_img">
+                        </div> 
+                        <!--/Owl-carousel-->
+
+                    </div>
+                <div class="col login">
+                    <form onclick="return validation()">
+                        <div class="titles">
+                            <h3>Ready to Login</h3>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Username" class="form-input" id="username" autocomplete="off" onchange="return removeWarning()">
+                            <div class="input-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <span id="UsernameErr" class="text-danger"></span> 
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-input" id="password" onchange="return removeWarning()"> 
+                            <div class="input-icon">
+                                <i class="fas fa-user-lock"></i>
+                            </div>
+                        </div>
+                        <span id="PasswordErr" class="text-danger"></span>
+
+                        <button type="button" id="blogin" class="btn btn-login">Login</button>
+                        </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+    <!--Owl Effect-->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+                integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function () {
+
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                items: 1
+            });
+        });
+        </script>
+    <!--/Owl Effect-->
+    <!--Validation-->
+    <script type="text/javascript">
+        function removeWarning() {
+            document.getElementById("UsernameErr").innerHTML = "";
+            document.getElementById("PasswordErr").innerHTML = "";
+        }
+        
+        function validation() {
+            var valid = true;
+            var name = document.getElementById('username').value;
+            var pass = document.getElementById('password').value;
+
+            if (name == "") {
+                document.getElementById('UsernameErr').innerHTML = "please fill the field";
+                valid = false;
+            }
+            if (pass == "") {
+                document.getElementById('PasswordErr').innerHTML = "please fill the field";
+                valid = false;
+            }
+        }
+                </script>
+    <!--/Validation-->
+    <!--Authentication-->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#blogin').click(function () {
+            var Username = $("#username").val();
+            var Password = $("#password").val();
+            $.ajax
+            ({
+                type: "GET",
+                url: "http://localhost:3156/api/UserLogin/{username}",
+                dataType: 'json',
+                async: false,
+                data: '{}',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa(Username + ":" + Password));
+                },
+                success: function () {
+                    window.location.href = "http://localhost:3156/Home.cshtml";
+                },
+
+            });
+
+
+            });
+        });
+
+
+    </script>
+</body>
+</html>

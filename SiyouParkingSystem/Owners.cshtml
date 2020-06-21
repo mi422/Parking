@@ -1,0 +1,1037 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Owners</title>
+    <link rel="shortcut icon" type="image/png" href="https://www.siyoutechnology.online/img/right-home-image.png" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="~/Content/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Content/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Content/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Content/plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-dark">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="http://localhost:3156/Home.cshtml" class="nav-link">Home</a>
+                </li>
+            </ul>
+
+            <!-- SEARCH FORM -->
+            <form class="form-inline ml-3">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-navy elevation-4">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link">
+                <img src="~/Content/dist/img/right-home-image.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">SiyouParking</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block"></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+
+                        <li class="nav-header">Menubar</li>
+                        <li class="nav-item">
+                            <a href="pages/calendar.html" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>
+                                    Calendar
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-id-badge"></i>
+                                <p>
+                                    Users
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Admins</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Owners.cshtml" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Owners</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>Renters</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-parking"></i>
+                                <p>
+                                    Parking
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-car"></i>
+                                <p>
+                                    Vehicle
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
+                                <i class="nav-icon fab fa-tripadvisor"></i>
+                                <p>
+                                    Sessions
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <div class="content-wrapper" style="min-height: 290px;">
+            <div class="content-header">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <button type="button" class="info-box-icon btn bg-teal elevation-1" data-toggle='modal' data-target="#PostModal"><i class="fas fa-user-plus"></i></button>
+                        <div class="info-box-content">
+                            <span class="info-box-text">New Owner</span>
+                            <span class="info-box-number">
+                            </span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="row mb-12">
+                </div>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-info" style="margin-top: 5px;">
+                                    <div class="card-header border-transparent">
+                                        <h3 class="card-title"></h3>
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search"  id="searchowner" onkeyup="myFunction()">
+                                                <div class="input-group-append">
+                                                </div>
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table id="OwnerTable" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Full Name</th>
+                                                        <th>Phone Number</th>
+                                                        <th>Address</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                            <div class="card-footer clearfix">
+                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!--DELETE-->
+            <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content bg-maroon">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                                <div class="form-group">
+                                    <input type="hidden" name="ID" class="form-control" id="editId">
+                                    <input type="hidden" name="UserID" class="form-control" id="VehicleId">
+                                    <p>Are you Sure!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" onclick="Delete(this)" class="btn btn-warning" data-id="Owner.Id" data-dismiss="modal">Delete</button>
+                                    <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">Update Owner</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                                <div class="form-group">
+                                    <input type="hidden" name="ID" class="form-control" id="editId" required>
+                                    <input type="hidden" name="UserID" class="form-control" id="UserId" required>
+                                </div>
+                                <fieldset>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Email</label>
+                                            <input type="email" name="Email" class="form-control" id="editEmail" placeholder="Email" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="Username" class="form-control" id="editusername" placeholder="Username" required>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="first">Firstname</label>
+                                        <input type="text" name="name" class="form-control" id="editName" placeholder="Firstname" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="last">Lastname</label>
+                                        <input type="text" name="surname" class="form-control" id="editSurname" placeholder="Lastname" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="phon">Phone</label>
+                                        <input type="tel" name="phone" class="form-control" id="editphone" placeholder="Phone" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="address">Address</label>
+                                        <input type="text" name="address" class="form-control" id="editaddress" placeholder="Address" required>
+                                    </div>
+                                    </div>
+                                <div class="form-group">
+                                    <label for="pass">Password</label>
+                                    <input type="password" name="Password" class="form-control" id="editpassword" placeholder="Password" required>
+                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" onclick="OwnerUpdate(this)" class="btn btn-info" data-id="Owner.Id" data-dismiss="modal"><i class="fas fa-save"></i></button>
+                                        <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Post Modal -->
+            <div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">New Owner</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" id="ModalForm" onclick="return validation()">
+                                <fieldset>
+                                    <input type="hidden" name="ID" class="form-control" id="deleteId" placeholder="ID">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" name="name" class="form-control" id="PostName" placeholder="Firstname" autocomplete="off" onchange="return removeWarning()">
+                                            <span id="FirstErr" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="text" name="surname" class="form-control" id="PostLast" placeholder="Lastname" autocomplete="off" onchange="return removeWarning()">
+                                            <span id="LastErr" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" name="qrcode" class="form-control" id="postqrcode" placeholder="Identity card number" onchange="GenerateQR()" autocomplete="off">
+                                            <span id="IdentityErr" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                                <input type="text" class="form-control datetimepicker-input" id="birth" placeholder="Birth Date" data-target="#reservationdate" autocomplete="off" onchange="return removeWarning()">
+                                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                                    <div class="input-group-text bg-secondary"><i class="fa fa-calendar"></i></div>
+                                                </div>
+                                            </div>
+                                            <span id="TimeErr" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
+                                                </div>
+                                                <input type="text" name="phone" class="form-control" id="postphone" placeholder="Phone Number" autocomplete="off" onchange="return removeWarning()">
+                                            </div>
+                                            <span id="PhoneErr" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
+                                                </div>
+                                                <input type="tel" name="address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning()">
+                                            </div>
+                                            <span id="AddressErr" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
+                                                </div>
+                                                <input type="email" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()">
+                                            </div>
+                                            <span id="EmailErr" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
+                                                </div>
+                                                <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="return removeWarning()">
+                                            </div>
+                                            <span id="UserErr" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-secondary"><i class="fas fa-key"></i></span>
+                                                </div>
+                                                <input type="password" name="Password" class="form-control" id="Postpassword" placeholder="Password" autocomplete="off" onchange="return removeWarning()">
+                                            </div>
+                                            <span id="PassErr" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" onclick="PostUser();" class="btn bg-olive"><i class="fas fa-save"></i></button>
+                                        <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                    </div>
+                                </fieldset>
+                            </form>    
+                            <div id="qrcode"></div>                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Consult-->
+            <div class="modal fade" id="ConsultModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">Consult Owner</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                                <div class="form-group">
+                                    <input type="hidden" name="ID" class="form-control" id="ConsId" required>
+                                    <input type="hidden" name="UserID" class="form-control" id="ConsUserId" required>
+                                </div>
+                                <fieldset>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Email</label>
+                                            <input type="email" name="Email" class="form-control-plaintext" id="ConsEmail" readonly>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="Username" class="form-control-plaintext" id="ConsUser" readonly>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="first">Firstname</label>
+                                        <input type="text" name="name" class="form-control-plaintext" id="ConsFirst" readonly>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="last">Lastname</label>
+                                        <input type="text" name="surname" class="form-control-plaintext" id="ConsLast" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="adress">Address</label>
+                                        <input type="text" name="adress" class="form-control-plaintext" id="ConsAddress" readonly>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="phon">Phone</label>
+                                        <input type="tel" name="mobilePhone" class="form-control-plaintext" id="ConsPhon" readonly>
+                                    </div>
+                                </div>   
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="birth">Birth Date</label>
+                                        <input type="text" name="Birth" class="form-control-plaintext " id="ConBirth" readonly>
+                                    </div> 
+                                    <div class="form-group col-md-6">
+                                        <label for="cin">Cin</label>
+                                        <input type="text" name="cn" class="form-control-plaintext " id="ConQR" readonly>
+                                    </div>     
+                                    </div>                
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-check-square"></i></button>
+                                </div>
+                            </form>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Consult-->
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+        </div>
+
+  
+        <!-- ./wrapper -->
+        <!-- jQuery -->
+        <script src="~/Content/plugins/jquery/jquery.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+                        $.widget.bridge('uibutton', $.ui.button)
+        </script>
+        <!-- Bootstrap 4 -->
+        <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- ChartJS -->
+        <script src="~/Content/plugins/chart.js/Chart.min.js"></script>
+        <!-- Sparkline -->
+        <script src="~/Content/plugins/sparklines/sparkline.js"></script>
+        <!-- JQVMap -->
+        <script src="~/Content/plugins/jqvmap/jquery.vmap.min.js"></script>
+        <script src="~/Content/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="~/Content/plugins/jquery-knob/jquery.knob.min.js"></script>
+        <!-- daterangepicker -->
+        <script src="~/Content/plugins/moment/moment.min.js"></script>
+        <script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script src="~/Content/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <!-- Summernote -->
+        <script src="~/Content/plugins/summernote/summernote-bs4.min.js"></script>
+        <!-- overlayScrollbars -->
+        <script src="~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="~/Content/dist/js/adminlte.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="~/Content/dist/js/pages/dashboard.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="~/Content/dist/js/demo.js"></script>
+        <script src="~/qrcode.min.js"></script>
+        <script>
+          $('#reservationdate').datetimepicker({
+              format: 'L'
+          });
+
+          var qrdata = document.getElementById('postqrcode');
+          var qrcodee = new QRCode(document.getElementById('qrcode'), {
+              width: 140,
+              height: 140,
+              colorDark: "#000000",
+              colorLight: "#ffffff",
+              correctLevel: QRCode.CorrectLevel.H
+          });
+
+          function GenerateQR() {
+              var data = qrdata.value;
+              if (data == "") {
+                  document.getElementById('IdentityErr').innerHTML = "please fill the field";
+                  valid = false;
+              }
+              else if (data.length != 8) {
+                  document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
+                  valid = false;
+              }
+              else if (isNaN(data)) {
+                  document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
+                  valid = false;
+              }
+              else {
+                  qrcodee.makeCode(data);
+                  document.getElementById("IdentityErr").innerHTML = "";
+              }
+          }
+        </script>
+        <script type="text/javascript">
+            function removeWarning() {
+                document.getElementById("FirstErr").innerHTML = "";
+                document.getElementById("LastErr").innerHTML = "";
+                document.getElementById("TimeErr").innerHTML = "";
+                document.getElementById("PhoneErr").innerHTML = "";
+                document.getElementById("AddressErr").innerHTML = "";
+                document.getElementById("EmailErr").innerHTML = "";
+                document.getElementById("UserErr").innerHTML = "";
+                document.getElementById("PassErr").innerHTML = "";
+            }
+            function validation() {
+                var valid = true;
+                var FirstName = document.getElementById('PostName').value;
+                var LastName = document.getElementById('PostLast').value;
+                var Identity = document.getElementById('postqrcode').value;
+                var Birth = document.getElementById('birth').value;
+                var Phone = document.getElementById('postphone').value;
+                var Address = document.getElementById('postaddress').value;
+                var email = document.getElementById('PostEmail').value;
+                var username = document.getElementById('Postusername').value;
+                var password = document.getElementById('Postpassword').value;
+
+                if (FirstName == "") {
+                    document.getElementById('FirstErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if ((FirstName.length <= 3) || (FirstName.length > 10)) {
+                    document.getElementById('FirstErr').innerHTML = "please insert a valid username";
+                    valid = false;
+                }
+                else if (!isNaN(FirstName)) {
+                    document.getElementById('FirstErr').innerHTML = "only characters are allowed";
+                    valid = false;
+                };
+                if (LastName == "") {
+                    document.getElementById('LastErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if ((LastName.length <= 3) || (LastName.length > 10)) {
+                    document.getElementById('LastErr').innerHTML = "please insert a valid lastname";
+                    valid = false;
+                }
+                else if (!isNaN(LastName)) {
+                    document.getElementById('LastErr').innerHTML = "only characters are allowed";
+                    valid = false;
+                };
+                if (Identity == "") {
+                    document.getElementById('IdentityErr').innerHTML = "please fill the field";
+                    valid = false;
+                };
+                if (Birth == "") {
+                    document.getElementById('TimeErr').innerHTML = "Please fill the field";
+                    valid = false;
+                };
+                if (Phone == "") {
+                    document.getElementById('PhoneErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if (isNaN(Phone)) {
+                    document.getElementById('PhoneErr').innerHTML = "please insert a valid phone";
+                    valid = false;
+                }
+                else if (Phone.length != 8) {
+                    document.getElementById('PhoneErr').innerHTML = "please insert a valid phone number";
+                    valid = false;
+                };
+                if (Address == "") {
+                    document.getElementById('AddressErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if ((Address.length <= 3) || (Address.length > 10)) {
+                    document.getElementById('AddressErr').innerHTML = "please insert a valid address";
+                    valid = false;
+                };
+                if (email == "") {
+                    document.getElementById('EmailErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if (email.indexOf("@@") <= 0) {
+                    document.getElementById('EmailErr').innerHTML = "please insert a valid email address";
+                    valid = false;
+                }
+                else if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
+                    document.getElementById('EmailErr').innerHTML = "please insert a valid email address";
+                    valid = false;
+                };
+                if (username == "") {
+                    document.getElementById('UserErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if ((username.length <= 3) || (username.length > 10)) {
+                    document.getElementById('UserErr').innerHTML = "please insert a valid username";
+                    valid = false;
+                }
+                else if (!isNaN(username)) {
+                    document.getElementById('UserErr').innerHTML = "only characters are allowed";
+                    valid = false;
+                };
+                if (password == "") {
+                    document.getElementById('PassErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if ((password.length <= 6) || (password.length > 10)) {
+                    document.getElementById('PassErr').innerHTML = "please insert a valid password";
+                    valid = false;
+                };
+                return valid;
+            };
+                
+
+
+
+            </script>
+</body>
+</html>
+<script src="Scripts/jquery-1.10.2.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+    //POST
+    function PostOwner() {
+        $.ajax({
+            url: 'api/owners/Post',
+            method: 'POST',
+            data: {
+                FirstName: $('#PostName').val(),
+                LastName: $('#PostLast').val(),
+                Phone: $('#postphone').val(),
+                Adress: $('#postaddress').val(),
+                Birth_date: $('#birth').val(),
+                QR_code: $('#postqrcode').val(),
+            },
+            success: function () {
+                window.location.href = "http://localhost:3156/Owners.cshtml";
+            }
+        });
+    }
+    function PostUser() {
+        $.ajax({
+            url: 'api/Register/RegisterUser',
+            method: 'POST',
+            data: {
+                Email: $('#PostEmail').val(),
+                Username: $('#Postusername').val(),
+                Password: $('#Postpassword').val(),
+            },
+            success: function () {
+                PostOwner();
+            }
+        });
+    }
+    function OwnerList() {
+        // Call Web API to get a list of Admins
+        $.ajax({
+            url: '/api/owners/',
+            type: 'GET',
+            dataType: 'json',
+            success: function (owners) {
+                OwnerListSuccess(owners);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function OwnerListSuccess(Owners) {
+        // Iterate over the collection of data
+        $.each(Owners, function (index, Owner) {
+            // Add a row to the Admin table
+            OwnerAddRow(Owner);
+        });
+    }
+    function OwnerAddRow(Owner) {
+        // Check if <tbody> tag exists, add one if not
+        if ($("#OwnerTable tbody").length == 0) {
+            $("#OwnerTable").append("<tbody></tbody>");
+        }
+        // Append row to <table>
+        $("#OwnerTable tbody").append(
+          OwnerBuildTableRow(Owner));
+    }
+    function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+    function OwnerBuildTableRow(Owner) {
+        var ret =
+           "<tr>" +
+           "<td>" + Owner.Id + "</td>" +
+            "<td>" + Owner.FirstName + " " + Owner.LastName + "</td>" +
+                "<td>" + Owner.Phone + "</td>"
+                 + "<td>" + Owner.Adress + "</td>" +
+                     "<td>" +
+  "<button type='button' " + "onclick='OwnerGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Owner.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
+  "</button>" + " " + "<button type='button' " + "onclick='OwnerGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Owner.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
+  "</button>" +
+  " " + "<button type='button'" + "onclick='OwnerShow(this);' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Owner.Id + "'>" + "<i class='fas fa-eye'></i>" +
+  "</button>" +
+"</td>" +
+               "</tr>";
+        return ret;
+    }
+    function handleException(request, message,
+                         error) {
+        var msg = "";
+        msg += "Code: " + request.status + "\n";
+        msg += "Text: " + request.statusText + "\n";
+        if (request.responseJSON != null) {
+            msg += "Message" +
+                request.responseJSON.Message + "\n";
+        }
+        alert(msg);
+    }
+    $(document).ready(function () {
+        OwnerList();
+    });
+    $(document).getElementByClass('.btn btn-default').addEventListener('click', function () {
+        document.querySelector('#getmodal').style.display = 'flex';
+    });
+
+//GETBYID
+    function OwnerGet(ctl) {
+        var id = $(ctl).data("id");
+        $.ajax({
+            url: "/api/owners/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (Owner) {
+                OwnerToFields(Owner);
+                UserGet(ctl);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function OwnerToFields(Owner) {
+        $("#editId").val(Owner.Id);
+        $("#UserId").val(Owner.UserId);
+        $("#editName").val(Owner.FirstName);
+        $("#editSurname").val(Owner.LastName);
+        $("#editphone").val(Owner.Phone);
+        $("#editaddress").val(Owner.Adress);
+        $("#editqrcode").val(Owner.QR_code);
+    }
+    function UserGet(ctl) {
+        var id = $("#UserId").val();
+        $.ajax({
+            url: "api/Register/Get/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (User) {
+                UserToFields(User);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function UserToFields(User) {
+        $("#UserId").val(User.Id);
+        $("#editEmail").val(User.Email);
+        $("#editusername").val(User.Username);
+        $("#editpassword").val(User.Password);
+
+    }
+    //ConsultGETBYID
+    function OwnerShow(ctl) {
+        var id = $(ctl).data("id");
+        $.ajax({
+            url: "/api/owners/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (Owner) {
+                ConsultOwnerToFields(Owner);
+                ConsUserGet(ctl);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function ConsultOwnerToFields(Owner) {
+        $("#ConsId").val(Owner.Id);
+        $("#ConsUserId").val(Owner.UserId);
+        $("#ConsFirst").val(Owner.FirstName);
+        $("#ConsLast").val(Owner.LastName);
+        $("#ConsPhon").val(Owner.Phone);
+        $("#ConsAddress").val(Owner.Adress);
+        $("#ConBirth").val(Owner.Birth_date);
+        $("#ConQR").val(Owner.QR_code);
+    }
+    function ConsUserGet(ctl) {
+        var id = $("#ConsUserId").val();
+        $.ajax({
+            url: "api/Register/Get/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (User) {
+                ConsUserToFields(User);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function ConsUserToFields(User) {
+        $("#ConsUserId").val(User.Id);
+        $("#ConsEmail").val(User.Email);
+        $("#ConsUser").val(User.Username);
+    }
+    //DELETE
+    function Deleteuser(ctl) {
+        var id = $("#UserId").val();
+        $.ajax({
+            url: "api/register/DeleteUser/" + id,
+            type: 'DELETE',
+            success: function () {
+                window.location.href = "http://localhost:3156/Owners.cshtml";
+
+            },
+            error: function (request, message, error) {
+            handleException(request, message, error);
+        }
+        });
+    }
+
+    function Delete(ctl) {
+        var id = $("#editId").val();
+        $.ajax({
+            url: "api/owners/Delete/" + id,
+            type: 'DELETE',
+            success: function () {
+                Deleteuser(ctl);
+
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+        //UPDATE
+        function OwnerUpdate(Owner) {
+            var id = $("#editId").val();
+            var Owner = {};
+            Owner.FirstName = $("#editName").val();
+            Owner.LastName = $("#editSurname").val();
+            Owner.Phone = $("#editphone").val();
+            Owner.Adress = $("#editaddress").val();
+            $.ajax({
+                url: "api/owners/" + id,
+                type: 'PUT',
+                contentType:
+                   "application/json;charset=utf-8",
+                data: JSON.stringify(Owner),
+                dataType: "JSON",
+                success: function (response) {
+                    updateUser();
+                    window.location.href = "http://localhost:3156/Owners.cshtml";
+                },
+
+            });
+        }
+        function updateUser() {
+            var id = $("#UserId").val();
+            var User = {};
+            User.Email = $('#editEmail').val(),
+            User.Username = $('#editusername').val(),
+            User.Password = $('#editpassword').val(),
+            $.ajax({
+                url: 'api/register/' + id,
+                method: 'PUT',
+                contentType:
+                   "application/json;charset=utf-8",
+                data: JSON.stringify(User),
+                dataType: "JSON",
+                success: function () {
+                }
+            });
+        }   
+    //search
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchowner");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("OwnerTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+       
+</script>
+<style>
+    .myModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    .PostModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+    h5 {
+         color: #000000;
+        font-weight: bold;
+        display: block;
+        width: 150px;
+        float: left;
+
+ }
+ label {
+        color: #109cbb;
+        font-weight: bold;
+        display: block;
+        width: 150px;
+        float: left;
+    }
+ label:after { content: ": " }
+
+    /* The Close Button */
+    .close {
+        color: red;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .text-danger{
+      font-size: 12px;
+      float: left;
+      color: #ff0065;
+    }
+</style>

@@ -1,0 +1,745 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vehicles</title>
+    <link rel="shortcut icon" type="image/png" href="https://www.siyoutechnology.online/img/right-home-image.png" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="~/Content/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Content/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Content/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Content/plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-dark">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="http://localhost:3156/Home.cshtml" class="nav-link">Home</a>
+                </li>
+            </ul>
+
+            <!-- SEARCH FORM -->
+            <form class="form-inline ml-3">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-navy elevation-4">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link">
+                <img src="~/Content/dist/img/right-home-image.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">SiyouParking</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block"></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+
+                        <li class="nav-header">Menubar</li>
+                        <li class="nav-item">
+                            <a href="pages/calendar.html" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>
+                                    Calendar
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-id-badge"></i>
+                                <p>
+                                    Users
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Admins</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Owners.cshtml" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Owners</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>Renters</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-parking"></i>
+                                <p>
+                                    Parking
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-car"></i>
+                                <p>
+                                    Vehicle
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
+                                <i class="nav-icon fab fa-tripadvisor"></i>
+                                <p>
+                                    Sessions
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Contracts.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-file-contract"></i>
+                                <p>
+                                    Contracts
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <div class="content-wrapper" style="min-height: 290px;">
+            <div class="content-header">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <button type="button" class="info-box-icon btn bg-teal elevation-1" data-toggle='modal' data-target="#PostModal"><i class="fas fa-car"></i></button>
+                        <div class="info-box-content">
+                            <span class="info-box-text">New Vehicle</span>
+                            <span class="info-box-number">
+                            </span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="row mb-12">
+                </div>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-outline card-info" style="margin-top: 5px;">
+                                    <div class="card-header border-transparent">
+                                        <h3 class="card-title"></h3>
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search" id="searchvehicle" onkeyup="myFunction()">
+                                                <div class="input-group-append">
+                                                </div>
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table id="VehicleTable" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Plate Number</th>
+                                                        <th>Model</th>
+                                                        <th>Owner</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                            <div class="card-footer clearfix">
+                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!--DELETE-->
+            <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content bg-maroon">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                                <div class="form-group">
+                                    <input type="hidden" name="ID" class="form-control" id="editId">
+                                    <p>Are you Sure!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" onclick="Delete(this)" class="btn btn-warning" data-id="Vehicle.Id" data-dismiss="modal">Delete</button>
+                                    <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">Update Vehicle</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                                <div class="form-group">
+                                    <input type="hidden" name="ID" class="form-control" id="editId" required>
+                                    <input type="hidden" name="UserID" class="form-control" id="UserId" required>
+                                </div>
+                                <label for="plate">Plate Number</label>
+                                    <div class="form-group">
+                                        <input type="text" name="Plate" class="form-control" id="editplate" placeholder="Plate Number" required>
+                                    </div>   
+                                <label for="model">Vehicle Model</label>                                 
+                                        <div class="form-group">
+                                            <input type="text" name="model" class="form-control" id="editmodel" placeholder="Model" required>
+                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="button" onclick="VehicleUpdate(this)" class="btn bg-olive" data-id="Vehicle.Id" data-dismiss="modal"><i class="fas fa-save"></i></button>
+                                        <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Post Modal -->
+            <div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">New Vehicle</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" id="ModalForm" onclick="return validation()">
+                                <div class="form-group">
+                                    <input type="text" name="plate" class="form-control" id="Postplate" placeholder="Plate Number" autocomplete="off" onchange="return removeWarning()">
+                                    <span class="text-danger" id="plateErr"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="model" class="form-control" id="Postmodel" placeholder="Car Model" autocomplete="off" onchange="return removeWarning()">
+                                    <span class="text-danger" id="modelErr"></span>
+                                </div>
+                                        <div class="form-group">
+                                            <select class="browser-default custom-select" id="UserList" onchange="return removeWarning()">
+                                                <option selected>Choose an Owner</option>                                                
+                                            </select>
+                                            <span class="text-danger" id="ownerchose"></span>
+                                        </div>
+                                <div class="modal-footer">
+                                    <button type="button" onclick="PostVehicle();" class="btn bg-olive"><i class="fas fa-save"></i></button>
+                                    <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                </div>
+                            </form>
+                           </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Consult-->
+        <div class="modal fade" id="ConsultModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Consult vehicle</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                            <div class="form-group">
+                                <input type="hidden" name="ID" class="form-control" id="ConsId" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="plate">Plate Number</label>
+                                <input type="text" name="Plate" class="form-control-plaintext" id="Consplate" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="plate">Car Model</label>
+                                <input type="text" name="model" class="form-control-plaintext" id="Consmodel" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="owner">Owner</label>
+                                <input type="text" name="owner" class="form-control-plaintext" id="Consowner" readonly>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-check-square"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/Consult-->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+
+
+
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Content/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+                        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/Content/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/Content/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/Content/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/Content/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/Content/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/Content/plugins/moment/moment.min.js"></script>
+    <script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/Content/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Content/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/Content/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Content/dist/js/demo.js"></script>
+    <script type="text/javascript">
+            function removeWarning() {
+                document.getElementById("plateErr").innerHTML = "";
+                document.getElementById("modelErr").innerHTML = "";
+                document.getElementById("ownerchose").innerHTML = "";
+            }
+            function validation() {
+                var valid = true;
+                var plate = document.getElementById('Postplate').value;
+                var model = document.getElementById('Postmodel').value;
+                var owner = document.getElementById('UserList').value;
+
+                if (plate == "") {
+                    document.getElementById('plateErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if ((plate.length <= 10)) {
+                    document.getElementById('plateErr').innerHTML = "plate number is not valid";
+                    valid = false;
+                };
+                if (model == "") {
+                    document.getElementById('modelErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if ((model.length <= 2) || (model.length > 20)) {
+                    document.getElementById('modelErr').innerHTML = "model is not valid";
+                    valid = false;
+                };
+                if (owner == "") {
+                    document.getElementById('ownerchose').innerHTML = "please fill the field";
+                    valid = false;
+                }
+            }
+        </script>
+</body>
+</html>
+<script src="Scripts/jquery-1.10.2.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+    //dropdown User
+    function UserList() {
+        // Call Web API to get a list of users
+        $.ajax({
+            url: '/api/register/',
+            type: 'GET',
+            dataType: 'json',
+            success: function (Users) {
+                UserListSuccess(Users);
+            },
+            error: function (request, message, error) {
+                handleExceptione(request, message, error);
+            }
+        });
+    }
+    function UserListSuccess(Users) {
+        // Iterate over the collection of data
+        $.each(Users, function (index, User) {
+            // Add a row to the Admin table
+            $("#UserList").append("<option>" + User.Id + "</option>");
+        });
+    }
+    function handleExceptione(request, message,
+                         error) {
+        var msg = "";
+        msg += "Code: " + request.status + "\n";
+        msg += "Text: " + request.statusText + "\n";
+        if (request.responseJSON != null) {
+            msg += "Message" +
+                request.responseJSON.Message + "\n";
+        }
+        alert(msg);
+    }
+    $(document).ready(function () {
+        UserList();
+    });
+    function VehicleList() {
+        // Call Web API to get a list of Admins
+        $.ajax({
+            url: 'api/vehicles',
+            type: 'GET',
+            dataType: 'json',
+            success: function (Vehicles) {
+                VehicleListSuccess(Vehicles);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function VehicleListSuccess(Vehicles) {
+        // Iterate over the collection of data
+        $.each(Vehicles, function (index, Vehicle) {
+            // Add a row to the Admin table
+            VehicleAddRow(Vehicle);
+        });
+    }
+    function VehicleAddRow(Vehicle) {
+        // Check if <tbody> tag exists, add one if not
+        if ($("#VehicleTable tbody").length == 0) {
+            $("#VehicleTable").append("<tbody></tbody>");
+        }
+        // Append row to <table>
+        $("#VehicleTable tbody").append(
+          VehicleBuildTableRow(Vehicle));
+    }
+    function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+    function VehicleBuildTableRow(Vehicle) {
+        var ret =
+           "<tr>" +
+           "<td>" + Vehicle.Id + "</td>" +
+            "<td>" + Vehicle.PlateNumber + "</td>" +
+                "<td>" + Vehicle.Model + "</td>"
+                 + "<td>" + Vehicle.UserId + "</td>" +
+                     "<td>" +
+  "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
+  "</button>" + " " + "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
+  "</button>" +
+  " " + "<button type='button'" + "onclick='ConsVehicleGet(this)' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-eye'></i>" +
+  "</button>" +
+"</td>" +
+               "</tr>";
+        return ret;
+    }
+    function handleException(request, message,
+                         error) {
+        var msg = "";
+        msg += "Code: " + request.status + "\n";
+        msg += "Text: " + request.statusText + "\n";
+        if (request.responseJSON != null) {
+            msg += "Message" +
+                request.responseJSON.Message + "\n";
+        }
+        alert(msg);
+    }
+    $(document).ready(function () {
+        VehicleList();
+    });
+    $(document).getElementByClass('.btn btn-default').addEventListener('click', function () {
+        document.querySelector('#getmodal').style.display = 'flex';
+    });
+
+//GETBYID
+    function VehicleGet(ctl) {
+        var id = $(ctl).data("id");
+        $.ajax({
+            url: "api/vehicles/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (Vehicle) {
+                VehicleToFields(Vehicle);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function VehicleToFields(Vehicle) {
+        $("#editId").val(Vehicle.Id);
+        $("#editowner").val(Vehicle.UserId);
+        $("#editplate").val(Vehicle.PlateNumber);
+        $("#editmodel").val(Vehicle.Model);
+    }
+    //ConsultGETBYID
+    function ConsVehicleGet(ctl) {
+        var id = $(ctl).data("id");
+        $.ajax({
+            url: "api/vehicles/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (Vehicle) {
+                ConsVehicleToFields(Vehicle);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function ConsVehicleToFields(Vehicle) {
+        $("#ConsId").val(Vehicle.Id);
+        $("#Consowner").val(Vehicle.UserId);
+        $("#Consplate").val(Vehicle.PlateNumber);
+        $("#Consmodel").val(Vehicle.Model);
+    }
+    //DELETE
+    function Delete(ctl) {
+        var id = $("#editId").val();
+        $.ajax({
+            url: "api/vehicles/Delete/" + id,
+            type: 'DELETE',
+            success: function () {
+                alert("Deleted!");
+                window.location.href = "http://localhost:3156/Vehicles.cshtml";
+
+            },
+            error: function (request, message, error) {
+            handleException(request, message, error);
+        }
+        });
+    }
+        //UPDATE
+    function VehicleUpdate(Vehicle) {
+            var id = $("#editId").val();
+            var Vehicle = {};
+            Vehicle.PlateNumber = $("#editplate").val();
+            Vehicle.Model = $("#editmodel").val();
+            Vehicle.UserId = $("#editUser").val();
+            $.ajax({
+                url: "api/vehicles/" + id,
+                type: 'PUT',
+                contentType:
+                   "application/json;charset=utf-8",
+                data: JSON.stringify(Vehicle),
+                dataType: "JSON",
+                success: function (response) {
+                    alert("updated successfully!");
+                    window.location.href = "http://localhost:3156/Vehicles.cshtml";
+                },
+
+            });
+        }
+        //POST
+    function PostVehicle() {
+        var e = document.getElementById("UserList");
+        var strUser = e.options[e.selectedIndex].text;
+        var strUser = e.options[e.selectedIndex].value;
+            $.ajax({
+                url: 'api/vehicles/Post',
+                method: 'POST',
+                data: {
+                    PlateNumber: $('#Postplate').val(),
+                    Model: $('#Postmodel').val(),
+                    UserId: strUser,
+                },
+                success: function () {
+                    window.location.href = "http://localhost:3156/Vehicles.cshtml";
+                }
+            });
+    }
+    //search
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchvehicle");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("VehicleTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+<style>
+    .myModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    .PostModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+     h5 {
+         color: #000000;
+        font-weight: bold;
+        display: block;
+        width: 150px;
+        float: left;
+
+ }
+ label {
+        color: #109cbb;
+        font-weight: bold;
+        display: block;
+        width: 150px;
+        float: left;
+    }
+label:after { content: ": " }
+    /* The Close Button */
+    .close {
+        color: red;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+           .text-danger{
+      font-size: 12px;
+      float: left;
+      color: #ff0065;
+    }
+</style>

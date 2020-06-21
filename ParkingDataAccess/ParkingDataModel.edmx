@@ -1,0 +1,598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SYSDATAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Birth_date" Type="date" Nullable="false" />
+          <Property Name="Created_at" Type="date" Nullable="false" />
+          <Property Name="Updated_at" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contracts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RenterId" Type="int" Nullable="false" />
+          <Property Name="ParkingId" Type="int" Nullable="false" />
+          <Property Name="Rent" Type="date" Nullable="false" />
+          <Property Name="End_rent" Type="date" Nullable="false" />
+          <Property Name="Created_at" Type="date" Nullable="false" />
+          <Property Name="Updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Owners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="QR_code" Type="int" Nullable="false" />
+          <Property Name="Adress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Birth_date" Type="date" Nullable="false" />
+          <Property Name="Created_at" Type="date" Nullable="false" />
+          <Property Name="Updated_at" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parking_sessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Entry_Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Extry_Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Created_at" Type="date" Nullable="false" />
+          <Property Name="Updated_at" Type="date" Nullable="false" />
+          <Property Name="VehicleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parkings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created_at" Type="date" Nullable="false" />
+          <Property Name="Updated_at" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Renters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="QR_code" Type="int" Nullable="false" />
+          <Property Name="Adress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Created_at" Type="date" Nullable="false" />
+          <Property Name="Updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Created_at" Type="date" Nullable="false" />
+          <Property Name="Updated_at" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlateNumber" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created_at" Type="date" Nullable="false" />
+          <Property Name="Updated_at" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <Association Name="FK__Admins__UserId__1DE57479">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracts__Parki__02FC7413">
+          <End Role="Parkings" Type="Self.Parkings" Multiplicity="1" />
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parkings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="ParkingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracts__Rente__02084FDA">
+          <End Role="Renters" Type="Self.Renters" Multiplicity="1" />
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="RenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Owners__UserId__1ED998B2">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Owners" Type="Self.Owners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Owners">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parking_s__Vehic__31EC6D26">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="Parking_sessions" Type="Self.Parking_sessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parking_sessions">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parkings__UserId__5CD6CB2B">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Parkings" Type="Self.Parkings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parkings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicles__UserId__5EBF139D">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SYSDATAModelStoreContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contracts" EntityType="Self.Contracts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Owners" EntityType="Self.Owners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parking_sessions" EntityType="Self.Parking_sessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parkings" EntityType="Self.Parkings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Renters" EntityType="Self.Renters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Admins__UserId__1DE57479" Association="Self.FK__Admins__UserId__1DE57479">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Admins" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracts__Parki__02FC7413" Association="Self.FK__Contracts__Parki__02FC7413">
+            <End Role="Parkings" EntitySet="Parkings" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracts__Rente__02084FDA" Association="Self.FK__Contracts__Rente__02084FDA">
+            <End Role="Renters" EntitySet="Renters" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Owners__UserId__1ED998B2" Association="Self.FK__Owners__UserId__1ED998B2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Owners" EntitySet="Owners" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parking_s__Vehic__31EC6D26" Association="Self.FK__Parking_s__Vehic__31EC6D26">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Parking_sessions" EntitySet="Parking_sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parkings__UserId__5CD6CB2B" Association="Self.FK__Parkings__UserId__5CD6CB2B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Parkings" EntitySet="Parkings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicles__UserId__5EBF139D" Association="Self.FK__Vehicles__UserId__5EBF139D">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SYSDATAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Birth_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Admins__UserId__1DE57479" FromRole="Admins" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="QR_code" Type="Int32" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Birth_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Owners__UserId__1ED998B2" FromRole="Owners" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Parking_sessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entry_Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Extry_Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Created_at" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Updated_at" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="VehicleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK__Parking_s__Vehic__31EC6D26" FromRole="Parking_sessions" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Parking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created_at" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Updated_at" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="SYSDATAModel.FK__Parkings__UserId__5CD6CB2B" FromRole="Parking" ToRole="User" />
+          <NavigationProperty Name="Contracts" Relationship="SYSDATAModel.FK__Contracts__Parki__02FC7413" FromRole="Parking" ToRole="Contract" />
+        </EntityType>
+        <EntityType Name="Renter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="QR_code" Type="Int32" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Contracts" Relationship="SYSDATAModel.FK__Contracts__Rente__02084FDA" FromRole="Renter" ToRole="Contract" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Created_at" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Updated_at" Type="DateTime" Precision="0" Nullable="false" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK__Admins__UserId__1DE57479" FromRole="Users" ToRole="Admins" />
+          <NavigationProperty Name="Owners" Relationship="Self.FK__Owners__UserId__1ED998B2" FromRole="Users" ToRole="Owners" />
+          <NavigationProperty Name="Parkings" Relationship="SYSDATAModel.FK__Parkings__UserId__5CD6CB2B" FromRole="User" ToRole="Parking" />
+          <NavigationProperty Name="Vehicles" Relationship="SYSDATAModel.FK__Vehicles__UserId__5EBF139D" FromRole="User" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlateNumber" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created_at" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Updated_at" Type="DateTime" Precision="0" Nullable="false" />
+          <NavigationProperty Name="Parking_sessions" Relationship="Self.FK__Parking_s__Vehic__31EC6D26" FromRole="Vehicles" ToRole="Parking_sessions" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="SYSDATAModel.FK__Vehicles__UserId__5EBF139D" FromRole="Vehicle" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Admins__UserId__1DE57479">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Admins" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Owners__UserId__1ED998B2">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Owners" Type="Self.Owner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Owners">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parking_s__Vehic__31EC6D26">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="Parking_sessions" Type="Self.Parking_sessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parking_sessions">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SYSDATAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Owners" EntityType="Self.Owner" />
+          <EntitySet Name="Parking_sessions" EntityType="Self.Parking_sessions" />
+          <EntitySet Name="Parkings" EntityType="Self.Parking" />
+          <EntitySet Name="Renters" EntityType="Self.Renter" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+          <AssociationSet Name="FK__Admins__UserId__1DE57479" Association="Self.FK__Admins__UserId__1DE57479">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Admins" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Owners__UserId__1ED998B2" Association="Self.FK__Owners__UserId__1ED998B2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Owners" EntitySet="Owners" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parking_s__Vehic__31EC6D26" Association="Self.FK__Parking_s__Vehic__31EC6D26">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Parking_sessions" EntitySet="Parking_sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parkings__UserId__5CD6CB2B" Association="SYSDATAModel.FK__Parkings__UserId__5CD6CB2B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Parking" EntitySet="Parkings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicles__UserId__5EBF139D" Association="SYSDATAModel.FK__Vehicles__UserId__5EBF139D">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <EntitySet Name="Contracts" EntityType="SYSDATAModel.Contract" />
+          <AssociationSet Name="FK__Contracts__Parki__02FC7413" Association="SYSDATAModel.FK__Contracts__Parki__02FC7413">
+            <End Role="Parking" EntitySet="Parkings" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracts__Rente__02084FDA" Association="SYSDATAModel.FK__Contracts__Rente__02084FDA">
+            <End Role="Renter" EntitySet="Renters" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          </EntityContainer>
+        <Association Name="FK__Parkings__UserId__5CD6CB2B">
+          <End Type="SYSDATAModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SYSDATAModel.Parking" Role="Parking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parking">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicles__UserId__5EBF139D">
+          <End Type="SYSDATAModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SYSDATAModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RenterId" Type="Int32" Nullable="false" />
+          <Property Name="ParkingId" Type="Int32" Nullable="false" />
+          <Property Name="Rent" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="End_rent" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Parking" Relationship="SYSDATAModel.FK__Contracts__Parki__02FC7413" FromRole="Contract" ToRole="Parking" />
+          <NavigationProperty Name="Renter" Relationship="SYSDATAModel.FK__Contracts__Rente__02084FDA" FromRole="Contract" ToRole="Renter" />
+        </EntityType>
+        <Association Name="FK__Contracts__Parki__02FC7413">
+          <End Type="SYSDATAModel.Parking" Role="Parking" Multiplicity="1" />
+          <End Type="SYSDATAModel.Contract" Role="Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="ParkingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracts__Rente__02084FDA">
+          <End Type="SYSDATAModel.Renter" Role="Renter" Multiplicity="1" />
+          <End Type="SYSDATAModel.Contract" Role="Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="RenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SYSDATAModelStoreContainer" CdmEntityContainer="SYSDATAEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="SYSDATAModel.Admin">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Birth_date" ColumnName="Birth_date" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="SYSDATAModel.Owner">
+              <MappingFragment StoreEntitySet="Owners">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="QR_code" ColumnName="QR_code" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Birth_date" ColumnName="Birth_date" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parking_sessions">
+            <EntityTypeMapping TypeName="SYSDATAModel.Parking_sessions">
+              <MappingFragment StoreEntitySet="Parking_sessions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Entry_Date" ColumnName="Entry_Date" />
+                <ScalarProperty Name="Extry_Date" ColumnName="Extry_Date" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parkings">
+            <EntityTypeMapping TypeName="SYSDATAModel.Parking">
+              <MappingFragment StoreEntitySet="Parkings">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Renters">
+            <EntityTypeMapping TypeName="SYSDATAModel.Renter">
+              <MappingFragment StoreEntitySet="Renters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="QR_code" ColumnName="QR_code" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SYSDATAModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="SYSDATAModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contracts">
+            <EntityTypeMapping TypeName="SYSDATAModel.Contract">
+              <MappingFragment StoreEntitySet="Contracts">
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="End_rent" ColumnName="End_rent" />
+                <ScalarProperty Name="Rent" ColumnName="Rent" />
+                <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
+                <ScalarProperty Name="RenterId" ColumnName="RenterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

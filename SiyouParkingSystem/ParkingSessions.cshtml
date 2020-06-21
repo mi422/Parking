@@ -1,0 +1,510 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sessions</title>
+    <link rel="shortcut icon" type="image/png" href="https://www.siyoutechnology.online/img/right-home-image.png" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="~/Content/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Content/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Content/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Content/plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="http://localhost:3156/Home.cshtml" class="nav-link">Home</a>
+                </li>
+            </ul>
+
+            <!-- SEARCH FORM -->
+            <form class="form-inline ml-3">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-navy elevation-4">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link">
+                <img src="~/Content/dist/img/right-home-image.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">SiyouParking</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block"></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+
+                        <li class="nav-header">Menubar</li>
+                        <li class="nav-item">
+                            <a href="pages/calendar.html" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>
+                                    Calendar
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-id-badge"></i>
+                                <p>
+                                    Users
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Admins</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Owners.cshtml" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Owners</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>Renters</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-parking"></i>
+                                <p>
+                                    Parking
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-car"></i>
+                                <p>
+                                    Vehicle
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
+                                <i class="nav-icon fab fa-tripadvisor"></i>
+                                <p>
+                                Sessions
+                               </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <div class="content-wrapper" style="min-height: 290px;">
+            <div class="content-header">
+                <div class="col-12 col-sm-6 col-md-3">
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="row mb-12">
+                </div>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-teal" style="margin-top: 5px;">
+                                    <div class="card-header border-transparent">
+                                        <h3 class="card-title"></h3>
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search" id="searchsession" onkeyup="myFunction()">
+                                                <div class="input-group-append">
+                                                </div>
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table id="SessionsTable" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Entry Date</th>
+                                                        <th>Extry Date</th>
+                                                        <th>Vehicle</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                            <div class="card-footer clearfix">
+                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        <!-- show -->
+        <div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Consult</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="orderDetails">
+                        <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                            <div class="form-group">
+                                <input type="hidden" name="ID" class="form-control" id="showId" required>
+                                <input type="hidden" name="UserID" class="form-control" id="consultVehicleId" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editentry">Vehicle entry Date</label>
+                                <input type="text" name="entry" class="form-control-plaintext" id="editEntry" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="editextry">Vehicle extry Date</label>
+                                <input type="text" name="extry" class="form-control-plaintext" id="editExtry" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="editvehicle">Vehicle Plate</label>
+                                <input type="text" name="vehicle" class="form-control-plaintext" id="editVehicle" readonly>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-info" data-dismiss="modal"><i class="fas fa-check-square"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>          
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+        </div>
+
+
+
+        <!-- ./wrapper -->
+        <!-- jQuery -->
+        <script src="~/Content/plugins/jquery/jquery.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+                        $.widget.bridge('uibutton', $.ui.button)
+        </script>
+        <!-- Bootstrap 4 -->
+        <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- ChartJS -->
+        <script src="~/Content/plugins/chart.js/Chart.min.js"></script>
+        <!-- Sparkline -->
+        <script src="~/Content/plugins/sparklines/sparkline.js"></script>
+        <!-- JQVMap -->
+        <script src="~/Content/plugins/jqvmap/jquery.vmap.min.js"></script>
+        <script src="~/Content/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="~/Content/plugins/jquery-knob/jquery.knob.min.js"></script>
+        <!-- daterangepicker -->
+        <script src="~/Content/plugins/moment/moment.min.js"></script>
+        <script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script src="~/Content/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <!-- Summernote -->
+        <script src="~/Content/plugins/summernote/summernote-bs4.min.js"></script>
+        <!-- overlayScrollbars -->
+        <script src="~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="~/Content/dist/js/adminlte.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="~/Content/dist/js/pages/dashboard.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="~/Content/dist/js/demo.js"></script>
+</body>
+</html>
+<script src="Scripts/jquery-1.10.2.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    function SessionList() {
+        // Call Web API to get a list of Admins
+        $.ajax({
+            url: 'api/parkingSessions',
+            type: 'GET',
+            dataType: 'json',
+            success: function (Sessions) {
+                SessionListSuccess(Sessions);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function SessionListSuccess(Sessions) {
+        // Iterate over the collection of data
+        $.each(Sessions, function (index, Session) {
+            // Add a row to the Admin table
+            SessionAddRow(Session);
+        });
+    }
+    function SessionAddRow(Session) {
+        // Check if <tbody> tag exists, add one if not
+        if ($("#SessionsTable tbody").length == 0) {
+            $("#SessionsTable").append("<tbody></tbody>");
+        }
+        // Append row to <table>
+        $("#SessionsTable tbody").append(
+          SessionBuildTableRow(Session));
+    }
+    function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+    function SessionBuildTableRow(Session) {
+        var ret =
+           "<tr>" +
+           "<td>" + Session.Id + "</td>" +
+            "<td>" + Session.Entry_date + "</td>" +
+                "<td>" + Session.Extry_date + "</td>" +
+                 "<td>" + Session.VehicleId + "</td>" +
+                   "<td>" +
+  "<button type='button' " + "onclick='SessionGet(this)'" + "data-toggle='modal'" + "data-target='#showModal'" + "class='btn btn-outline-secondary' " + "data-id='" + Session.Id + "'>" + "<i class='fas fa-eye'></i>" +
+  "</button>" + 
+   "</td>" +
+               "</tr>";
+        return ret;
+    }
+    function handleException(request, message,
+                         error) {
+        var msg = "";
+        msg += "Code: " + request.status + "\n";
+        msg += "Text: " + request.statusText + "\n";
+        if (request.responseJSON != null) {
+            msg += "Message" +
+                request.responseJSON.Message + "\n";
+        }
+        alert(msg);
+    }
+    $(document).ready(function () {
+        SessionList();
+    });
+    $(document).getElementByClass('.btn btn-default').addEventListener('click', function () {
+        document.querySelector('#getmodal').style.display = 'flex';
+    });
+
+//GETBYID
+    function SessionGet(ctl) {
+        var id = $(ctl).data("id");
+        $.ajax({
+            url: "api/parkingSessions/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (Session) {
+                SessionToFields(Session);
+                VehicleGet(ctl);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function SessionToFields(Session) {
+        $("#editId").val(Session.Id);
+        $("#editEntry").val(Session.Entry_Date);
+        $("#editExtry").val(Session.Extry_Date);
+        $("#consultVehicleId").val(Session.VehicleId);
+    }
+    //VehicleGETBYID
+    function VehicleGet(ctl) {
+        var id = $("#consultVehicleId").val();
+        $.ajax({
+            url: "api/vehicles/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (Vehicle) {
+                VehicleToFields(Vehicle);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function VehicleToFields(Vehicle) {
+        $("#consultVehicleId").val(Vehicle.Id);
+        $("#editVehicle").val(Vehicle.PlateNumber);
+        $("#editmodel").val(Vehicle.Model);
+    }
+    $('#showModal').on('show.bs.modal', function (event) {
+        var getIdFromRow = $(event.relatedTarget).attr('data-id');
+        // if you wnat to take the text of the first cell 
+        //var getIdFromRow = $(event.relatedTarget).find('td:first-child').text();
+        $(this).find('#orderDetails').html($('<b> Information for LP: ' + getIdFromRow + '</b>'))
+    });
+    //search
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchsession");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("SessionsTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+<style>
+  .myModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    .PostModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+     h5 {
+         color: #000000;
+        font-weight: bold;
+        display: block;
+        width: 150px;
+        float: left;
+
+ }
+ label {
+        color: #109cbb;
+        font-weight: bold;
+        display: block;
+        width: 150px;
+        float: left;
+    }
+label:after { content: ": " }
+    /* The Close Button */
+    .close {
+        color: red;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
+
