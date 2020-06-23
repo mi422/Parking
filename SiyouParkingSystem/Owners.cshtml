@@ -79,6 +79,7 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3" alt="User Image">
+                        <span id="spanUsername" class="text-muted"></span>
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"></a>
@@ -328,6 +329,7 @@
                             <form action="" id="ModalForm" onclick="return validation()">
                                 <fieldset>
                                     <input type="hidden" name="ID" class="form-control" id="deleteId" placeholder="ID">
+                                    <input type="hidden" name="Role" class="form-control" id="PostRole" value="Owner">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <input type="text" name="name" class="form-control" id="PostName" placeholder="Firstname" autocomplete="off" onchange="return removeWarning()">
@@ -469,14 +471,19 @@
                                         <input type="text" name="Birth" class="form-control-plaintext " id="ConBirth" readonly>
                                     </div> 
                                     <div class="form-group col-md-6">
-                                        <label for="cin">Cin</label>
-                                        <input type="text" name="cn" class="form-control-plaintext " id="ConQR" readonly>
-                                    </div>     
+                                        <div class="form-group col-md-3">
+                                            <label for="cin">Cin</label>
+                                            <input type="text" name="cn" class="form-control-plaintext " id="ConQR" readonly>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <div id="getqrcode"></div>
+                                        </div>
+                                    </div>
                                     </div>                
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-check-square"></i></button>
                                 </div>
-                            </form>                           
+                            </form>                         
                         </div>
                     </div>
                 </div>
@@ -559,6 +566,37 @@
                   document.getElementById("IdentityErr").innerHTML = "";
               }
           }
+        </script>
+        <script>
+            var qrdata = document.getElementById('ConQR');
+            var qrcod = new QRCode(document.getElementById('getqrcode'), {
+                width: 140,
+                height: 140,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            function getQR() {
+                var data = qrdata.value;
+                if (data == "") {
+                    document.getElementById('IdentityErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if (data.length != 8) {
+                    document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
+                    valid = false;
+                }
+                else if (isNaN(data)) {
+                    document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
+                    valid = false;
+                }
+                else {
+
+                    qrcod.makeCode(data);
+                    document.getElementById("IdentityErr").innerHTML = "";
+                }
+            }
         </script>
         <script type="text/javascript">
             function removeWarning() {
@@ -705,6 +743,7 @@
                 Email: $('#PostEmail').val(),
                 Username: $('#Postusername').val(),
                 Password: $('#Postpassword').val(),
+                Role: $('#PostRole').val(),
             },
             success: function () {
                 PostOwner();
@@ -756,7 +795,7 @@
   "<button type='button' " + "onclick='OwnerGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Owner.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
   "</button>" + " " + "<button type='button' " + "onclick='OwnerGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Owner.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
   "</button>" +
-  " " + "<button type='button'" + "onclick='OwnerShow(this);' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Owner.Id + "'>" + "<i class='fas fa-eye'></i>" +
+  " " + "<button type='button'" + "onclick='OwnerShow(this);getQR(this);' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Owner.Id + "'>" + "<i class='fas fa-eye'></i>" +
   "</button>" +
 "</td>" +
                "</tr>";
@@ -951,7 +990,7 @@
 
             // Loop through all table rows, and hide those who don't match the search query
             for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
+                td = tr[i].getElementsByTagName("td")[1];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -962,7 +1001,14 @@
                 }
             }
         }
-       
+     
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#spanUsername').text("hello " + localStorage.getItem("userName"));
+    });
+
 </script>
 <style>
     .myModal {

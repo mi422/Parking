@@ -78,6 +78,7 @@
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
                             <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3" alt="User Image">
+                            <span id="spanUsername" class="text-muted"></span>
                         </div>
                         <div class="info">
                             <a href="#" class="d-block"></a>
@@ -332,6 +333,7 @@
                             <div class="modal-body">
                                 <form id="ModalForm" onclick="return validation()">
                                     <fieldset>
+                                        <input type="hidden" name="Role" class="form-control" id="PostRole" value="Admin">
                                         <input type="hidden" name="ID" class="form-control" id="deleteId" placeholder="ID">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
@@ -896,6 +898,7 @@
                     Email: $('#PostEmail').val(),
                     Username: $('#Postusername').val(),
                     Password: $('#Postpassword').val(),
+                    Role: $('#PostRole').val(),
                 },
                 success: function () {
                     PostAdmin();
@@ -923,6 +926,13 @@
                 }
             }
         }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#spanUsername').text("hello " + localStorage.getItem("userName"));
+    });
+
 </script>
 <style>
   .myModal {

@@ -48,7 +48,7 @@ namespace SiyouParkingSystem.Controllers
                     vehicleclass.Model = vehicle.Model;
                     vehicleclass.Created_at = vehicle.Created_at;
                     vehicleclass.Updated_at = vehicle.Updated_at;
-                    vehicleclass.UserId = vehicle.UserId;
+                    //vehicleclass.UserId = vehicle.UserId;
                     vehicleList.Add(vehicleclass);
                 }
                 IEnumerable<VehicleClass> veh = vehicleList;

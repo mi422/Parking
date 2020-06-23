@@ -30,8 +30,8 @@ namespace ParkingDataAccess
         public virtual DbSet<Parking_sessions> Parking_sessions { get; set; }
         public virtual DbSet<Parking> Parkings { get; set; }
         public virtual DbSet<Renter> Renters { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

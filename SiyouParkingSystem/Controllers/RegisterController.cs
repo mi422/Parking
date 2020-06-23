@@ -23,6 +23,7 @@ namespace SiyouParkingSystem.Controllers
                 Email = us.Email,
                 Username = us.Username,
                 Password = us.Password,
+                Role = us.Role,
                 Created_at = today,
                 Updated_at = today
 
@@ -47,6 +48,7 @@ namespace SiyouParkingSystem.Controllers
                     userclass.Created_at = User.Created_at;
                     userclass.Updated_at = User.Updated_at;
                     userclass.Password = User.Password;
+                    userclass.Role = User.Role;
                     userList.Add(userclass);
                 }
                 IEnumerable<UserClass> Us = userList;
@@ -87,6 +89,7 @@ namespace SiyouParkingSystem.Controllers
                     entity.Email = use.Email;
                     entity.Username = use.Username;
                     entity.Password = use.Password;
+                    entity.Role = use.Role;
                     entity.Updated_at = today;
                     SYS.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, entity);

@@ -25,7 +25,7 @@ namespace ParkingDataAccess
         public string Model { get; set; }
         public System.DateTime Created_at { get; set; }
         public System.DateTime Updated_at { get; set; }
-        public int UserId { get; set; }
+        public Nullable<int> UserId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parking_sessions> Parking_sessions { get; set; }

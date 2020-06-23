@@ -79,6 +79,7 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3" alt="User Image">
+                        <span id="spanUsername" class="text-muted"></span>
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"></a>
@@ -335,10 +336,13 @@
                                             <span id="PhoneErr" class="text-danger"></span>
                                         </div>
                                         </div>
-                                        <div class="form-row">
+
+                                   
+                                        <div class="form-row"  id="barcode">
                                             <div class="form-group col-md-6">
                                                 <input type="text" name="Identity" class="form-control" id="postqrcode" placeholder="Identity card number" onchange="GenerateQR()" autocomplete="off">
                                                 <span id="IdentityErr" class="text-danger"></span>
+                                            
                                             </div>                                   
                                             <div class="form-group col-md-6">                                               
                                                 <div class="input-group">
@@ -400,6 +404,7 @@
                                     <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-check-square"></i></button>
                                 </div>
                             </form>
+                            <div id="getqrcode"></div>
                         </div>
                     </div>
                 </div>
@@ -478,6 +483,37 @@
                 else {
 
                     qrcodee.makeCode(data);
+                    document.getElementById("IdentityErr").innerHTML = "";
+                }
+            }
+        </script>
+        <script>
+            var qrdata = document.getElementById('consqrcode');
+            var qrcod = new QRCode(document.getElementById('getqrcode'), {
+                width: 140,
+                height: 140,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            function getQR() {
+                var data = qrdata.value;
+                if (data == "") {
+                    document.getElementById('IdentityErr').innerHTML = "please fill the field";
+                    valid = false;
+                }
+                else if (data.length != 8) {
+                    document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
+                    valid = false;
+                }
+                else if (isNaN(data)) {
+                    document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
+                    valid = false;
+                }
+                else {
+
+                    qrcod.makeCode(data);
                     document.getElementById("IdentityErr").innerHTML = "";
                 }
             }
@@ -586,7 +622,7 @@
   "<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
   "</button>" + " " + "<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
   "</button>" +
-  " " + "<button type='button'" + "onclick='consultRenterGet(this);' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-eye'></i>" +
+  " " + "<button type='button'" + "onclick='consultRenterGet(this);getQR(this);' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-eye'></i>" +
   "</button>" +
 "</td>" +
                "</tr>";
@@ -727,6 +763,13 @@
                 }
             }
         }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#spanUsername').text("hello " + localStorage.getItem("userName"));
+    });
+
 </script>
 <style>
     .myModal {

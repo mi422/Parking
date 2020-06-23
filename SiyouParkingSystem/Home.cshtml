@@ -78,6 +78,7 @@
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
                             <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3">
+                            <span id="spanUsername" class="text-muted"></span>
                         </div>
                         <div class="info">
                             <a href="#" class="d-block"></a>
@@ -160,7 +161,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!--Calendar-->
-
+          
 
            <!--/Calendar-->
             <!-- /.content -->
@@ -216,4 +217,10 @@
     <script src="~/Content/dist/js/demo.js"></script>
 </body>
 </html>
-
+<script type="text/javascript">
+    $(document).ready(function () {
+      
+        $('#spanUsername').text("hello " + localStorage.getItem("userName"));
+    });
+    
+ </script>

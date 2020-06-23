@@ -10,16 +10,16 @@
         <EntityTypeShape EntityType="SYSDATAModel.Parking_sessions" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SYSDATAModel.Parking" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SYSDATAModel.Renter" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SYSDATAModel.User" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SYSDATAModel.Vehicle" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
-        <AssociationConnector Association="SYSDATAModel.FK__Admins__UserId__1DE57479" ManuallyRouted="false" />
-        <AssociationConnector Association="SYSDATAModel.FK__Owners__UserId__1ED998B2" ManuallyRouted="false" />
         <AssociationConnector Association="SYSDATAModel.FK__Parking_s__Vehic__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="SYSDATAModel.FK__Parkings__UserId__5CD6CB2B" />
-        <AssociationConnector Association="SYSDATAModel.FK__Vehicles__UserId__5EBF139D" />
         <EntityTypeShape EntityType="SYSDATAModel.Contract" Width="1.5" PointX="7.5" PointY="7.5" />
         <AssociationConnector Association="SYSDATAModel.FK__Contracts__Parki__02FC7413" />
         <AssociationConnector Association="SYSDATAModel.FK__Contracts__Rente__02084FDA" />
+        <EntityTypeShape EntityType="SYSDATAModel.User" Width="1.5" PointX="0.75" PointY="7.125" />
+        <AssociationConnector Association="SYSDATAModel.FK__Admins__UserId__1DE57479" />
+        <AssociationConnector Association="SYSDATAModel.FK__Owners__UserId__1ED998B2" />
+        <AssociationConnector Association="SYSDATAModel.FK__Parkings__UserId__5CD6CB2B" />
+        <AssociationConnector Association="SYSDATAModel.FK__Vehicles__UserId__5EBF139D" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
