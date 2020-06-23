@@ -47,7 +47,7 @@ namespace SiyouParkingSystem.Controllers
                     parkingClass.State = parking.State;
                     parkingClass.Created_at = parking.Created_at;
                     parkingClass.Updated_at = parking.Updated_at;
-                    //parkingClass.UserId = parking.UserId;
+                    parkingClass.UserId = parking.UserId;
                     parkingList.Add(parkingClass);
                 }
                 IEnumerable<ParkingClass> par = parkingList;

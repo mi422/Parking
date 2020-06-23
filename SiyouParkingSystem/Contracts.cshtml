@@ -79,6 +79,7 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3" alt="User Image">
+                        <span id="spanUsername" class="text-muted"></span>
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"></a>
@@ -100,7 +101,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        @*<li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-id-badge"></i>
                                 <p>
@@ -122,7 +123,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>*@
                         <li class="nav-item">
                             <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-user-alt"></i>
@@ -150,6 +151,14 @@
                                 <i class="nav-icon fab fa-tripadvisor"></i>
                                 <p>
                                     Sessions
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Contracts.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-file-contract"></i>
+                                <p>
+                                    Contracts
                                 </p>
                             </a>
                         </li>
@@ -751,6 +760,13 @@
             }
         }
     }
+</script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#spanUsername').text(localStorage.getItem("userName"));
+    });
+
 </script>
 <style>
     .myModal {

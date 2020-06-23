@@ -247,7 +247,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\ContractsController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OwnersController.cs" />
     <Compile Include="Controllers\ParkingsController.cs" />
     <Compile Include="Controllers\ParkingSessionsController.cs" />
@@ -348,6 +347,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\dist\js\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
