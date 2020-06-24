@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
+
 
 namespace SiyouParkingSystem.Controllers
 {
@@ -37,6 +39,8 @@ namespace SiyouParkingSystem.Controllers
         {
             using (SYSDATAEntities SYS = new SYSDATAEntities())
             {
+                                
+               
                 List<ContractClass> contractList = new List<ContractClass>();
 
                 foreach (var contract in SYS.Contracts)
@@ -51,6 +55,7 @@ namespace SiyouParkingSystem.Controllers
                     contractClass.Updated_at = contract.Updated_at;
                     contractList.Add(contractClass);
                 }
+               var Control = SYS.Contracts.Include("SYS.Renters");
                 IEnumerable<ContractClass> contracts = contractList;
                 return contracts;
             }

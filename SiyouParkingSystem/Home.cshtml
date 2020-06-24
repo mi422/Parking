@@ -73,88 +73,92 @@
                 </a>
 
                 <!-- Sidebar -->
-                <div class="sidebar">
-                    <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                            <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3">
-                            <span id="spanUsername" class="text-muted"></span>
-                        </div>
-                        <div class="info">
-                            <a href="#" class="d-block"></a>
-                        </div>
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/Content/dist/img/ava.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                             style="opacity: .8">
+                        <span id="spanUsername" class="text-muted"></span>
                     </div>
-
-                    <!-- Sidebar Menu -->
-                    <nav class="mt-2">
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-
-                            <li class="nav-header">Menubar</li>
-                            <li class="nav-item">
-                                <a href="pages/calendar.html" class="nav-link">
-                                    <i class="nav-icon far fa-calendar-alt"></i>
-                                    <p>
-                                        Calendar
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item has-treeview">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-id-badge"></i>
-                                    <p>
-                                        Users
-                                     <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Admins</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="http://localhost:3156/Owners.cshtml" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Owners</p>
-                                        </a>
-                                    </li>                                    
-                                  </ul>
-                                </li>
-                            <li class="nav-item">
-                                <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
-                                    <i class="nav-icon fas fa-user-alt"></i>
-                                    <p>Renters</p>
-                                </a>
-                            </li>  
-                            <li class="nav-item has-treeview">
-                                <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
-                                    <i class="nav-icon fas fa-parking"></i>
-                                    <p>
-                                        Parking
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item has-treeview">
-                                <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
-                                    <i class="nav-icon fas fa-car"></i>
-                                    <p>
-                                        Vehicle
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
-                                    <i class="nav-icon fab fa-tripadvisor"></i>
-                                    <p>Sessions</p>
-                                </a>
-                            </li>
-                            </ul>
-                             </nav>
-                    <!-- /.sidebar-menu -->
+                    <div class="info">
+                        <a href="#" class="d-block"></a>
+                    </div>
                 </div>
+                <!-- Sidebar Menu -->
+                <nav class="mt-2" id="admin">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+
+                        <li class="nav-header">Menubar</li>
+
+                        <li class="nav-item">
+                            <a href="pages/calendar.html" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>
+                                    Calendar
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-id-badge"></i>
+                                <p>
+                                    Users
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Admins</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Owners.cshtml" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Owners</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>Renters</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-parking"></i>
+                                <p>
+                                    Parking
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-car"></i>
+                                <p>
+                                    Vehicle
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
+                                <i class="nav-icon fab fa-tripadvisor"></i>
+                                <p>Sessions</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+
+
+
                 <!-- /.sidebar -->
                 </aside>
 
@@ -222,5 +226,43 @@
       
         $('#spanUsername').text(localStorage.getItem("userName"));
     });
-    
+
+    function getrole(ctl) {
+        var id = $(ctl).data("id");
+        $.ajax({
+            url: "/api/admins/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (Admin) {
+                ConsadminToFields(Admin);
+                ConUserGet(ctl);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function ConsadminToFields(Admin) {
+        $("#consultId").val(Admin.Id);
+        $("#consultuserId").val(Admin.UserId);
+        $("#ConsName").val(Admin.FirstName);
+        $("#ConsSurname").val(Admin.LastName);
+        $("#Consphone").val(Admin.Phone);
+        $("#Consaddress").val(Admin.Address);
+        $("#ConBirth").val(Admin.Birth_date);
+    }
+    function ConUserGet(ctl) {
+        var id = $("#consultuserId").val();
+        $.ajax({
+            url: "api/Register/Get/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (User) {
+                ConsUserToFields(User);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
  </script>

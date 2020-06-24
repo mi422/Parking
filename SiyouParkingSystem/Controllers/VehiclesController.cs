@@ -17,14 +17,13 @@ namespace SiyouParkingSystem.Controllers
         [HttpPost]
         public IHttpActionResult Post(VehicleClass veh)
         {
-            int LastUserId = SYS.Users.Max(User => User.Id);
             SYS.Vehicles.Add(new Vehicle()
             {
                 PlateNumber = veh.PlateNumber,
                 Model = veh.Model,
                 Created_at = today,
                 Updated_at = today,
-                UserId = LastUserId,
+                UserId = veh.UserId,
             });
 
             SYS.SaveChanges();
@@ -42,6 +41,7 @@ namespace SiyouParkingSystem.Controllers
 
                 foreach (var vehicle in SYS.Vehicles)
                 {
+                    
                     VehicleClass vehicleclass = new VehicleClass();
                     vehicleclass.Id = vehicle.Id;
                     vehicleclass.PlateNumber = vehicle.PlateNumber;

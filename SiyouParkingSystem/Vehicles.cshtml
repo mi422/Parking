@@ -78,8 +78,11 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="~/Content/dist/img/avatars.png" class="brand-image img-circle elevation-3" alt="User Image">
+                        <img src="~/Content/dist/img/ava.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                             style="opacity: .8">
                         <span id="spanUsername" class="text-muted"></span>
+                        <span id="spanID" class="text-muted"></span>
+                        <span id="spanRole" class="text-muted"></span>
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"></a>
@@ -173,7 +176,8 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">
                         <button type="button" class="info-box-icon btn bg-teal elevation-1" data-toggle='modal' data-target="#PostModal"><i class="fas fa-car"></i></button>
-                        <div class="info-box-content">
+                       
+                         <div class="info-box-content">
                             <span class="info-box-text">New Vehicle</span>
                             <span class="info-box-number">
                             </span>
@@ -314,12 +318,12 @@
                                     <input type="text" name="model" class="form-control" id="Postmodel" placeholder="Car Model" autocomplete="off" onchange="return removeWarning()">
                                     <span class="text-danger" id="modelErr"></span>
                                 </div>
-                                        <div class="form-group">
+                                        @*<div class="form-group">
                                             <select class="browser-default custom-select" id="UserList" onchange="return removeWarning()">
                                                 <option selected>Choose an Owner</option>                                                
                                             </select>
                                             <span class="text-danger" id="ownerchose"></span>
-                                        </div>
+                                        </div>*@
                                 <div class="modal-footer">
                                     <button type="button" onclick="PostVehicle();" class="btn bg-olive"><i class="fas fa-save"></i></button>
                                     <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
@@ -453,7 +457,7 @@
     function UserList() {
         // Call Web API to get a list of users
         $.ajax({
-            url: '/api/register/',
+            url: 'api/register/GetRole',
             type: 'GET',
             dataType: 'json',
             success: function (Users) {
@@ -468,7 +472,7 @@
         // Iterate over the collection of data
         $.each(Users, function (index, User) {
             // Add a row to the Admin table
-            $("#UserList").append("<option>" + User.Id + "</option>");
+            $("#UserList").append("<option value=" + User.Id + ">" + User.Username + "</option>");
         });
     }
     function handleExceptione(request, message,
@@ -506,6 +510,24 @@
             VehicleAddRow(Vehicle);
         });
     }
+    function usernameuser(ctl) {
+            var id = $("#UserId").val();
+            $.ajax({
+                url: "api/Register/Get/" + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (User) {
+                    UserToFields(User);
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+        function UserToFields(User) {
+            $("#usernameuser").val(User.Username);
+        }
+    
     function VehicleAddRow(Vehicle) {
         // Check if <tbody> tag exists, add one if not
         if ($("#VehicleTable tbody").length == 0) {
@@ -520,12 +542,13 @@
         row.parentNode.removeChild(row);
     }
     function VehicleBuildTableRow(Vehicle) {
+      
         var ret =
            "<tr>" +
            "<td>" + Vehicle.Id + "</td>" +
             "<td>" + Vehicle.PlateNumber + "</td>" +
                 "<td>" + Vehicle.Model + "</td>"
-                 + "<td>" + Vehicle.UserId + "</td>" +
+                 + "<td >" + Vehicle.UserId + "</td>" +
                      "<td>" +
   "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
   "</button>" + " " + "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
@@ -632,12 +655,14 @@
                 },
 
             });
-        }
+    }
+
+
         //POST
-    function PostVehicle() {
-        var e = document.getElementById("UserList");
-        var strUser = e.options[e.selectedIndex].text;
-        var strUser = e.options[e.selectedIndex].value;
+        function PostVehicle() {
+            //var e = document.getElementById("UserList");
+            //var strUser = e.options[e.selectedIndex].text;
+            var strUser = window.localStorage.getItem('ID');
             $.ajax({
                 url: 'api/vehicles/Post',
                 method: 'POST',
@@ -650,7 +675,7 @@
                     window.location.href = "http://localhost:3156/Vehicles.cshtml";
                 }
             });
-    }
+        }
     //search
     function myFunction() {
         // Declare variables

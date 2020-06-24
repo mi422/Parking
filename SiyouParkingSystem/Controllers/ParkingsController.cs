@@ -66,6 +66,18 @@ namespace SiyouParkingSystem.Controllers
             }
             return Ok(par);
         }
+        [Route("api/parkings/{UserId}")]
+        [HttpGet]
+        public IHttpActionResult GetbyUser(int Userid)
+        {
+            List<ParkingClass> list = new List<ParkingClass>();
+            var par = SYS.Parkings.FirstOrDefault(e => e.UserId == Userid);
+            if (par == null)
+            {
+                return NotFound();
+            }
+            return Ok(par);
+        }
         [Route("api/parkings/{id}")]
         [HttpPut]
         public HttpResponseMessage Put(int id, ParkingClass par)

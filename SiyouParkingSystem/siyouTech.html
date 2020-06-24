@@ -30,9 +30,9 @@
                     <!--Owl-carousel-->
                     <div class="owl-carousel owl-theme">
                         <img src="assets/undraw_press_play_bx2d.svg" alt="" class="login_img">
-                        <img src="assets/undraw_sign_in_e6hj.svg" alt="" class="login_img">
-                        <img src="assets/undraw_fingerprint_swrc.svg" alt="" class="login_img">
-                        <img src="assets/undraw_thought_process_67my.svg" alt="" class="login_img">
+                        <img src="assets/undraw_sign_in_e6hj.svg"  alt="" class="login_img">
+                        <img src="assets/undraw_fingerprint_swrc.svg" alt="" class="login_img">  
+                        <img src="assets/undraw_gravitas_d3ep.svg" alt="" class="login_img">                                  
                     </div>
                     <!--/Owl-carousel-->
 
@@ -42,7 +42,7 @@
                         <div class="titles">
                             <h3>Ready to Login</h3>
                         </div>
-                        <div class="form-group has-feedback ">
+                        <div class="form-group has-feedback ">                        
                             <input type="text" placeholder="Username" class="form-input" id="username" autocomplete="off" onchange="return removeWarning()">
                             <div class="input-icon">
                                 <i class="fas fa-user"></i>
@@ -56,8 +56,7 @@
                             </div>
                         </div>
                         <span id="PasswordErr" class="text-danger"></span>
-                        <span id="spanUsername" class="text-muted"></span>
-                        <button type="button" id="blogin" class="btn btn-login">Login</button>
+                        <button type="button" id="blogin"  onclick="currentuser();" class="btn btn-login">Login</button>
                     </form>
                 </div>
             </div>
@@ -108,12 +107,15 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!--/SWeet alert-->
         <!--Authentication-->
-        <script type="text/javascript">
+
+        <script type="text/javascript"> 
+
                 $(document).ready(function () {
                     $('#blogin').click(function () {
                         Username = $("#username").val();
                         Password = $("#password").val();
-                       localStorage.setItem("userName", Username);
+                        //Role = $("#role").val();
+                        localStorage.setItem("userName", Username);                          
                         $.ajax
                         ({
                             type: "get",
@@ -121,26 +123,27 @@
                             dataType: 'json',
                             async: false,
                             data: {
-                                Role : us.Role,
+                              
                         },
                             beforeSend: function (xhr) {
                                 xhr.setRequestHeader("Authorization", "Basic " + btoa(Username + ":" + Password));
                             },
                             success: function (response) {
+                                
                                 //localStorage.setItem("accessToken", response.access_token);
                                 //localStorage.setItem("Role", Role);
                                 //var role = localStorage.getItem("Role");
                                 //if (role == "Admin")
                                 //{
-                                    window.location.href = "http://localhost:3156/Home.cshtml";
-                                //}
-                                //else {
-                                //    swal.fire({
-                                //        icon: 'warning',
-                                //        title: 'you are not authorized.'
-                                //    })
-                                //}
-                            },
+                                window.location.href = "http://localhost:3156/Home.cshtml";
+                                },
+                            //    else {
+                            //        swal.fire({
+                            //            icon: 'warning',
+                            //            title: 'you are not authorized.'
+                            //        })
+                            //    }
+                            //},
                             error: function (request, message, error) {
                                 swal.fire({
                                     icon: 'warning',
@@ -151,7 +154,38 @@
                         });
                     });
                 });
+
+
+                function currentuser(User) {
+                    var username = $("#username").val();
+                    $.ajax({
+                        url: "api/Register/Getcurrent/" + username,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (User) {
+                            getuser(User);
+                        },
+                        error: function (request, message, error) {
+                            handleException(request, message, error);
+                        }
+                    });
+                }
+                function getuser(User) {
+ 
+                    //const currentuser = {
+                    //    Username:  User.Username,
+                    var Role = User.Role;
+                    var ID = User.Id;
+                    //}
+
+                    window.localStorage.setItem('Role', Role);
+                    window.localStorage.setItem('ID', JSON.stringify(ID));
+
+
+                }
+
     </script>
+ 
 
 </body>
 </html>

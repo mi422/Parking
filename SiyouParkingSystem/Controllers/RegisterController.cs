@@ -55,7 +55,35 @@ namespace SiyouParkingSystem.Controllers
                 return Us;
             }
         }
+        [Route("api/register/GetRole")]
+        [HttpGet]
+        public IEnumerable<UserClass> GetRole()
+        {
 
+            using (SYSDATAEntities SYS = new SYSDATAEntities())
+            {
+                List<UserClass> ownersList = new List<UserClass>();
+                foreach (var User in SYS.Users)
+                {
+                    UserClass userclass = new UserClass();
+                    userclass.Id = User.Id;
+                    userclass.Email = User.Email;
+                    userclass.Username = User.Username;
+                    userclass.Created_at = User.Created_at;
+                    userclass.Updated_at = User.Updated_at;
+                    userclass.Password = User.Password;
+                    userclass.Role = User.Role;
+                    
+                    if (User.Role == "Owner")
+                    {
+                        ownersList.Add(userclass);
+                        
+                    }
+                }
+                IEnumerable<UserClass> Us = ownersList;
+                return Us;
+            }
+        }
         [Route("api/Register/Get/{id}")]
         [HttpGet]
         public IHttpActionResult Get(int id)
@@ -64,6 +92,19 @@ namespace SiyouParkingSystem.Controllers
 
             var us = SYS.Users.FirstOrDefault(e => e.Id == id);
             int lastUserId = SYS.Users.Max(User => User.Id);
+            if (us == null)
+            {
+                return NotFound();
+            }
+            return Ok(us);
+        }
+        [Route("api/Register/Getcurrent/{username}")]
+        [HttpGet]
+        public IHttpActionResult Getcurrent(string username)
+        {
+            List<UserClass> list = new List<UserClass>();
+
+            var us = SYS.Users.FirstOrDefault(e => e.Username == username);
             if (us == null)
             {
                 return NotFound();
