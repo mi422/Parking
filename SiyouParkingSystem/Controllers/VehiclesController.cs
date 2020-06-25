@@ -55,6 +55,34 @@ namespace SiyouParkingSystem.Controllers
                 return veh;
             }
         }
+        [Route("api/vehicles/getbyuser/{userid}")]
+        [HttpGet]
+        public IEnumerable<VehicleClass> getbyuser(int userid)
+        {
+
+            using (SYSDATAEntities SYS = new SYSDATAEntities())
+            {
+                List<VehicleClass> vehicleList = new List<VehicleClass>();
+
+                foreach (var vehicle in SYS.Vehicles)
+                {
+
+                    VehicleClass vehicleclass = new VehicleClass();
+                    vehicleclass.Id = vehicle.Id;
+                    vehicleclass.PlateNumber = vehicle.PlateNumber;
+                    vehicleclass.Model = vehicle.Model;
+                    vehicleclass.Created_at = vehicle.Created_at;
+                    vehicleclass.Updated_at = vehicle.Updated_at;
+                    vehicleclass.UserId = vehicle.UserId;
+                    if (vehicle.UserId == userid)
+                    {
+                        vehicleList.Add(vehicleclass);
+                    }
+                }
+                IEnumerable<VehicleClass> veh = vehicleList;
+                return veh;
+            }
+        }
         [Route("api/vehicles/{id}")]
         [HttpGet]
         public IHttpActionResult Get(int id)
