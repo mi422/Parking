@@ -105,7 +105,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview" id="users">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-id-badge"></i>
                                 <p>
@@ -117,22 +117,20 @@
                                 <li class="nav-item">
                                     <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Admins</p>
+                                        <p>
+                                        Admins
+                                        </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="http://localhost:3156/Owners.cshtml" onclick="currentuser();" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Owners</p>
+                                        <p>
+                                        Owners
+                                        </p>
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
-                                <i class="nav-icon fas fa-user-alt"></i>
-                                <p>Renters</p>
-                            </a>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
@@ -142,6 +140,21 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
+                                <i class="nav-icon fab fa-tripadvisor"></i>
+                                <p>
+                                    Sessions
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>Renters</p>
+                            </a>
+                        </li>
+                      
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-car"></i>
@@ -165,15 +178,7 @@
                                     Log Out
                                 </p>
                             </a>
-                        </li>
-                        @*<li class="nav-item">
-                            <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
-                                <i class="nav-icon fab fa-tripadvisor"></i>
-                                <p>
-                                    Sessions
-                                </p>
-                            </a>
-                        </li>*@
+                        </li>                      
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -553,6 +558,19 @@
         <!-- AdminLTE for demo purposes -->
         <script src="~/Content/dist/js/demo.js"></script>
         <script src="~/qrcode.min.js"></script>
+        <script type="text/javascript">
+            var rol = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (rol == "Admin") {
+                    $('#users').show();
+                };
+            });
+            $(document).ready(function () {
+                if (rol == "Owner") {
+                    $('#users').hide();
+                }
+            });
+        </script>
         <script>
           $('#reservationdate').datetimepicker({
               format: 'L'

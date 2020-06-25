@@ -102,7 +102,7 @@
                                 </p>
                             </a>
                         </li>
-                        @*<li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview" id="users">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-id-badge"></i>
                                 <p>
@@ -124,26 +124,12 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>*@
-                        <li class="nav-item">
-                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
-                                <i class="nav-icon fas fa-user-alt"></i>
-                                <p>Renters</p>
-                            </a>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-parking"></i>
                                 <p>
                                     Parking
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
-                                <i class="nav-icon fas fa-car"></i>
-                                <p>
-                                    Vehicle
                                 </p>
                             </a>
                         </li>
@@ -155,6 +141,20 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-car"></i>
+                                <p>
+                                    Vehicle
+                                </p>
+                            </a>
+                        </li>            
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>Renters</p>
+                            </a>
+                        </li>                                                   
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/Contracts.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-file-contract"></i>
@@ -451,6 +451,19 @@
         <script src="~/Content/dist/js/pages/dashboard.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="~/Content/dist/js/demo.js"></script>
+        <script type="text/javascript">
+            var rol = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (rol == "Admin") {
+                    $('#users').show();
+                };
+            });
+            $(document).ready(function () {
+                if (rol == "Owner") {
+                    $('#users').hide();
+                }
+            });
+        </script>
         <script>
           $('#reservationdate').datetimepicker({
               format: 'L'

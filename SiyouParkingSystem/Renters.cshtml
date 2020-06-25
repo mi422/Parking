@@ -125,14 +125,6 @@
                                 </li>
                             </ul>
                         </li>
-
-                        
-                        <li class="nav-item">
-                            <a href="http://localhost:3156/Renters.cshtml" id="renter"  class="nav-link">
-                                <i class="nav-icon fas fa-user-alt"></i>
-                                <p>Renters</p>
-                            </a>
-                        </li>
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-parking"></i>
@@ -140,15 +132,21 @@
                                     Parking
                                 </p>
                             </a>
-                        </li>
-                        @*<li class="nav-item">
+                        </li>     
+                        <li class="nav-item">
                             <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
                                 <i class="nav-icon fab fa-tripadvisor"></i>
                                 <p>
                                     Sessions
                                 </p>
                             </a>
-                        </li>*@
+                        </li>                   
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/Renters.cshtml" id="renter"  class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>Renters</p>
+                            </a>
+                        </li>
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-car"></i>
@@ -468,19 +466,6 @@
         <script src="~/Content/dist/js/demo.js"></script>
         <script src="~/qrcode.min.js"></script>
         <script type="text/javascript">
-            var role = window.localStorage.getItem("Role");
-            $(document).ready(function () {
-                if (role == "Admin") {
-                    $('#buton').hide();
-                };
-            });
-            $(document).ready(function () {
-                if (role == "Owner") {
-                    $('#buton').show();
-                }
-            });
-        </script>
-        <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
             $(document).ready(function () {
                 if (rol == "Admin") {
@@ -490,6 +475,19 @@
             $(document).ready(function () {
                 if (rol == "Owner") {
                     $('#users').hide();
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            var role = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (role == "Admin") {
+                    $('#buton').hide();
+                };
+            });
+            $(document).ready(function () {
+                if (role == "Owner") {
+                    $('#buton').show();
                 }
             });
         </script>
