@@ -98,7 +98,7 @@
                         <li class="nav-header">Menubar</li>
                         <li class="nav-item">
                             <a href="pages/calendar.html" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <i class="nav-icon far fa-calendar-alt text-info"></i>
                                 <p>
                                     Calendar
                                 </p>
@@ -109,7 +109,7 @@
                                 <i class="nav-icon fas fa-id-badge"></i>
                                 <p>
                                     Users
-                                    <i class="fas fa-angle-left right"></i>
+                                    <i class="fas fa-angle-left right text-info"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -127,7 +127,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview" id="par">
                             <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-parking"></i>
                                 <p>
@@ -135,7 +135,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="sess">
                             <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
                                 <i class="nav-icon fab fa-tripadvisor"></i>
                                 <p>
@@ -182,7 +182,7 @@
         <div class="content-wrapper" style="min-height: 290px;">
             <div class="content-header">
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box">
+                    <div class="info-box" id="buton">
                         <button type="button" class="info-box-icon btn bg-teal elevation-1" data-toggle='modal' data-target="#PostModal"><i class="fas fa-car"></i></button>
                        
                          <div class="info-box-content">
@@ -422,6 +422,45 @@
     <script src="~/Content/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Content/dist/js/demo.js"></script>
+    <script type="text/javascript">
+            var role3 = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (role3 == "Admin") {
+                    $('#buton').hide();
+                };
+            });
+            $(document).ready(function () {
+                if (role3 == "Owner") {
+                    $('#buton').show();
+                }
+            });
+    </script>
+    <script type="text/javascript">
+            var role2 = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (role2 == "Admin") {
+                    $('#sess').show();
+                };
+            });
+            $(document).ready(function () {
+                if (role2 == "Owner") {
+                    $('#sess').hide();
+                }
+            });
+    </script>
+    <script type="text/javascript">
+            var role1 = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (role1 == "Admin") {
+                    $('#par').show();
+                };
+            });
+            $(document).ready(function () {
+                if (role1 == "Owner") {
+                    $('#par').hide();
+                }
+            });
+    </script>
     <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
             $(document).ready(function () {
