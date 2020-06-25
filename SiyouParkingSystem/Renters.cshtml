@@ -102,7 +102,7 @@
                                 </p>
                             </a>
                         </li>
-                        @*<li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview" id="users">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-id-badge"></i>
                                 <p>
@@ -124,9 +124,11 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>*@
+                        </li>
+
+                        
                         <li class="nav-item">
-                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                            <a href="http://localhost:3156/Renters.cshtml" id="renter"  class="nav-link">
                                 <i class="nav-icon fas fa-user-alt"></i>
                                 <p>Renters</p>
                             </a>
@@ -177,11 +179,12 @@
             </div>
             <!-- /.sidebar -->
         </aside>
+        
         <div class="content-wrapper" style="min-height: 290px;">
             <div class="content-header">
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box">
-                        <button type="button" class="info-box-icon btn bg-teal elevation-1" data-toggle='modal' data-target="#PostModal"><i class="fas fa-user-plus"></i></button>
+                    <div class="info-box" id="buton">
+                        <button type="button" class="info-box-icon btn bg-teal elevation-1" data-toggle='modal' data-target="#PostModal" ><i class="fas fa-user-plus"></i></button>
                         <div class="info-box-content">
                             <span class="info-box-text">New Renter</span>
                             <span class="info-box-number">
@@ -465,6 +468,32 @@
         <script src="~/Content/dist/js/demo.js"></script>
         <script src="~/qrcode.min.js"></script>
         <script type="text/javascript">
+            var role = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (role == "Admin") {
+                    $('#buton').hide();
+                };
+            });
+            $(document).ready(function () {
+                if (role == "Owner") {
+                    $('#buton').show();
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            var rol = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (rol == "Admin") {
+                    $('#users').show();
+                };
+            });
+            $(document).ready(function () {
+                if (rol == "Owner") {
+                    $('#users').hide();
+                }
+            });
+        </script>
+        <script type="text/javascript">
     $(document).ready(function () {
 
         $('#spanUsername').text(localStorage.getItem("userName"));
@@ -693,9 +722,9 @@
                      + "<td>" + Renter.Adress + "</td>"
                      + "<td>" + Renter.QR_code + "</td>" +
                          "<td>" +
-      "<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
-      "</button>" + " " + "<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
-      "</button>" +
+      //"<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
+      //"</button>" + " " + "<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
+      //"</button>" +
       " " + "<button type='button'" + "onclick='consultRenterGet(this);getQR(this);' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-eye'></i>" +
       "</button>" +
     "</td>" +

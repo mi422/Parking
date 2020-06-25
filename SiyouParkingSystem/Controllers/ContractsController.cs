@@ -60,6 +60,37 @@ namespace SiyouParkingSystem.Controllers
                 return contracts;
             }
         }
+        [Route("api/Contracts/getbyuserid/{userid}")]
+        [HttpGet]
+        public IEnumerable<ContractClass> getbyuserid(int userid)
+        {
+            using (SYSDATAEntities SYS = new SYSDATAEntities())
+            {
+
+
+                List<ContractClass> contractList = new List<ContractClass>();
+                foreach (var contract in SYS.Contracts)
+                {
+                    ContractClass contractClass = new ContractClass();
+                    contractClass.Id = contract.Id;
+                    contractClass.RenterId = contract.RenterId;
+                    contractClass.ParkingId = contract.ParkingId;
+                    contractClass.Rent = contract.Rent;
+                    contractClass.End_rent = contract.End_rent;
+                    contractClass.Created_at = contract.Created_at;
+                    contractClass.Updated_at = contract.Updated_at;
+                    var parkinguser = SYS.Parkings.FirstOrDefault(e => e.Id == contract.ParkingId);
+
+                    if (parkinguser.UserId == userid)
+                    {
+                        contractList.Add(contractClass);
+                    }
+                }
+                var Control = SYS.Contracts.Include("SYS.Renters");
+                IEnumerable<ContractClass> contracts = contractList;
+                return contracts;
+            }
+        }
         [Route("api/contracts/{id}")]
         [HttpGet]
         public IHttpActionResult Get(int id)
