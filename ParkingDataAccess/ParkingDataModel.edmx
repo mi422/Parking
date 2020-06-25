@@ -79,6 +79,7 @@
           <Property Name="Adress" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Created_at" Type="date" Nullable="false" />
           <Property Name="Updated_at" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -175,6 +176,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Renters__UserId__14270015">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Renters" Type="Self.Renters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Renters">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Vehicles__UserId__5EBF139D">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
@@ -219,6 +232,10 @@
           <AssociationSet Name="FK__Parkings__UserId__5CD6CB2B" Association="Self.FK__Parkings__UserId__5CD6CB2B">
             <End Role="Users" EntitySet="Users" />
             <End Role="Parkings" EntitySet="Parkings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Renters__UserId__14270015" Association="Self.FK__Renters__UserId__14270015">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Renters" EntitySet="Renters" />
           </AssociationSet>
           <AssociationSet Name="FK__Vehicles__UserId__5EBF139D" Association="Self.FK__Vehicles__UserId__5EBF139D">
             <End Role="Users" EntitySet="Users" />
@@ -285,19 +302,6 @@
           <NavigationProperty Name="Contracts" Relationship="SYSDATAModel.FK__Contracts__Parki__02FC7413" FromRole="Parking" ToRole="Contract" />
           <NavigationProperty Name="User" Relationship="SYSDATAModel.FK__Parkings__UserId__5CD6CB2B" FromRole="Parking" ToRole="User" />
         </EntityType>
-        <EntityType Name="Renter">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="Int32" Nullable="false" />
-          <Property Name="QR_code" Type="Int32" Nullable="false" />
-          <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Updated_at" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Contracts" Relationship="SYSDATAModel.FK__Contracts__Rente__02084FDA" FromRole="Renter" ToRole="Contract" />
-        </EntityType>
         <EntityType Name="Vehicle">
           <Key>
             <PropertyRef Name="Id" />
@@ -328,7 +332,6 @@
           <EntitySet Name="Owners" EntityType="Self.Owner" />
           <EntitySet Name="Parking_sessions" EntityType="Self.Parking_sessions" />
           <EntitySet Name="Parkings" EntityType="Self.Parking" />
-          <EntitySet Name="Renters" EntityType="Self.Renter" />
           <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
           <AssociationSet Name="FK__Parking_s__Vehic__31EC6D26" Association="Self.FK__Parking_s__Vehic__31EC6D26">
             <End Role="Vehicles" EntitySet="Vehicles" />
@@ -337,10 +340,6 @@
           <EntitySet Name="Contracts" EntityType="SYSDATAModel.Contract" />
           <AssociationSet Name="FK__Contracts__Parki__02FC7413" Association="SYSDATAModel.FK__Contracts__Parki__02FC7413">
             <End Role="Parking" EntitySet="Parkings" />
-            <End Role="Contract" EntitySet="Contracts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Contracts__Rente__02084FDA" Association="SYSDATAModel.FK__Contracts__Rente__02084FDA">
-            <End Role="Renter" EntitySet="Renters" />
             <End Role="Contract" EntitySet="Contracts" />
           </AssociationSet>
           <EntitySet Name="Users" EntityType="SYSDATAModel.User" />
@@ -359,6 +358,15 @@
           <AssociationSet Name="FK__Vehicles__UserId__5EBF139D" Association="SYSDATAModel.FK__Vehicles__UserId__5EBF139D">
             <End Role="User" EntitySet="Users" />
             <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <EntitySet Name="Renters" EntityType="SYSDATAModel.Renter" />
+          <AssociationSet Name="FK__Contracts__Rente__02084FDA" Association="SYSDATAModel.FK__Contracts__Rente__02084FDA">
+            <End Role="Renter" EntitySet="Renters" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Renters__UserId__14270015" Association="SYSDATAModel.FK__Renters__UserId__14270015">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Renter" EntitySet="Renters" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Contract">
@@ -387,18 +395,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contracts__Rente__02084FDA">
-          <End Type="SYSDATAModel.Renter" Role="Renter" Multiplicity="1" />
-          <End Type="SYSDATAModel.Contract" Role="Contract" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Renter">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Contract">
-              <PropertyRef Name="RenterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -414,6 +410,7 @@
           <NavigationProperty Name="Owners" Relationship="SYSDATAModel.FK__Owners__UserId__1ED998B2" FromRole="User" ToRole="Owner" />
           <NavigationProperty Name="Parkings" Relationship="SYSDATAModel.FK__Parkings__UserId__5CD6CB2B" FromRole="User" ToRole="Parking" />
           <NavigationProperty Name="Vehicles" Relationship="SYSDATAModel.FK__Vehicles__UserId__5EBF139D" FromRole="User" ToRole="Vehicle" />
+          <NavigationProperty Name="Renters" Relationship="SYSDATAModel.FK__Renters__UserId__14270015" FromRole="User" ToRole="Renter" />
         </EntityType>
         <Association Name="FK__Admins__UserId__1DE57479">
           <End Type="SYSDATAModel.User" Role="User" Multiplicity="1" />
@@ -459,6 +456,45 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Vehicle">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Renter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="QR_code" Type="Int32" Nullable="false" />
+          <Property Name="Adress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Contracts" Relationship="SYSDATAModel.FK__Contracts__Rente__02084FDA" FromRole="Renter" ToRole="Contract" />
+          <NavigationProperty Name="User" Relationship="SYSDATAModel.FK__Renters__UserId__14270015" FromRole="Renter" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Contracts__Rente__02084FDA">
+          <End Type="SYSDATAModel.Renter" Role="Renter" Multiplicity="1" />
+          <End Type="SYSDATAModel.Contract" Role="Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Renter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="RenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Renters__UserId__14270015">
+          <End Type="SYSDATAModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SYSDATAModel.Renter" Role="Renter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Renter">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -524,19 +560,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Renters">
-            <EntityTypeMapping TypeName="SYSDATAModel.Renter">
-              <MappingFragment StoreEntitySet="Renters">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="QR_code" ColumnName="QR_code" />
-                <ScalarProperty Name="Adress" ColumnName="Adress" />
-                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
-                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Vehicles">
             <EntityTypeMapping TypeName="SYSDATAModel.Vehicle">
               <MappingFragment StoreEntitySet="Vehicles">
@@ -571,6 +594,20 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Renters">
+            <EntityTypeMapping TypeName="SYSDATAModel.Renter">
+              <MappingFragment StoreEntitySet="Renters">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="QR_code" ColumnName="QR_code" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

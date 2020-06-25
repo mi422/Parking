@@ -690,6 +690,7 @@
             }
         });
     }
+
         //UPDATE
         function RenterUpdate(Renter) {
             var id = $("#editId").val();
@@ -712,6 +713,7 @@
         }
         //POST
         function PostRenter() {
+            var userid = window.localStorage.getItem("ID");
             $.ajax({
                 url: 'api/renters/Post',
                 method: 'POST',
@@ -720,6 +722,7 @@
                     Phone: $('#postphone').val(),
                     Adress: $('#postaddress').val(),
                     QR_code: $('#postqrcode').val(),
+                    UserId: userid,
                 },
                 success: function () {
                     window.location.href = "http://localhost:3156/Renters.cshtml";

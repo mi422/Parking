@@ -66,17 +66,46 @@ namespace SiyouParkingSystem.Controllers
             }
             return Ok(par);
         }
-        [Route("api/parkings/{UserId}")]
+        //}
+        //[Route("api/parkings/getbyuser/{userid}")]
+        //[HttpGet]
+        //public IHttpActionResult getbyuser(int userid)
+        //{
+        //    List<ParkingClass> list = new List<ParkingClass>();
+
+        //    var par = SYS.Parkings.Where(e => e.UserId == userid);
+        //    if (par == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(list);
+        //}
+        [Route("api/parkings/getbyuser/{userid}")]
         [HttpGet]
-        public IHttpActionResult GetbyUser(int Userid)
+        public IEnumerable<ParkingClass> getbyuser(int userid)
         {
-            List<ParkingClass> list = new List<ParkingClass>();
-            var par = SYS.Parkings.FirstOrDefault(e => e.UserId == Userid);
-            if (par == null)
+
+            using (SYSDATAEntities SYS = new SYSDATAEntities())
             {
-                return NotFound();
+                List<ParkingClass> parkingList = new List<ParkingClass>();
+
+                foreach (var parking in SYS.Parkings)
+                { 
+                    ParkingClass parkingClass = new ParkingClass();
+                    parkingClass.Id = parking.Id;
+                    parkingClass.Position = parking.Position;
+                    parkingClass.State = parking.State;
+                    parkingClass.Created_at = parking.Created_at;
+                    parkingClass.Updated_at = parking.Updated_at;
+                    parkingClass.UserId = parking.UserId;
+                    if (parking.UserId == userid)
+                    {
+                        parkingList.Add(parkingClass);
+                    }
+                }
+                IEnumerable<ParkingClass> par = parkingList;
+                return par;
             }
-            return Ok(par);
         }
         [Route("api/parkings/{id}")]
         [HttpPut]

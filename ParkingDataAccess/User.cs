@@ -21,6 +21,7 @@ namespace ParkingDataAccess
             this.Owners = new HashSet<Owner>();
             this.Parkings = new HashSet<Parking>();
             this.Vehicles = new HashSet<Vehicle>();
+            this.Renters = new HashSet<Renter>();
         }
     
         public int Id { get; set; }
@@ -39,5 +40,7 @@ namespace ParkingDataAccess
         public virtual ICollection<Parking> Parkings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vehicle> Vehicles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Renter> Renters { get; set; }
     }
 }

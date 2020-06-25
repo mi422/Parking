@@ -313,7 +313,7 @@
                                         </select>
                                     </div>
                                 <div class="form-group">
-                                    <select class="browser-default custom-select" id="ParkingList">
+                                    <select class="browser-default custom-select" id="parkinglist">
                                         <option selected>Choose a Parking</option>
                                     </select>
                                 </div>
@@ -461,9 +461,10 @@
 <script type="text/javascript">
     //dropdown renter
     function RenterList() {
+        var userid = window.localStorage.getItem('ID');
         // Call Web API to get a list of Admins
         $.ajax({
-            url: 'api/Renters/',
+            url: 'api/renters/getbyuser/' + userid,
             type: 'GET',
             dataType: 'json',
             success: function (Renters) {
@@ -478,7 +479,7 @@
         // Iterate over the collection of data
         $.each(Renters, function (index, Renter) {
             // Add a row to the Admin table
-            $("#RenterList").append("<option>" + Renter.Id + "</option>");
+            $("#RenterList").append("<option value=" + Renter.Id + ">" + Renter.Name + "</option>");
         });
     }
     function handleExceptione(request, message,
@@ -497,9 +498,10 @@
     });
     //dropdown parking
     function ParkingList() {
-        // Call Web API to get a list of parking
+        // Call Web API to get a list of users
+        var userid = window.localStorage.getItem('ID');
         $.ajax({
-            url: 'api/parkings/',
+            url: 'api/parkings/getbyuser/' + userid,
             type: 'GET',
             dataType: 'json',
             success: function (Parkings) {
@@ -514,7 +516,7 @@
         // Iterate over the collection of data
         $.each(Parkings, function (index, Parking) {
             // Add a row to the Admin table
-            $("#ParkingList").append("<option>" + Parking.Id + "</option>");
+            $("#parkinglist").append("<option value=" + Parking.Id + " >" + Parking.Position + "</option>");
         });
     }
     function handleExceptione(request, message,
@@ -653,7 +655,7 @@
         var e = document.getElementById("RenterList");
         var strRenter = e.options[e.selectedIndex].text;
         var strRenter = e.options[e.selectedIndex].value;
-        var l = document.getElementById("ParkingList");
+        var l = document.getElementById("parkinglist");
         var strParking = l.options[l.selectedIndex].text;
         var strParking = l.options[l.selectedIndex].value;
             $.ajax({

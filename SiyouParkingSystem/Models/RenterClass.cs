@@ -12,9 +12,11 @@ namespace SiyouParkingSystem.Models
         public string Name { get; set; }
         public int Phone { get; set; }
         public int QR_code { get; set; }
-        public string Adress { get; set; }
+        public string Adress { get; set; }     
         public DateTime Created_at { get; set; }
         public DateTime Updated_at { get; set; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
 
     }
 }

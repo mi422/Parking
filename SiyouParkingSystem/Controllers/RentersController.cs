@@ -23,6 +23,7 @@ namespace SiyouParkingSystem.Controllers
                 Phone = rent.Phone,
                 QR_code = rent.QR_code,
                 Adress = rent.Adress,
+                UserId = rent.UserId,
                 Created_at = today,
                 Updated_at = today
             });
@@ -48,6 +49,7 @@ namespace SiyouParkingSystem.Controllers
                     renterclass.Phone = renter.Phone;
                     renterclass.QR_code = renter.QR_code;
                     renterclass.Adress = renter.Adress;
+                    renterclass.UserId = renter.UserId;
                     renterclass.Created_at = renter.Created_at;
                     renterclass.Updated_at = renter.Updated_at;
                     renterList.Add(renterclass);
@@ -67,6 +69,35 @@ namespace SiyouParkingSystem.Controllers
                 return NotFound();
             }
             return Ok(rent);
+        }
+        [Route("api/renters/getbyuser/{userid}")]
+        [HttpGet]
+        public IEnumerable<RenterClass> getbyuser(int userid)
+        {
+
+            using (SYSDATAEntities SYS = new SYSDATAEntities())
+            {
+                List<RenterClass> renterList = new List<RenterClass>();
+
+                foreach (var renter in SYS.Renters)
+                {
+                    RenterClass renterclass = new RenterClass();
+                    renterclass.Id = renter.Id;
+                    renterclass.Name = renter.Name;
+                    renterclass.Phone = renter.Phone;
+                    renterclass.QR_code = renter.QR_code;
+                    renterclass.Adress = renter.Adress;
+                    renterclass.UserId = renter.UserId;
+                    renterclass.Created_at = renter.Created_at;
+                    renterclass.Updated_at = renter.Updated_at;
+                    if (renter.UserId == userid)
+                    {
+                        renterList.Add(renterclass);
+                    }
+                }
+                IEnumerable<RenterClass> rent = renterList;
+                return rent;
+            }
         }
         [Route("api/renters/{id}")]
         [HttpPut]
