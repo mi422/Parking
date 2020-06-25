@@ -163,6 +163,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
+                                <i class="nav-icon  fas fa-sign-out-alt"></i>
+                                <p>
+                                    Log Out
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -672,75 +680,79 @@
                 }
             });
     }
-    //ListofContract
-    function ContractList() {
-        // Call Web API to get a list of Admins
-        $.ajax({
-            url: 'api/Contracts/',
-            type: 'GET',
-            dataType: 'json',
-            success: function (Contracts) {
-                ContractListSuccess(Contracts);
-            },
-            error: function (request, message, error) {
-                handleException(request, message, error);
+    var role = window.localStorage.getItem("Role");
+    var userid = window.localStorage.getItem("ID");
+    if (role == "Owner") {
+        //ListofContract
+        function ContractList() {
+            // Call Web API to get a list of Admins
+            $.ajax({
+                url: 'api/Contracts/',
+                type: 'GET',
+                dataType: 'json',
+                success: function (Contracts) {
+                    ContractListSuccess(Contracts);
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+        function ContractListSuccess(Contracts) {
+            // Iterate over the collection of data
+            $.each(Contracts, function (index, Contract) {
+                // Add a row to the Admin table
+                ContractAddRow(Contract);
+            });
+        }
+        function ContractAddRow(Contract) {
+            // Check if <tbody> tag exists, add one if not
+            if ($("#ContractTable tbody").length == 0) {
+                $("#ContractTable").append("<tbody></tbody>");
             }
+            // Append row to <table>
+            $("#ContractTable tbody").append(
+              ContractBuildTableRow(Contract));
+        }
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+        function ContractBuildTableRow(Contract) {
+            var ret =
+               "<tr>" +
+               "<td>" + Contract.Id + "</td>" +
+                "<td>" + Contract.RenterId + "</td>" +
+                    "<td>" + Contract.ParkingId + "</td>"
+                     + "<td>" + " from " + Contract.Rent + " to " + Contract.End_rent + "</td>" +
+                         "<td>" +
+      "<button type='button' " + "onclick='ContractGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Contract.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
+      "</button>" + " " + "<button type='button' " + "onclick='ContractGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Contract.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
+      "</button>" +
+      " " + "<button type='button'" + "onclick='showContractGet(this)' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Contract.Id + "'>" + "<i class='fas fa-eye'></i>" +
+      "</button>" +
+    "</td>" +
+                   "</tr>";
+            return ret;
+        }
+        function handleException(request, message,
+                             error) {
+            var msg = "";
+            msg += "Code: " + request.status + "\n";
+            msg += "Text: " + request.statusText + "\n";
+            if (request.responseJSON != null) {
+                msg += "Message" +
+                    request.responseJSON.Message + "\n";
+            }
+            alert(msg);
+        }
+        $(document).ready(function () {
+            ContractList();
+        });
+        $(document).getElementByClass('.btn btn-default').addEventListener('click', function () {
+            document.querySelector('#getmodal').style.display = 'flex';
         });
     }
-    function ContractListSuccess(Contracts) {
-        // Iterate over the collection of data
-        $.each(Contracts, function (index, Contract) {
-            // Add a row to the Admin table
-            ContractAddRow(Contract);
-        });
-    }
-    function ContractAddRow(Contract) {
-        // Check if <tbody> tag exists, add one if not
-        if ($("#ContractTable tbody").length == 0) {
-            $("#ContractTable").append("<tbody></tbody>");
-        }
-        // Append row to <table>
-        $("#ContractTable tbody").append(
-          ContractBuildTableRow(Contract));
-    }
-    function deleteRow(btn) {
-        var row = btn.parentNode.parentNode;
-        row.parentNode.removeChild(row);
-    }
-    function ContractBuildTableRow(Contract) {
-        var ret =
-           "<tr>" +
-           "<td>" + Contract.Id + "</td>" +
-            "<td>" + Contract.RenterId + "</td>" +
-                "<td>" + Contract.ParkingId + "</td>"
-                 + "<td>" + " from " + Contract.Rent + " to " +  Contract.End_rent + "</td>" +
-                     "<td>" +
-  "<button type='button' " + "onclick='ContractGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Contract.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
-  "</button>" + " " + "<button type='button' " + "onclick='ContractGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Contract.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
-  "</button>" +
-  " " + "<button type='button'" + "onclick='showContractGet(this)' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Contract.Id + "'>" + "<i class='fas fa-eye'></i>" +
-  "</button>" +
-"</td>" +
-               "</tr>";
-        return ret;
-    }
-    function handleException(request, message,
-                         error) {
-        var msg = "";
-        msg += "Code: " + request.status + "\n";
-        msg += "Text: " + request.statusText + "\n";
-        if (request.responseJSON != null) {
-            msg += "Message" +
-                request.responseJSON.Message + "\n";
-        }
-        alert(msg);
-    }
-    $(document).ready(function () {
-        ContractList();
-    });
-    $(document).getElementByClass('.btn btn-default').addEventListener('click', function () {
-        document.querySelector('#getmodal').style.display = 'flex';
-    });
     //search
     function myFunction() {
         // Declare variables
@@ -762,6 +774,10 @@
                 }
             }
         }
+    }
+    function remove() {
+
+        window.localStorage.clear();
     }
 </script>
     <script type="text/javascript">

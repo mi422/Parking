@@ -165,6 +165,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
+                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <p>
+                                    Log Out
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -787,7 +795,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[1];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -798,8 +806,11 @@
             }
         }
     }
+    function remove() {
+
+        window.localStorage.clear();
+    }
 </script>
->
 <style>
     .myModal {
         display: none; /* Hidden by default */

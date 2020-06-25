@@ -125,6 +125,6 @@ namespace SiyouParkingSystem.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
-        }     
+        }
     }
 }
