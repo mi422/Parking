@@ -167,7 +167,7 @@
                             <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
                                 <p>
-                                    Log Out
+                                    Logout
                                 </p>
                             </a>
                         </li>
@@ -182,7 +182,7 @@
             <div class="content-header">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box" id="buton">
-                        <button type="button" class="info-box-icon btn bg-info elevation-1" data-toggle='modal' data-target="#PostModal" ><i class="fas fa-user-plus"></i></button>
+                        <button type="button" class="info-box-icon btn bg-teal elevation-1" data-toggle='modal' data-target="#PostModal" ><i class="fas fa-user-plus"></i></button>
                         <div class="info-box-content">
                             <span class="info-box-text">New Renter</span>
                             <span class="info-box-number">
@@ -223,7 +223,6 @@
                                                         <th>Name</th>
                                                         <th>Phone Number</th>
                                                         <th>Address</th>
-                                                        <th>QR Code</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -277,7 +276,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Renter edit</h5>
+                            <h5 class="modal-title" id="ModalLabel">Renter Edit</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -289,9 +288,11 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
+                                        <label for="name">Name</label>
                                         <input type="text" name="name" class="form-control" id="editName" placeholder="Name" required>
                                     </div>
                                     <div class="form-group col-md-6">
+                                        <label for="phone">Phone</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
@@ -301,6 +302,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="address">Address</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
@@ -408,13 +410,15 @@
                                     <div class="form-group col-md-6">
                                         <label for="qr">QR code</label>
                                         <input type="text" name="qrcode" class="form-control-plaintext" id="consqrcode" readonly hidden>
+                                        <div class="form-group col-md-3">
+                                            <div id="getqrcode"></div>
+                                        </div>
                                     </div>
-                                </div>
+                                    </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-check-square"></i></button>
                                 </div>
-                            </form>
-                            <div id="getqrcode" style="position:center;"></div>
+                            </form>                           
                         </div>
                     </div>
                 </div>
@@ -674,8 +678,7 @@
                 "<td>" + Renter.Name + "</td>" +
                     "<td>" + Renter.Phone + "</td>"
                      + "<td>" + Renter.Adress + "</td>"
-                     + "<td>" + Renter.QR_code + "</td>" +
-                         "<td>" +
+                     +  "<td>" +
       "<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
       "</button>" + " " + "<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
       "</button>" +
@@ -744,8 +747,7 @@
                 "<td>" + Renter.Name + "</td>" +
                     "<td>" + Renter.Phone + "</td>"
                      + "<td>" + Renter.Adress + "</td>"
-                     + "<td>" + Renter.QR_code + "</td>" +
-                         "<td>" +
+                     + "<td>" +
       //"<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
       //"</button>" + " " + "<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
       //"</button>" +
