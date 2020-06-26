@@ -67,7 +67,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-navy elevation-4">
             <!-- Brand Logo -->
-            <a href="#" class="brand-link">
+            <a href="http://localhost:3156/Home.cshtml" class="brand-link">
                 <img src="~/Content/dist/img/right-home-image.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
                 <span class="brand-text font-weight-light">SiyouParking</span>
@@ -81,9 +81,6 @@
                         <img src="~/Content/dist/img/ava.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                              style="opacity: .8">
                         <span id="spanUsername" class="text-muted"></span>
-                        @*<span id="spanID" class="text-muted"></span>*@
-                        @*<span id="spanRole" class="text-muted"></span>*@
-                       
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"></a>
@@ -110,7 +107,7 @@
                                 <i class="nav-icon fas fa-id-badge"></i>
                                 <p>
                                     Users
-                                    <i class="fas fa-angle-left right"></i>
+                                    <i class="fas fa-angle-left right text-info"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -173,7 +170,7 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
-                                <i class="nav-icon  fas fa-sign-out-alt"></i>
+                                <i class="nav-icon  fas fa-sign-out-alt text-danger"></i>
                                 <p>
                                     Log Out
                                 </p>
@@ -888,7 +885,7 @@
         $("#editpassword").val(User.Password);
 
     }
-    //ConsultGETBYID
+    //ConsultBYID
     function OwnerShow(ctl) {
         var id = $(ctl).data("id");
         $.ajax({
@@ -1032,11 +1029,8 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
-       
-        $("#spanUsername").text(window.localStorage.getItem('Role'));
-   
-       
 
+        $('#spanUsername').text(localStorage.getItem("userName"));
     });
 
 </script>
@@ -1083,7 +1077,7 @@
 
  }
  label {
-        color: #109cbb;
+        color: rgb(0,0,0);
         font-weight: bold;
         display: block;
         width: 150px;

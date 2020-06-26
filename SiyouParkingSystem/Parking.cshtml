@@ -67,7 +67,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-navy elevation-4">
             <!-- Brand Logo -->
-            <a href="#" class="brand-link">
+            <a href="http://localhost:3156/Home.cshtml" class="brand-link">
                 <img src="~/Content/dist/img/right-home-image.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
                 <span class="brand-text font-weight-light">SiyouParking</span>
@@ -96,7 +96,7 @@
                         <li class="nav-header">Menubar</li>
                         <li class="nav-item">
                             <a href="pages/calendar.html" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt text-info"></i>
+                                <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>
                                     Calendar
                                 </p>
@@ -171,7 +171,7 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
                                 <p>
                                     Log Out
                                 </p>
@@ -227,7 +227,7 @@
                                                         <th>ID</th>
                                                         <th>Position</th>
                                                         <th>State</th>
-                                                        <th>Owner</th>
+                                                        @*<th>Owner</th>*@
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -294,12 +294,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="editposition">Position</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-secondary"><i class="fas fa-parking"></i></span>
-                                        </div>
                                         <input type="text" name="position" class="form-control" id="editposition" required>
-                                    </div>
                                     </div>
                                 <div class="form-group">
                                     <label for="editstate">State</label>
@@ -429,6 +424,7 @@
         <script src="~/Content/dist/js/pages/dashboard.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="~/Content/dist/js/demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
             $(document).ready(function () {
@@ -512,6 +508,7 @@
             dataType: 'json',
             success: function (Parking) {
                 showParkingToFields(Parking);
+                ConsUserGet(ctl);
             },
             error: function (request, message, error) {
                 handleException(request, message, error);
@@ -524,6 +521,23 @@
         $("#Consstate").val(Parking.State);
         $("#ConsOwner").val(Parking.UserId);
     }
+    function ConsUserGet(ctl) {
+        var id = $("#ConsOwner").val();
+        $.ajax({
+            url: "api/Register/Get/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (User) {
+                ConsUserToFields(User);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            }
+        });
+    }
+    function ConsUserToFields(User) {
+        $("#ConsOwner").val(User.Username);
+    };
     //DELETE
     function Delete(ctl) {
         var id = $("#editId").val();
@@ -531,13 +545,15 @@
             url: "api/parkings/Delete/" + id,
             type: 'DELETE',
             success: function () {
-                alert("Deleted!");
                 window.location.href = "http://localhost:3156/Parking.cshtml";
 
             },
             error: function (request, message, error) {
-            handleException(request, message, error);
-        }
+                swal.fire({
+                    icon: 'warning',
+                    title: 'There is an authorized contract for this parking!...'
+                })
+        },
         });
     }
         //UPDATE
@@ -619,8 +635,8 @@
            "<tr>" +
            "<td>" + Parking.Id + "</td>" +
             "<td>" + Parking.Position + "</td>" +
-                "<td>" + Parking.State + "</td>"
-                 + "<td>" + Parking.UserId + "</td>" +
+                "<td>" + Parking.State + "</td>" +
+                 //+ "<td>" + Parking.UserId + "</td>" +
                      "<td>" +
   "<button type='button' " + "onclick='ParkingGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Parking.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
   "</button>" + " " + "<button type='button' " + "onclick='ParkingGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Parking.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
@@ -659,7 +675,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[1];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -725,7 +741,7 @@
 
  }
  label {
-        color: #109cbb;
+        color: rgb(0,0,0);
         font-weight: bold;
         display: block;
         width: 150px;

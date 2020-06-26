@@ -96,7 +96,7 @@
                         <li class="nav-header">Menubar</li>
                         <li class="nav-item">
                             <a href="pages/calendar.html" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt text-info"></i>
+                                <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>
                                     Calendar
                                 </p>
@@ -125,7 +125,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview" id="par">
                             <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-parking"></i>
                                 <p>
@@ -133,7 +133,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="sess">
                             <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
                                 <i class="nav-icon fab fa-tripadvisor"></i>
                                 <p>
@@ -141,18 +141,18 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>Renters</p>
+                            </a>
+                        </li>            
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-car"></i>
                                 <p>
                                     Vehicle
                                 </p>
-                            </a>
-                        </li>            
-                        <li class="nav-item">
-                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
-                                <i class="nav-icon fas fa-user-alt"></i>
-                                <p>Renters</p>
                             </a>
                         </li>                                                   
                         <li class="nav-item has-treeview">
@@ -165,7 +165,7 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
-                                <i class="nav-icon  fas fa-sign-out-alt"></i>
+                                <i class="nav-icon  fas fa-sign-out-alt text-danger"></i>
                                 <p>
                                     Log Out
                                 </p>
@@ -181,7 +181,7 @@
             <div class="content-header">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box" id="buton">
-                        <button type="button" class="info-box-icon btn bg-info elevation-1" data-toggle='modal' data-target="#PostModal"><i class="fas fa-file-contract"></i></button>
+                        <button type="button" class="info-box-icon btn bg-teal elevation-1" data-toggle='modal' data-target="#PostModal"><i class="fas fa-file-contract"></i></button>
                         <div class="info-box-content">
                             <span class="info-box-text">New Contract</span>
                             <span class="info-box-number">
@@ -452,6 +452,32 @@
         <!-- AdminLTE for demo purposes -->
         <script src="~/Content/dist/js/demo.js"></script>
         <script type="text/javascript">
+            var role2 = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (role2 == "Admin") {
+                    $('#sess').show();
+                };
+            });
+            $(document).ready(function () {
+                if (role2 == "Owner") {
+                    $('#sess').hide();
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            var role1 = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (role1 == "Admin") {
+                    $('#par').show();
+                };
+            });
+            $(document).ready(function () {
+                if (role1 == "Owner") {
+                    $('#par').hide();
+                }
+            });
+        </script>
+        <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
             $(document).ready(function () {
                 if (rol == "Admin") {
@@ -461,6 +487,19 @@
             $(document).ready(function () {
                 if (rol == "Owner") {
                     $('#users').hide();
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            var rol4 = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (rol4 == "Admin") {
+                    $('#buton').hide();
+                };
+            });
+            $(document).ready(function () {
+                if (rol4 == "Owner") {
+                    $('#buton').show();
                 }
             });
         </script>
@@ -849,7 +888,7 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
+            td = tr[i].getElementsByTagName("td")[0];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -915,7 +954,7 @@
 
  }
  label {
-        color: #109cbb;
+        color: rgb(0,0,0);
         font-weight: bold;
         display: block;
         width: 150px;
