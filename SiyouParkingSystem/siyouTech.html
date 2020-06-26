@@ -114,7 +114,6 @@
                     $('#blogin').click(function () {
                         Username = $("#username").val();
                         Password = $("#password").val();
-                        //Role = $("#role").val();
                         localStorage.setItem("userName", Username);                          
                         $.ajax
                         ({
@@ -128,22 +127,9 @@
                             beforeSend: function (xhr) {
                                 xhr.setRequestHeader("Authorization", "Basic " + btoa(Username + ":" + Password));
                             },
-                            success: function (response) {
-                                
-                                //localStorage.setItem("accessToken", response.access_token);
-                                //localStorage.setItem("Role", Role);
-                                //var role = localStorage.getItem("Role");
-                                //if (role == "Admin")
-                                //{
+                            success: function (response) {                                                           
                                 window.location.href = "http://localhost:3156/Home.cshtml";
                                 },
-                            //    else {
-                            //        swal.fire({
-                            //            icon: 'warning',
-                            //            title: 'you are not authorized.'
-                            //        })
-                            //    }
-                            //},
                             error: function (request, message, error) {
                                 swal.fire({
                                     icon: 'warning',
@@ -154,8 +140,6 @@
                         });
                     });
                 });
-
-
                 function currentuser(User) {
                     var username = $("#username").val();
                     $.ajax({
@@ -163,25 +147,16 @@
                         type: 'GET',
                         dataType: 'json',
                         success: function (User) {
-                            getuser(User);
+                            var Role = User.Role;
+                            var ID = User.Id;
+
+                            window.localStorage.setItem('Role', Role);
+                            window.localStorage.setItem('ID', JSON.stringify(ID));
                         },
                         error: function (request, message, error) {
                             handleException(request, message, error);
                         }
                     });
-                }
-                function getuser(User) {
- 
-                    //const currentuser = {
-                    //    Username:  User.Username,
-                    const Role = User.Role;
-                    const ID = User.Id;
-                    //}
-
-                    window.localStorage.setItem('Role', Role);
-                    window.localStorage.setItem('ID', JSON.stringify(ID));
-
-
                 }
 
     </script>
