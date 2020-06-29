@@ -92,7 +92,7 @@
                             <li class="nav-header">Menubar</li>
                             <li class="nav-item has-treeview" id="users">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-user-secret text-info"></i>
+                                    <i class="nav-icon fas fa-user-secret"></i>
                                     <p>
                                         Users
                                         <i class="fas fa-angle-left right text-info"></i>
@@ -101,13 +101,13 @@
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
                                         <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
-                                            <i class="nav-icon fas fa-user-circle text-info"></i>
+                                            <i class="nav-icon fas fa-user-circle"></i>
                                             <p>Admins</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="http://localhost:3156/Owners.cshtml" class="nav-link">
-                                            <i class="nav-icon fas fa-user-circle text-info"></i>
+                                            <i class="nav-icon fas fa-user-circle"></i>
                                             <p>Owners</p>
                                         </a>
                                     </li>
@@ -130,7 +130,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                                <a href="http://localhost:3156/Renters.cshtml" id="renter" class="nav-link">
                                     <i class="nav-icon fas fa-user-tie"></i>
                                     <p>
                                     Renters
@@ -138,7 +138,7 @@
                                 </a>
                             </li>                       
                             <li class="nav-item has-treeview">
-                                <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
+                                <a href="http://localhost:3156/Vehicles.cshtml" id="veh" class="nav-link">
                                     <i class="nav-icon fas fa-car"></i>
                                     <p>
                                         Vehicle
@@ -189,7 +189,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="card card-info" style="margin-top: 5px;">
+                                    <div class="card card-gray" style="margin-top: 5px;">
                                         <div class="card-header border-transparent">
                                             <h3 class="card-title"></h3>
                                             <div class="card-tools">
@@ -208,7 +208,7 @@
                                                 <table id="AdminTable" class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
-                                                            <th id="searchId">ID</th>
+                                                            <th id="searchId">N°</th>
                                                             <th>Full Name</th>
                                                             <th>Phone Number</th>
                                                             <th>Address</th>
@@ -672,6 +672,32 @@
                     return valid;
                 };
             </script>
+            <script type="text/javascript">
+            var rol = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (rol == "Admin") {
+                    $('#renter').hide();
+                };
+            });
+            $(document).ready(function () {
+                if (rol == "Owner") {
+                    $('#renter').show();
+                }
+            });
+            </script>
+            <script type="text/javascript">
+            var roll = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (roll == "Admin") {
+                    $('#veh').hide();
+                };
+            });
+            $(document).ready(function () {
+                if (roll == "Owner") {
+                    $('#veh').show();
+                }
+            });
+            </script>
 
 </body>
 </html>
@@ -724,7 +750,7 @@
   "<button type='button' " + "onclick='adminGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Admin.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
   "</button>" + " " + "<button type='button' " + "onclick='adminGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Admin.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
   "</button> " +
-  "<button type='button' " + "onclick='ConsultGet(this)'" + "data-toggle='modal'" + "data-target='#consultModal'" + "class='btn btn-outline-info' " + "data-id='" + Admin.Id + "'>" + "<i class='far fa-eye'></i>" +
+  "<button type='button' " + "onclick='ConsultGet(this)'" + "data-toggle='modal'" + "data-target='#consultModal'" + "class='btn btn-outline-warning' " + "data-id='" + Admin.Id + "'>" + "<i class='far fa-eye'></i>" +
   "</button>" + " " + 
 "</td>" +
                "</tr>";

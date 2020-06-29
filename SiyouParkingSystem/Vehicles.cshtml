@@ -98,7 +98,7 @@
                         <li class="nav-header">Menubar</li>                     
                         <li class="nav-item has-treeview" id="users">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user-secret text-info"></i>
+                                <i class="nav-icon fas fa-user-secret"></i>
                                 <p>
                                     Users
                                     <i class="fas fa-angle-left right text-info"></i>
@@ -107,13 +107,13 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
-                                        <i class="nav-icon fas fa-user-circle text-info"></i>
+                                        <i class="nav-icon fas fa-user-circle"></i>
                                         <p>Admins</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="http://localhost:3156/Owners.cshtml" class="nav-link">
-                                        <i class="nav-icon fas fa-user-circle text-info"></i>
+                                        <i class="nav-icon fas fa-user-circle"></i>
                                         <p>Owners</p>
                                     </a>
                                 </li>
@@ -136,13 +136,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="http://localhost:3156/Renters.cshtml" class="nav-link">
+                            <a href="http://localhost:3156/Renters.cshtml" id="renter" class="nav-link">
                                 <i class="nav-icon fas fa-user-tie"></i>
                                 <p>Renters</p>
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="http://localhost:3156/Vehicles.cshtml" class="nav-link">
+                            <a href="http://localhost:3156/Vehicles.cshtml" id="veh" class="nav-link">
                                 <i class="nav-icon fas fa-car"></i>
                                 <p>
                                     Vehicle
@@ -213,7 +213,7 @@
                                             <table id="VehicleTable" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
+                                                        <th>N°</th>
                                                         <th>Plate Number</th>
                                                         <th>Model</th>
                                                         <th>Owner</th>
@@ -414,7 +414,7 @@
     <script src="~/Content/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Content/dist/js/demo.js"></script>
-    <script type="text/javascript">
+    @*<script type="text/javascript">
             var role3 = window.localStorage.getItem("Role");
             $(document).ready(function () {
                 if (role3 == "Admin") {
@@ -426,7 +426,7 @@
                     $('#buton').show();
                 }
             });
-    </script>
+    </script>*@
     <script type="text/javascript">
             var role2 = window.localStorage.getItem("Role");
             $(document).ready(function () {
@@ -463,6 +463,19 @@
             $(document).ready(function () {
                 if (rol == "Owner") {
                     $('#users').hide();
+                }
+            });
+    </script>
+    <script type="text/javascript">
+            var rol = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (rol == "Admin") {
+                    $('#renter').hide();
+                };
+            });
+            $(document).ready(function () {
+                if (rol == "Owner") {
+                    $('#renter').show();
                 }
             });
     </script>
@@ -507,6 +520,19 @@
                 }
             }
         </script>
+    <script type="text/javascript">
+            var roll = window.localStorage.getItem("Role");
+            $(document).ready(function () {
+                if (roll == "Admin") {
+                    $('#veh').hide();
+                };
+            });
+            $(document).ready(function () {
+                if (roll == "Owner") {
+                    $('#veh').show();
+                }
+            });
+    </script>
 </body>
 </html>
 <script src="Scripts/jquery-1.10.2.min.js"></script>
@@ -617,7 +643,7 @@
   "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
   "</button>" + " " + "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
   "</button>" +
-  " " + "<button type='button'" + "onclick='ConsVehicleGet(this)' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-eye'></i>" +
+  " " + "<button type='button'" + "onclick='ConsVehicleGet(this)' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-warning' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-eye'></i>" +
   "</button>" +
 "</td>" +
                "</tr>";
@@ -641,94 +667,94 @@
         document.querySelector('#getmodal').style.display = 'flex';
     });
     }
-    {
-        if (role == "Admin") {
-            $.ajax({
-                url: 'api/vehicles',
-                type: 'GET',
-                dataType: 'json',
-                success: function (Vehicles) {
-                    VehicleListSuccess(Vehicles);
-                },
-                error: function (request, message, error) {
-                    handleException(request, message, error);
-                }
-            });
-        }
-        function VehicleListSuccess(Vehicles) {
-            // Iterate over the collection of data
-            $.each(Vehicles, function (index, Vehicle) {
-                // Add a row to the Admin table
-                VehicleAddRow(Vehicle);
-            });
-        }
-        function usernameuser(ctl) {
-            var id = $("#UserId").val();
-            $.ajax({
-                url: "api/Register/Get/" + id,
-                type: 'GET',
-                dataType: 'json',
-                success: function (User) {
-                    UserToFields(User);
-                },
-                error: function (request, message, error) {
-                    handleException(request, message, error);
-                }
-            });
-        }
-        function UserToFields(User) {
-            $("#usernameuser").val(User.Username);
-        }
+    //{
+    //    if (role == "Admin") {
+    //        $.ajax({
+    //            url: 'api/vehicles',
+    //            type: 'GET',
+    //            dataType: 'json',
+    //            success: function (Vehicles) {
+    //                VehicleListSuccess(Vehicles);
+    //            },
+    //            error: function (request, message, error) {
+    //                handleException(request, message, error);
+    //            }
+    //        });
+    //    }
+    //    function VehicleListSuccess(Vehicles) {
+    //        // Iterate over the collection of data
+    //        $.each(Vehicles, function (index, Vehicle) {
+    //            // Add a row to the Admin table
+    //            VehicleAddRow(Vehicle);
+    //        });
+    //    }
+    //    function usernameuser(ctl) {
+    //        var id = $("#UserId").val();
+    //        $.ajax({
+    //            url: "api/Register/Get/" + id,
+    //            type: 'GET',
+    //            dataType: 'json',
+    //            success: function (User) {
+    //                UserToFields(User);
+    //            },
+    //            error: function (request, message, error) {
+    //                handleException(request, message, error);
+    //            }
+    //        });
+    //    }
+    //    function UserToFields(User) {
+    //        $("#usernameuser").val(User.Username);
+    //    }
 
-        function VehicleAddRow(Vehicle) {
-            // Check if <tbody> tag exists, add one if not
-            if ($("#VehicleTable tbody").length == 0) {
-                $("#VehicleTable").append("<tbody></tbody>");
-            }
-            // Append row to <table>
-            $("#VehicleTable tbody").append(
-              VehicleBuildTableRow(Vehicle));
-        }
-        function deleteRow(btn) {
-            var row = btn.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-        }
-        function VehicleBuildTableRow(Vehicle) {
+    //    function VehicleAddRow(Vehicle) {
+    //        // Check if <tbody> tag exists, add one if not
+    //        if ($("#VehicleTable tbody").length == 0) {
+    //            $("#VehicleTable").append("<tbody></tbody>");
+    //        }
+    //        // Append row to <table>
+    //        $("#VehicleTable tbody").append(
+    //          VehicleBuildTableRow(Vehicle));
+    //    }
+    //    function deleteRow(btn) {
+    //        var row = btn.parentNode.parentNode;
+    //        row.parentNode.removeChild(row);
+    //    }
+    //    function VehicleBuildTableRow(Vehicle) {
 
-            var ret =
-               "<tr>" +
-               "<td>" + Vehicle.Id + "</td>" +
-                "<td>" + Vehicle.PlateNumber + "</td>" +
-                    "<td>" + Vehicle.Model + "</td>"
-                     + "<td >" + Vehicle.UserId + "</td>" +
-                         "<td>" +
-      "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
-      "</button>" + " " + "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
-      "</button>" +
-      " " + "<button type='button'" + "onclick='ConsVehicleGet(this)' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-eye'></i>" +
-      "</button>" +
-    "</td>" +
-                   "</tr>";
-            return ret;
-        }
-        function handleException(request, message,
-                             error) {
-            var msg = "";
-            msg += "Code: " + request.status + "\n";
-            msg += "Text: " + request.statusText + "\n";
-            if (request.responseJSON != null) {
-                msg += "Message" +
-                    request.responseJSON.Message + "\n";
-            }
-            alert(msg);
-        }
-        $(document).ready(function () {
-            VehicleList();
-        });
-        $(document).getElementByClass('.btn btn-default').addEventListener('click', function () {
-            document.querySelector('#getmodal').style.display = 'flex';
-        });
-    }
+    //        var ret =
+    //           "<tr>" +
+    //           "<td>" + Vehicle.Id + "</td>" +
+    //            "<td>" + Vehicle.PlateNumber + "</td>" +
+    //                "<td>" + Vehicle.Model + "</td>"
+    //                 + "<td >" + Vehicle.UserId + "</td>" +
+    //                     "<td>" +
+    //  "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
+    //  "</button>" + " " + "<button type='button' " + "onclick='VehicleGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
+    //  "</button>" +
+    //  " " + "<button type='button'" + "onclick='ConsVehicleGet(this)' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Vehicle.Id + "'>" + "<i class='fas fa-eye'></i>" +
+    //  "</button>" +
+    //"</td>" +
+    //               "</tr>";
+    //        return ret;
+    //    }
+    //    function handleException(request, message,
+    //                         error) {
+    //        var msg = "";
+    //        msg += "Code: " + request.status + "\n";
+    //        msg += "Text: " + request.statusText + "\n";
+    //        if (request.responseJSON != null) {
+    //            msg += "Message" +
+    //                request.responseJSON.Message + "\n";
+    //        }
+    //        alert(msg);
+    //    }
+    //    $(document).ready(function () {
+    //        VehicleList();
+    //    });
+    //    $(document).getElementByClass('.btn btn-default').addEventListener('click', function () {
+    //        document.querySelector('#getmodal').style.display = 'flex';
+    //    });
+    //}
 //GETBYID
     function VehicleGet(ctl) {
         var id = $(ctl).data("id");
