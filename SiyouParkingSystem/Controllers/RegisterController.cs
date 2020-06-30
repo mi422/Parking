@@ -168,7 +168,14 @@ namespace SiyouParkingSystem.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
-        }      
+        } 
+        [Route("api/register/CheckUsername/{usern}")]
+        [HttpGet]
+        public IHttpActionResult CheckUsername(string usern)
+        {
+            var result = !SYS.Users.ToList().Exists(x => x.Username.Equals(usern, StringComparison.CurrentCultureIgnoreCase));
+            return Ok(result);
+        }
     }
  }
 

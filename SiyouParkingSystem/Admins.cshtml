@@ -217,12 +217,11 @@
                                                     </thead>
                                                     <tbody></tbody>
                                                 </table>
-                                                <div class="card-footer clearfix">
+                                                <div class="card-footer clearfix  pager">
                                                     <ul class="pagination pagination-sm m-0 float-right">
                                                         <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                                                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                                                         <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
                                                         <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
                                                     </ul>
                                                 </div>
@@ -352,17 +351,17 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="ModalForm" onclick="return validation()">
+                                <form id="ModalForm" onclick="return validation();">
                                     <fieldset>
                                         <input type="hidden" name="Role" class="form-control" id="PostRole" value="Admin">
                                         <input type="hidden" name="ID" class="form-control" id="deleteId" placeholder="ID">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <input type="text" name="name" class="form-control" id="PostName" placeholder="Firstname" autocomplete="off" onchange="return removeWarning()">
+                                                <input type="text" name="name" class="form-control" id="PostName" placeholder="Firstname" autocomplete="off" onchange="return removeWarning()" required>
                                                 <span id="FirstNam" class="text-danger"></span>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <input type="text" name="surname" class="form-control" id="PostLast" placeholder="Lastname" autocomplete="off" onchange="return removeWarning()">
+                                                <input type="text" name="surname" class="form-control" id="PostLast" placeholder="Lastname" autocomplete="off" onchange="return removeWarning()" required>
                                                 <span id="LastNam" class="text-danger"></span>
                                             </div>
                                         </div>
@@ -372,7 +371,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
                                                     </div>
-                                                    <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()">                                                   
+                                                    <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()" required>                                                   
                                                 </div>
                                               
                                                 <span id="eemail_error" class="text-danger"></span> 
@@ -382,7 +381,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
                                                     </div>
-                                                    <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="return removeWarning()">
+                                                    <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="return removeWarning();" onkeyup="return CheckUsername(this)" required>
                                                 </div>
                                                 <span id="usernameee_error" class="text-danger"></span>
                                                 </div>
@@ -393,7 +392,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-secondary"><i class="fas fa-key"></i></span>
                                                     </div>
-                                                    <input type="password" name="Password" class="form-control" id="Postpassword" placeholder="Password" autocomplete="off" onchange="return removeWarning()">
+                                                    <input type="password" name="Password" class="form-control" id="Postpassword" placeholder="Password" autocomplete="off" onchange="return removeWarning()" required>
                                                 </div>
                                                 <span id="passworddd" class="text-danger"></span>
                                                 </div>     
@@ -402,7 +401,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
                                                     </div>
-                                                    <input type="tel" name="Address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning()">
+                                                    <input type="tel" name="Address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning()" required>
                                                 </div>
                                                 <span id="adrr" class="text-danger"></span>
                                             </div>  
@@ -415,7 +414,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
                                                     </div>
-                                                    <input type="text" name="adress" class="form-control" id="postphone" placeholder="Phone" autocomplete="off" onchange="return removeWarning()">
+                                                    <input type="text" name="adress" class="form-control" id="postphone" placeholder="Phone" autocomplete="off" onchange="return removeWarning()" required>
                                                 </div>
                                                 <span id="numberr" class="text-danger"></span>
                                             </div>
@@ -430,7 +429,7 @@
                                             </div>
                                         </div>                                                                                                                     
                             <div class="modal-footer">
-                                <button type="button" onclick="PostUser();" id="bt" class="btn bg-olive"><i class="fas fa-save"></i></button>
+                                <button type="button" onclick="PostUser();" id="bt" class="btn bg-olive" ><i class="fas fa-save"></i></button>
                                 <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                             </div>
                             </fieldset>
@@ -604,10 +603,6 @@
                     else if ((user.length <= 3) || (user.length > 10)) {
                         document.getElementById('usernameee_error').innerHTML = "please insert a valid username";
                         valid = false;
-                    }
-                    else if (!isNaN(user)) {
-                        document.getElementById('usernameee_error').innerHTML = "only characters are allowed";
-                        valid = false;
                     };
                     if (pass == "") {
                         document.getElementById('passworddd').innerHTML = "please fill the field";
@@ -657,7 +652,7 @@
                         document.getElementById('adrr').innerHTML = "please fill the field";
                         valid = false;
                     }
-                    else if ((address.length <= 3) || (address.length > 10)) {
+                    else if ((address.length <= 2) || (address.length > 10)) {
                         document.getElementById('adrr').innerHTML = "please insert a valid address";
                         valid = false;
                     }
@@ -671,6 +666,25 @@
                     }
                     return valid;
                 };
+            </script>
+            <script type="text/javascript">
+            function CheckUsername(ctl) {
+            var usernam = $('#Postusername').val();
+            $.ajax({
+            url: "/api/register/CheckUsername/" + usernam,
+            type: "GET",
+            datatype: "json",
+            success: function (result)
+            {
+            if (result) {
+            document.getElementById("usernameee_error").innerHTML = "";
+            }
+            else {
+            document.getElementById('usernameee_error').innerHTML = "Username already exists...!";
+            }
+            }
+            });
+            }
             </script>
             <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
@@ -751,7 +765,7 @@
   "</button>" + " " + "<button type='button' " + "onclick='adminGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Admin.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
   "</button> " +
   "<button type='button' " + "onclick='ConsultGet(this)'" + "data-toggle='modal'" + "data-target='#consultModal'" + "class='btn btn-outline-warning' " + "data-id='" + Admin.Id + "'>" + "<i class='far fa-eye'></i>" +
-  "</button>" + " " + 
+  "</button>" + " " +
 "</td>" +
                "</tr>";
         return ret;
@@ -817,7 +831,7 @@
         $("#editEmail").val(User.Email);
         $("#editusername").val(User.Username);
         $("#editpassword").val(User.Password);
-       
+
     }
     //ConsultGETBYID
     function ConsultGet(ctl) {
@@ -872,14 +886,14 @@
             type: 'DELETE',
             success: function () {
                 window.location.href = "http://localhost:3156/Admins.cshtml";
-                
+
             },
             error: function (request, message, error) {
             handleException(request, message, error);
         }
         });
     }
-    
+
     function Delete(ctl) {
         var id = $("#editId").val();
         $.ajax({
