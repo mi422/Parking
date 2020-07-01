@@ -91,7 +91,6 @@ namespace SiyouParkingSystem.Controllers
             List<UserClass> list = new List<UserClass>();
 
             var us = SYS.Users.FirstOrDefault(e => e.Id == id);
-            int lastUserId = SYS.Users.Max(User => User.Id);
             if (us == null)
             {
                 return NotFound();

@@ -82,7 +82,6 @@
                     <a href="http://localhost:3156/Home.cshtml" class="nav-link"><i class="fas fa-home"></i></a>
                 </li>
             </ul>
-
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -98,8 +97,8 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">   
-                </li> 
+                <li class="nav-item dropdown">
+                </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -110,14 +109,14 @@
                 <img src="~/Content/dist/img/right-home-image.png" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
                 <span class="brand-text font-weight-light">SiyouParking</span>
-                </a>
+            </a>
 
-                <!-- Sidebar -->
+            <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="~/Content/dist/img/ava.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                        <img src="~/Content/dist/img/avat.svg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                              style="opacity: .8">
                         <span id="spanUsername" class="text-light"></span>
                     </div>
@@ -126,10 +125,10 @@
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
-                <nav class="mt-2" id="admin">                    
-                        <!-- Add icons to the links using the .nav-icon class
-                with font-awesome or any other icon font library -->
-                        <p class="nav-header">Menubar</p>
+                <nav class="mt-2" id="admin">
+                    <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+                    <p class="nav-header">Menubar</p>
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="Mymenu">
                         <li class="nav-item has-treeview" id="users">
                             <a href="#" class="nav-link">
@@ -203,88 +202,170 @@
                     </ul>
                 </nav>
             </div>
-                </aside>
+        </aside>
         <div class="content-wrapper" style="min-height: 290px;">
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6">
+                            <!-- Profile Image -->
+                            <div class="card card-orange card-outline">
+                                <div class="card-body box-profile" onclick="ProfileGet(this)">
+                                    <div class="text-center">
+                                        <img class="profile-user-img brand-image img-circle" src="~/Content/dist/img/avat.svg" alt="User profile picture">
+                                    </div>
+                                    <p class="profile-username text-center" id="sername"></p>
+                                    <p class="profile-username text-center text-secondary" id="rolee"></p>
+                                    <ul class="list-group list-group-unbordered mb-3">
+                                        <li class="list-group-item">
+                                            <i class="fas fa-envelope"></i>
+                                            <input type="text" name="email" class="form-control-plaintext" placeholder="Email" autocomplete="off" id="emaill" readonly />
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="fas fa-id-card"></i>
+                                            <input type="text" name="name" class="form-control-plaintext" placeholder="Username" autocomplete="off" id="usee" readonly />
+                                        </li>
+                                    </ul>
+                                   <div class="col-sm-6">
+                                     <button type="button" class="btn bg-info" data-toggle='modal' data-target='#ProfileModal'><i class="fas fa-edit">Edit</i></button>
+                                   </div>
+
+                                    <!-- /.card-body -->
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="modal fade" id="ProfileModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="ModalForm">
+                        <div class="form-group">
+                            <input type="hidden" name="ID" class="form-control" id="editId" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="fname">Firstname</label>
+                                <input type="text" name="fname" class="form-control" id="editFirst" required autocomplete="off">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lname">Lastname</label>
+                                    <input type="text" name="phone" class="form-control" id="editphone" required autocomplete="off">
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <div class="input-group">
+                                <input type="tel" name="address" class="form-control" id="editaddress" required autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-teal"><i class="fas fa-save"></i></button>
+                            <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-                <footer class="main-footer">
-                    <strong class="text-dark"></strong>
-                </footer>
+    </div>
+    <footer class="main-footer">
+        <strong class="text-navy" ></strong>
+    </footer>
 
 
-            <aside class="control-sidebar control-sidebar-dark"></aside>
+    <aside class="control-sidebar control-sidebar-dark"></aside>
 
-            <script src="~/Content/plugins/jquery/jquery.min.js"></script>
-            <!-- jQuery UI 1.11.4 -->
-            <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
-            <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-            <script>
-                $.widget.bridge('uibutton', $.ui.button)
-            </script>
-            <!-- Bootstrap 4 -->
-            <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-            <!-- ChartJS -->
-            <script src="~/Content/plugins/chart.js/Chart.min.js"></script>
-            <!-- Sparkline -->
-            <script src="~/Content/plugins/sparklines/sparkline.js"></script>
-            <!-- JQVMap -->
-            <script src="~/Content/plugins/jqvmap/jquery.vmap.min.js"></script>
-            <script src="~/Content/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-            <!-- jQuery Knob Chart -->
-            <script src="~/Content/plugins/jquery-knob/jquery.knob.min.js"></script>
-            <!-- daterangepicker -->
-            <script src="~/Content/plugins/moment/moment.min.js"></script>
-            <script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
-            <!-- Tempusdominus Bootstrap 4 -->
-            <script src="~/Content/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-            <!-- Summernote -->
-            <script src="~/Content/plugins/summernote/summernote-bs4.min.js"></script>
-            <!-- overlayScrollbars -->
-            <script src="~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-            <!-- AdminLTE App -->
-            <script src="~/Content/dist/js/adminlte.js"></script>
-            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-            <script src="~/Content/dist/js/pages/dashboard.js"></script>
-            <!-- AdminLTE for demo purposes -->
-            <script src="~/Content/dist/js/demo.js"></script>
-                <script>
-            function myFunction() {
-              // Declare variables
-              var input, filter, ul, li, a, i;
-              input = document.getElementById("MySearch");
-              filter = input.value.toUpperCase();
-              ul = document.getElementById("Mymenu");
-              li = ul.getElementsByTagName("li");
+    <script src="~/Content/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/Content/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/Content/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/Content/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/Content/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/Content/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/Content/plugins/moment/moment.min.js"></script>
+    <script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/Content/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Content/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/Content/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Content/dist/js/demo.js"></script>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("MySearch");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("Mymenu");
+            li = ul.getElementsByTagName("li");
 
-              // Loop through all list items, and hide those who don't match the search query
-              for (i = 0; i < li.length; i++) {
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
                 a = li[i].getElementsByTagName("a")[0];
                 if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                  li[i].style.display = "";
+                    li[i].style.display = "";
                 } else {
-                  li[i].style.display = "none";
+                    li[i].style.display = "none";
                 }
-              }
             }
-                </script>
-          <script type="text/javascript">
-            var rol = window.localStorage.getItem("Role");
-            $(document).ready(function () {
-                if (rol == "Admin") {
-                    $('#renter').hide();
-                };
-            });
-            $(document).ready(function () {
-                if (rol == "Owner") {
-                    $('#renter').show();
-                }
-            });
+        }
+    </script>
+    <script type="text/javascript">
+        var rol = window.localStorage.getItem("Role");
+        $(document).ready(function () {
+            if (rol == "Admin") {
+                $('#renter').hide();
+            };
+        });
+        $(document).ready(function () {
+            if (rol == "Owner") {
+                $('#renter').show();
+            }
+        });
     </script>
 </body>
 </html>
 <script type="text/javascript">
     $(document).ready(function () {
-      
+        $('#rolee').text(localStorage.getItem("Role"));
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sername').text(localStorage.getItem("userName"));
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
         $('#spanUsername').text(localStorage.getItem("userName"));
     });
 
@@ -330,7 +411,7 @@
 
         window.localStorage.clear();
     }
- </script>
+</script>
 <script type="text/javascript">
             var roll = window.localStorage.getItem("Role");
             $(document).ready(function () {
@@ -344,3 +425,55 @@
                 }
             });
 </script>
+<script type="text/javascript">
+    function ProfileGet(ctl) {
+        var id = window.localStorage.getItem("ID");
+        $.ajax({
+            url: "api/Register/Get/" + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (User) {
+                $("#emaill").val(User.Email);
+                $("#usee").val(User.Username);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            },
+        });
+    }
+</script>
+<style>
+    .ProfileModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+       .close {
+        color: red;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>

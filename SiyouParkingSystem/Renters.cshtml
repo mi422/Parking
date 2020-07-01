@@ -173,7 +173,7 @@
         <div class="content-wrapper" style="min-height: 290px;">
             <div class="content-header">
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box" id="buton">
+                    <div class="info-box mb-3 bg-info"  id="buton">
                         <button type="button" class="info-box-icon btn bg-info elevation-1" data-toggle='modal' data-target="#PostModal" ><i class="fas fa-user-plus"></i></button>
                         <div class="info-box-content">
                             <span class="info-box-text">New Renter</span>
@@ -339,14 +339,11 @@
                                             </div>
                                             <span id="PhoneErr" class="text-danger"></span>
                                         </div>
-                                        </div>
-
-                                   
+                                        </div>                                 
                                         <div class="form-row"  id="barcode">
                                             <div class="form-group col-md-6">
                                                 <input type="text" name="Identity" class="form-control" id="postqrcode" placeholder="Identity card number" onchange="GenerateQR()" autocomplete="off">
-                                                <span id="IdentityErr" class="text-danger"></span>
-                                            
+                                                <span id="IdentityErr" class="text-danger"></span>                                            
                                             </div>                                   
                                             <div class="form-group col-md-6">                                               
                                                 <div class="input-group">
@@ -551,8 +548,6 @@
 
         $('#spanUsername').text(localStorage.getItem("userName"));
     });
-
-
         </script>
         <script>
             var qrdata = document.getElementById('postqrcode');
