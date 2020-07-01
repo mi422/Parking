@@ -176,6 +176,13 @@ namespace SiyouParkingSystem.Controllers
             var result = !SYS.Users.ToList().Exists(x => x.Username.Equals(usern, StringComparison.CurrentCultureIgnoreCase));
             return Ok(result);
         }
+        [Route("api/register/mail/{email}")]
+        [HttpGet]
+        public IHttpActionResult mail(string email)
+        {
+            var result = !SYS.Users.ToList().Exists(x => x.Username.Equals(email, StringComparison.CurrentCultureIgnoreCase));
+            return Ok(result);
+        }
     }
  }
 

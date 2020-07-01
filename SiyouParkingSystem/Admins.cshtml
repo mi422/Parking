@@ -362,9 +362,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
                                                     </div>
-                                                    <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()" required>
+                                                    <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()" onkeyup="CheckEmail(this);" required>
                                                 </div>
-
                                                 <span id="eemail_error" class="text-danger"></span>
                                                 </div>
                                             <div class="form-group col-md-6">
@@ -392,7 +391,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
                                                     </div>
-                                                    <input type="tel" name="Address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning()" required>
+                                                    <input type="tel" name="Address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning();" required>
                                                 </div>
                                                 <span id="adrr" class="text-danger"></span>
                                             </div>
@@ -529,6 +528,25 @@
                     <script src="~/Content/dist/js/adminlte.js"></script>
                     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
                     <script src="~/Content/dist/js/pages/dashboard.js"></script>
+                    <script type="text/javascript">
+                    function CheckEmail(ctl) {
+                        var email = $('#PostEmail').val();
+                    $.ajax({
+                    url: "/api/register/mail/" + email,
+                    type: "GET",
+                    datatype: "json",
+                    success: function (result)
+                    {
+                    if (result) {
+                        document.getElementById("eemail_error").innerHTML = "";
+                    }
+                    else {
+                        document.getElementById('eemail_error').innerHTML = "Email already exists...!";
+                    }
+                    }
+                    });
+                    }
+                    </script>
                     <script>
                     function myFunction1() {
                       // Declare variables

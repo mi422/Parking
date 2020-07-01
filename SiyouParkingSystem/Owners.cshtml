@@ -396,7 +396,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
                                                 </div>
-                                                <input type="email" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()">
+                                                <input type="email" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning();" onkeyup="CheckEmail(this)">
                                             </div>
                                             <span id="EmailErr" class="text-danger"></span>
                                         </div>
@@ -547,6 +547,25 @@
         <script src="~/Content/dist/js/pages/dashboard.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="~/Content/dist/js/demo.js"></script>
+        <script type="text/javascript">
+                    function CheckEmail(ctl) {
+                        var email = $('#PostEmail').val();
+                    $.ajax({
+                    url: "/api/register/mail/" + email,
+                    type: "GET",
+                    datatype: "json",
+                    success: function (result)
+                    {
+                    if (result) {
+                        document.getElementById("EmailErr").innerHTML = "";
+                    }
+                    else {
+                        document.getElementById('EmailErr').innerHTML = "Email already exists...!";
+                    }
+                    }
+                    });
+                    }
+        </script>
         <script type="text/javascript">
             function CheckUsername1(ctl) {
                 var usernam2 = $('#Postusername').val();
