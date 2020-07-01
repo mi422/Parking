@@ -86,7 +86,7 @@
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control form-control-navbar" type="text" placeholder="Search" id="MySearch" onkeyup="myFunction()" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -126,12 +126,11 @@
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
-                <nav class="mt-2" id="admin">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <nav class="mt-2" id="admin">                    
                         <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-
-                        <li class="nav-header">Menubar</li>
+                        <p class="nav-header">Menubar</p>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="Mymenu">
                         <li class="nav-item has-treeview" id="users">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-secret"></i>
@@ -176,7 +175,7 @@
                                     Renters
                                 </p>
                             </a>
-                        </li>                    
+                        </li>
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/Vehicles.cshtml" id="veh" class="nav-link">
                                 <i class="nav-icon fas fa-car"></i>
@@ -184,7 +183,7 @@
                                     Vehicle
                                 </p>
                             </a>
-                        </li>                       
+                        </li>
                         <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/Contracts.cshtml" class="nav-link">
                                 <i class="nav-icon fas fa-file-contract"></i>
@@ -248,7 +247,27 @@
             <script src="~/Content/dist/js/pages/dashboard.js"></script>
             <!-- AdminLTE for demo purposes -->
             <script src="~/Content/dist/js/demo.js"></script>
-    <script type="text/javascript">
+                <script>
+            function myFunction() {
+              // Declare variables
+              var input, filter, ul, li, a, i;
+              input = document.getElementById("MySearch");
+              filter = input.value.toUpperCase();
+              ul = document.getElementById("Mymenu");
+              li = ul.getElementsByTagName("li");
+
+              // Loop through all list items, and hide those who don't match the search query
+              for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                } else {
+                  li[i].style.display = "none";
+                }
+              }
+            }
+                </script>
+          <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
             $(document).ready(function () {
                 if (rol == "Admin") {

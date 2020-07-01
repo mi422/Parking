@@ -47,7 +47,7 @@
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control form-control-navbar" type="text" placeholder="Search" id="MySearch" onkeyup="myFunction1()" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -89,11 +89,11 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
 
-                        <li class="nav-header">Menubar</li>
+                        <p class="nav-header">Menubar</p>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="myMenu">
                         <li class="nav-item has-treeview" id="users">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-secret"></i>
@@ -309,6 +309,26 @@
         <script src="~/Content/dist/js/pages/dashboard.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="~/Content/dist/js/demo.js"></script>
+    <script>
+            function myFunction1() {
+              // Declare variables
+              var input, filter, ul, li, a, i;
+              input = document.getElementById("MySearch");
+              filter = input.value.toUpperCase();
+              ul = document.getElementById("myMenu");
+              li = ul.getElementsByTagName("li");
+
+              // Loop through all list items, and hide those who don't match the search query
+              for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                } else {
+                  li[i].style.display = "none";
+                }
+              }
+            }
+    </script>
     <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
             $(document).ready(function () {

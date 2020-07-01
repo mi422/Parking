@@ -26,9 +26,8 @@
     <!-- summernote -->
     <link rel="stylesheet" href="~/Content/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
 </head>
-
 <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
 
@@ -46,7 +45,7 @@
                 <!-- SEARCH FORM -->
                 <form class="form-inline ml-3">
                     <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-navbar" type="text" placeholder="Search" id="MySearch" onkeyup="myFunction1()" autocomplete="off">
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit">
                                 <i class="fas fa-search"></i>
@@ -78,18 +77,18 @@
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
                             <img src="~/Content/dist/img/ava.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                                 style="opacity: .8">                              
+                                 style="opacity: .8">
                                 <span id="spanUsername" class="text-light"></span>
                           </div>
                     </div>
 
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                             <!-- Add icons to the links using the .nav-icon class
                             with font-awesome or any other icon font library -->
 
-                            <li class="nav-header">Menubar</li>
+                            <p class="nav-header">Menubar</p>
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="Mymenu">
                             <li class="nav-item has-treeview" id="users">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-user-secret"></i>
@@ -133,10 +132,10 @@
                                 <a href="http://localhost:3156/Renters.cshtml" id="renter" class="nav-link">
                                     <i class="nav-icon fas fa-user-tie"></i>
                                     <p>
-                                    Renters
+                                        Renters
                                     </p>
                                 </a>
-                            </li>                       
+                            </li>
                             <li class="nav-item has-treeview">
                                 <a href="http://localhost:3156/Vehicles.cshtml" id="veh" class="nav-link">
                                     <i class="nav-icon fas fa-car"></i>
@@ -152,7 +151,7 @@
                                         Contracts
                                     </p>
                                 </a>
-                            </li>                          
+                            </li>
                             <li class="nav-item has-treeview">
                                 <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
                                     <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
@@ -195,7 +194,7 @@
                                             <div class="card-tools">
                                                 <div class="input-group input-group-sm" style="width: 150px;">
                                                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search" id="searchadmin" onkeyup="myFunction()">
-                                                    <div class="input-group-append">                                                      
+                                                    <div class="input-group-append">
                                                     </div>
                                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                         <i class="fas fa-minus"></i>
@@ -204,7 +203,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body p-0">
-                                            <div class="table-responsive">
+                                            @*<div class="table-responsive">*@
                                                 <table id="AdminTable" class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -216,17 +215,8 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody></tbody>
-                                                </table>
-                                                <div class="card-footer clearfix  pager">
-                                                    <ul class="pagination pagination-sm m-0 float-right">
-                                                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                                              </table>
+                                           </div>
                                     </div>
                                 </div>
                             </div>
@@ -371,10 +361,10 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
                                                     </div>
-                                                    <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()" required>                                                   
+                                                    <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()" required>
                                                 </div>
-                                              
-                                                <span id="eemail_error" class="text-danger"></span> 
+
+                                                <span id="eemail_error" class="text-danger"></span>
                                                 </div>
                                             <div class="form-group col-md-6">
                                                 <div class="input-group">
@@ -395,7 +385,7 @@
                                                     <input type="password" name="Password" class="form-control" id="Postpassword" placeholder="Password" autocomplete="off" onchange="return removeWarning()" required>
                                                 </div>
                                                 <span id="passworddd" class="text-danger"></span>
-                                                </div>     
+                                                </div>
                                             <div class="form-group col-md-6">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -404,10 +394,10 @@
                                                     <input type="tel" name="Address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning()" required>
                                                 </div>
                                                 <span id="adrr" class="text-danger"></span>
-                                            </div>  
-                                            </div>                                           
+                                            </div>
+                                            </div>
                                     </fieldset>
-                                    <fieldset>                                       
+                                    <fieldset>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <div class="input-group">
@@ -427,7 +417,7 @@
                                                 </div>
                                                 <span id="birr" class="text-danger"></span>
                                             </div>
-                                        </div>                                                                                                                     
+                                        </div>
                             <div class="modal-footer">
                                 <button type="button" onclick="PostUser();" id="bt" class="btn bg-olive" ><i class="fas fa-save"></i></button>
                                 <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
@@ -478,16 +468,16 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="Email">Phone</label>                                          
+                                            <label for="Email">Phone</label>
                                                 <input type="text" name="mobilePhone" class="form-control-plaintext" id="Consphone" readonly>
                                             </div>
                                         <div class="form-group col-md-6">
                                             <label for="address">Address</label>
                                                 <input type="text" name="address" class="form-control-plaintext" id="Consaddress" readonly>
                                             </div>
-                                         </div>                              
+                                         </div>
                                         <div class="form-group">
-                                            <label for="birth">Birth Date</label> 
+                                            <label for="birth">Birth Date</label>
                                                 <input type="text" name="Birth" class="form-control-plaintext" id="ConBirth" readonly>
                                                 </div>
                                         <div class="modal-footer">
@@ -505,9 +495,6 @@
                 </aside>
                 <!-- /.control-sidebar -->
             </div>
-
-
-
                     <!-- ./wrapper -->
                     <!-- jQuery -->
                     <script src="~/Content/plugins/jquery/jquery.min.js"></script>
@@ -536,13 +523,57 @@
                     <!-- Summernote -->
                     <script src="~/Content/plugins/summernote/summernote-bs4.min.js"></script>
                     <!-- overlayScrollbars -->
-                    <script src="~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+                    <script src="~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>                  
                     <!-- AdminLTE App -->
                     <script src="~/Content/dist/js/adminlte.js"></script>
                     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
                     <script src="~/Content/dist/js/pages/dashboard.js"></script>
+                    <script>
+                    function myFunction1() {
+                      // Declare variables
+                      var input, filter, ul, li, a, i;
+                      input = document.getElementById("MySearch");
+                      filter = input.value.toUpperCase();
+                      ul = document.getElementById("Mymenu");
+                      li = ul.getElementsByTagName("li");
+
+                      // Loop through all list items, and hide those who don't match the search query
+                      for (i = 0; i < li.length; i++) {
+                        a = li[i].getElementsByTagName("a")[0];
+                        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                          li[i].style.display = "";
+                        } else {
+                          li[i].style.display = "none";
+                        }
+                      }
+                    }
+                    </script>
                     <!-- AdminLTE for demo purposes -->
-                    <script src="~/Content/dist/js/demo.js"></script>
+                    @*<script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#AdminTable').after('<div id="nav"></div>');
+                            var rowsShown = 5;
+                            var rowsTotal = $('#AdminTable tbody tr').length;
+                            var numPages = rowsTotal / rowsShown;
+                            for (i = 0; i < numPages; i++) {
+                                var pageNum = i + 1;
+                                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                            }
+                            $('#AdminTable tbody tr').hide();
+                            $('#AdminTable tbody tr').slice(0, rowsShown).show();
+                            $('#nav a:first').addClass('active');
+                            $('#nav a').bind('click', function () {
+
+                                $('#nav a').removeClass('active');
+                                $(this).addClass('active');
+                                var currPage = $(this).attr('rel');
+                                var startItem = currPage * rowsShown;
+                                var endItem = startItem + rowsShown;
+                                $('#AdminTable tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
+                                css('display', 'table-row').animate({ opacity: 1 }, 300);
+                            });
+                        });
+                    </script>*@
             <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
             $(document).ready(function () {
@@ -1091,5 +1122,4 @@ label:after { content: ": " }
       float: left;
       color: #ff0065;
     }
-
  </style>
