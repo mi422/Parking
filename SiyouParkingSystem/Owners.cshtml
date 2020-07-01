@@ -279,7 +279,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                            <form id="ModalForm">
                                 <div class="form-group">
                                     <input type="hidden" name="ID" class="form-control" id="editId" required>
                                     <input type="hidden" name="UserID" class="form-control" id="UserId" required>
@@ -288,37 +288,38 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="email">Email</label>
-                                            <input type="email" name="Email" class="form-control" id="editEmail" placeholder="Email" required>
+                                            <input type="email" name="Email" class="form-control" id="editEmail" placeholder="Email" autocomplete="off" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="username">Username</label>
-                                            <input type="text" name="Username" class="form-control" id="editusername" placeholder="Username" required>
-                                        </div>
+                                            <input type="text" name="Username" class="form-control" id="editusername" placeholder="Username" onchange="return removeWarning2()" onkeyup="return CheckUsername2(this)" autocomplete="off" required>
+                                            <span id="UserError" class="text-danger"></span>
+                                        </div>                                       
                                     </div>
                                 </fieldset>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="first">Firstname</label>
-                                        <input type="text" name="name" class="form-control" id="editName" placeholder="Firstname" required>
+                                        <input type="text" name="name" class="form-control" id="editName" placeholder="Firstname" autocomplete="off" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="last">Lastname</label>
-                                        <input type="text" name="surname" class="form-control" id="editSurname" placeholder="Lastname" required>
+                                        <input type="text" name="surname" class="form-control" id="editSurname" placeholder="Lastname" autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="phon">Phone</label>
-                                        <input type="tel" name="phone" class="form-control" id="editphone" placeholder="Phone" required>
+                                        <input type="tel" name="phone" class="form-control" id="editphone" placeholder="Phone" autocomplete="off" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="address">Address</label>
-                                        <input type="text" name="address" class="form-control" id="editaddress" placeholder="Address" required>
+                                        <input type="text" name="address" class="form-control" id="editaddress" placeholder="Address" autocomplete="off" required>
                                     </div>
                                     </div>
                                 <div class="form-group">
                                     <label for="pass">Password</label>
-                                    <input type="password" name="Password" class="form-control" id="editpassword" placeholder="Password" required>
+                                    <input type="password" name="Password" class="form-control" id="editpassword" placeholder="Password" autocomplete="off" required>
                                 </div>
                                     <div class="modal-footer">
                                         <button type="button" onclick="OwnerUpdate(this)" class="btn btn-info" data-id="Owner.Id" data-dismiss="modal"><i class="fas fa-save"></i></button>
@@ -404,7 +405,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
                                                 </div>
-                                                <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="return removeWarning()">
+                                                <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="return removeWarning()" onkeyup="return CheckUsername1(this)">
                                             </div>
                                             <span id="UserErr" class="text-danger"></span>
                                         </div>
@@ -546,6 +547,47 @@
         <script src="~/Content/dist/js/pages/dashboard.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="~/Content/dist/js/demo.js"></script>
+        <script type="text/javascript">
+            function CheckUsername1(ctl) {
+                var usernam2 = $('#Postusername').val();
+            $.ajax({
+            url: "/api/register/CheckUsername/" + usernam2,
+            type: "GET",
+            datatype: "json",
+            success: function (result)
+            {
+            if (result) {
+                document.getElementById("UserErr").innerHTML = "";
+            }
+            else {
+                document.getElementById('UserErr').innerHTML = "Username already exists...!";
+            }
+            }
+            });
+            }
+        </script>
+        <script type="text/javascript">
+            function removeWarning2() {
+                document.getElementById("UserError").innerHTML = "";
+            }
+            function CheckUsername2(ctl) {
+                var usernam2 = $('#editusername').val();
+            $.ajax({
+            url: "/api/register/CheckUsername/" + usernam2,
+            type: "GET",
+            datatype: "json",
+            success: function (result)
+            {
+            if (result) {
+                document.getElementById("UserError").innerHTML = "";
+            }
+            else {
+                document.getElementById('UserError').innerHTML = "Username already exists...!";
+            }
+            }
+            });
+            }
+        </script>
         <script src="~/qrcode.min.js"></script>
         <script>
             function myFunction1() {
