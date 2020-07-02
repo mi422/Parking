@@ -117,37 +117,6 @@ namespace SiyouParkingSystem.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-        //PUTByUserId
-        [Route("api/owners/UpdateByUser/{userid}")]
-        [HttpPut]
-        public HttpResponseMessage UpdateByUser(int userid, OwnerClass Owner)
-        {
-            try
-            {
-                List<OwnerClass> list = new List<OwnerClass>();
-                var entity = SYS.Owners.FirstOrDefault(e => e.UserId == userid);
-                if (entity == null)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound,
-                        "owner with Id " + userid.ToString() + " not found to update");
-                }
-                else
-                {
-                    entity.FirstName = Owner.FirstName;
-                    entity.LastName = Owner.LastName;
-                    entity.Phone = Owner.Phone;
-                    entity.Adress = Owner.Adress;
-                    entity.Updated_at = today;
-                    SYS.SaveChanges();
-                    return Request.CreateResponse(HttpStatusCode.OK, entity);
-                }
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
-            }
-        }
-
         [Route("api/owners/Delete/{id}")]
         [HttpDelete]
         public HttpResponseMessage Delete(int id)

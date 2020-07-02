@@ -280,7 +280,8 @@
                         </div>
                         <div class="modal-body">
                             <form id="ModalForm">
-                                <div class="form-group">
+                                <div class="form-group">  
+                                    <input type="hidden" name="Role" class="form-control" id="EditRole" value="Owner">                                
                                     <input type="hidden" name="ID" class="form-control" id="editId" required>
                                     <input type="hidden" name="UserID" class="form-control" id="UserId" required>
                                 </div>
@@ -297,7 +298,7 @@
                                         </div>                                       
                                     </div>
                                 </fieldset>
-                                <div class="form-row">
+                                <div class="form-row">                                  
                                     <div class="form-group col-md-6">
                                         <label for="first">Firstname</label>
                                         <input type="text" name="name" class="form-control" id="editName" placeholder="Firstname" autocomplete="off" required>
@@ -1071,18 +1072,36 @@
                 data: JSON.stringify(Owner),
                 dataType: "JSON",
                 success: function (response) {
-                    updateUser();
                     window.location.href = "http://localhost:3156/Owners.cshtml";
                 },
 
             });
         }
+        //function updateUser(User) {
+        //    var id = $("#UserId").val();
+        //    var User = {};
+        //    User.Email = $('#editEmail').val(),
+        //    User.Username = $('#editusername').val(),
+        //    User.Password = $('#editpassword').val(),
+        //    User.Role = $('#EditRole').val(),
+        //    $.ajax({
+        //        url: 'api/register/' + id,
+        //        method: 'PUT',
+        //        contentType:
+        //           "application/json;charset=utf-8",
+        //        data: JSON.stringify(User),
+        //        dataType: "JSON",
+        //        success: function () {
+        //        }
+        //    });
+        //}
         function updateUser(User) {
             var id = $("#UserId").val();
             var User = {};
             User.Email = $('#editEmail').val(),
             User.Username = $('#editusername').val(),
             User.Password = $('#editpassword').val(),
+            User.Role = $('#EditRole').val(),
             $.ajax({
                 url: 'api/register/' + id,
                 method: 'PUT',
@@ -1093,7 +1112,7 @@
                 success: function () {
                 }
             });
-        }   
+        }
     //search
         function myFunction() {
             // Declare variables
