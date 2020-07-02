@@ -76,6 +76,19 @@ namespace SiyouParkingSystem.Controllers
             }
             return Ok(adm);
         }
+        //GETBYUSERID
+        [Route("api/admins/USERIDD/{Userid}")]
+        [HttpGet]
+        public IHttpActionResult USERIDD(int Userid)
+        {
+            List<AdminClass> list = new List<AdminClass>();
+            var admi = SYS.Admins.FirstOrDefault(e => e.UserId == Userid);
+            if (admi == null)
+            {
+                return NotFound();
+            }
+            return Ok(admi);
+        }
         [Route("api/admins/{id}")]
         [HttpPut]
         public HttpResponseMessage Put(int id, AdminClass Admin)
@@ -104,6 +117,39 @@ namespace SiyouParkingSystem.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
+        }
+        //PutByUserId
+        [Route("api/admins/PutAdmin/{Userid}")]
+        [HttpPut]
+        public HttpResponseMessage PutAdmin(int Userid, AdminClass Adm)
+        {
+              SYS.Configuration.ProxyCreationEnabled = false;
+            try
+            {
+                List<AdminClass> list = new List<AdminClass>();
+                var entit = SYS.Admins.FirstOrDefault(e => e.UserId == Userid);
+                if (entit == null)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                        "Admin with Id " + Userid.ToString() + " not found to update");
+                }
+                else
+                {
+                    entit.FirstName = Adm.FirstName;
+                    entit.LastName = Adm.LastName;
+                    entit.Phone = Adm.Phone;
+                    entit.Address = Adm.Address;
+                    entit.Updated_at = today;
+                        SYS.SaveChanges();
+                   
+                    return Request.CreateResponse(HttpStatusCode.OK, entit);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+
         }
         [Route("api/admins/DeleteAdmin/{id}")]
         [HttpDelete]

@@ -140,6 +140,36 @@ namespace SiyouParkingSystem.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
+        //Put
+        [Route("api/register/PutUs/{idd}")]
+        [HttpPut]
+        public HttpResponseMessage PutUs(int idd, UserClass use)
+        {
+            try
+            {
+                List<UserClass> list = new List<UserClass>();
+                var entity = SYS.Users.FirstOrDefault(e => e.Id == idd);
+                if (entity == null)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                        "User with Id " + idd.ToString() + " not found to update");
+                }
+                else
+                {
+
+                    entity.Email = use.Email;
+                    entity.Username = use.Username;
+                    entity.Password = use.Password;
+                    entity.Updated_at = today;
+                    SYS.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
         [Route("api/register/DeleteUser/{id}")]
         [HttpDelete]
         public HttpResponseMessage DeleteUser(int id)

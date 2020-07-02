@@ -227,7 +227,7 @@
                                         </li>
                                     </ul>
                                    <div class="col-sm-6">
-                                     <button type="button" class="btn bg-info" data-toggle='modal' data-target='#ProfileModal'><i class="fas fa-edit">Edit</i></button>
+                                     <button type="button" class="btn bg-info" data-toggle='modal' data-target='#ProfileModal' onclick="UserGet(this);"><i class="fas fa-edit">Edit</i></button>
                                    </div>
 
                                     <!-- /.card-body -->
@@ -241,10 +241,10 @@
         </div>
     </div>
     <div class="modal fade" id="ProfileModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel"></h5>
+                    <h5 class="modal-title" id="ModalLabel">Edit Profile</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -253,27 +253,44 @@
                     <form id="ModalForm">
                         <div class="form-group">
                             <input type="hidden" name="ID" class="form-control" id="editId" required>
+                            <input type="hidden" name="usID" class="form-control" id="editusId" required>
+                        </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" class="form-control" id="editemail" required autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" class="form-control" id="editusern" required autocomplete="off">
+                            </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" id="editpass" required autocomplete="off">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="fname">Firstname</label>
+                                <label for="fname">First Name</label>
                                 <input type="text" name="fname" class="form-control" id="editFirst" required autocomplete="off">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="lname">Lastname</label>
-                                    <input type="text" name="phone" class="form-control" id="editphone" required autocomplete="off">
+                                <label for="lname">Last Name</label>
+                                <input type="text" name="lname" class="form-control" id="editlast" required autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="address">Address</label>                               
+                                    <input type="text" name="address" class="form-control" id="editaddress" required autocomplete="off">
                                 </div>
+                            <div class="form-group col-md-6">
+                                <label for="phone">Phone</label>
+                                <input type="text" name="phone" class="form-control" id="editphone" required autocomplete="off">
                             </div>
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <div class="input-group">
-                                <input type="tel" name="address" class="form-control" id="editaddress" required autocomplete="off">
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn bg-teal"><i class="fas fa-save"></i></button>
-                            <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="updateUser(this); AdminUpdatee(this)" class="btn bg-info" data-id="Admin.Id+User.Id"><i class="fas fa-save"></i></button>
+                                <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                            </div>
                     </form>
                 </div>
             </div>
@@ -442,6 +459,139 @@
         });
     }
 </script>
+
+<script type="text/javascript">
+    var role2 = window.localStorage.getItem("Role");
+    if (role2 == "Admin") {
+        function UserGet(ctl) {
+            var userid = window.localStorage.getItem("ID");
+            $.ajax({
+                url: "api/admins/USERIDD/" + userid,
+                type: 'GET',
+                dataType: 'json',
+                success: function (Admin) {
+                    UsToFields(Admin);
+                    AdminProfil(ctl);
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+        function UsToFields(Admin) {           
+            $("#editId").val(Admin.Id);
+            $("#editFirst").val(Admin.FirstName);
+            $("#editlast").val(Admin.LastName);
+            $("#editphone").val(Admin.Phone);
+            $("#editaddress").val(Admin.Address);
+        }
+    }
+    function AdminProfil(ctl) {
+        var id3 = window.localStorage.getItem("ID");
+        $.ajax({
+            url: "api/Register/Get/" + id3,
+            type: 'GET',
+            dataType: 'json',
+            success: function (User) {
+                $("#editemail").val(User.Email);
+                $("#editusern").val(User.Username);
+                $("#editpass").val(User.Password);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            },
+        });
+    }
+</script>
+<script type="text/javascript">
+    var role3 = window.localStorage.getItem("Role");
+    if (role3 == "Owner") {
+        function UserGet(ctl) {
+            var userid1 = window.localStorage.getItem("ID");
+            $.ajax({
+                url: "api/owners/GETUSERIDD/" + userid1,
+                type: 'GET',
+                dataType: 'json',
+                success: function (Owner) {
+                    OwnToFields(Owner);
+                    OwnerProfil(ctl);
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+        function OwnToFields(Owner) {
+            $("#editId").val(Owner.Id);
+            $("#editFirst").val(Owner.FirstName);
+            $("#editlast").val(Owner.LastName);
+            $("#editphone").val(Owner.Phone);
+            $("#editaddress").val(Owner.Adress);
+        }
+    }
+    function OwnerProfil(ctl) {
+        var id3 = window.localStorage.getItem("ID");
+        $.ajax({
+            url: "api/Register/Get/" + id3,
+            type: 'GET',
+            dataType: 'json',
+            success: function (User) {
+                $("#editusId").val(User.Id);
+                $("#editemail").val(User.Email);
+                $("#editpass").val(User.Password);
+                $("#editusern").val(User.Username);
+            },
+            error: function (request, message, error) {
+                handleException(request, message, error);
+            },
+        });
+    }
+</script>
+<script type="text/javascript">
+    //UPDATE
+    var ro = window.localStorage.getItem("Role");
+    if (ro == "Admin") {
+        function AdminUpdatee(Admin) {
+            var userid = window.localStorage.getItem("ID");
+            var Admin = {};
+            Admin.FirstName = $("#editFirst").val();
+            Admin.LastName = $("#editlast").val();
+            Admin.Phone = $("#editphone").val();
+            Admin.Address = $("#editaddress").val();
+            $.ajax({
+                url: "api/admins/PutAdmin/" + userid,
+                type: 'PUT',
+                contentType:
+                  "application/json;charset=utf-8",
+                data: JSON.stringify(Admin),
+                dataType: "JSON",
+                success: function () {
+                },
+
+            });
+        }
+
+    function updateUser(User) {
+        var id = window.localStorage.getItem("ID");
+        var User = {};
+        User.Email = $('#editemail').val();
+        User.Username = $('#editusern').val();
+        User.Password = $('#editpass').val();
+        $.ajax({
+            url: 'api/register/PutUs/' + id,
+            method: 'PUT',
+            contentType:
+                  "application/json;charset=utf-8",
+            data: JSON.stringify(User),
+            dataType: "JSON",
+            success: function (response) {
+                window.location.href = "http://localhost:3156/Home.cshtml";
+            },
+        });
+    }
+    }
+
+</script>
 <style>
     .ProfileModal {
         display: none; /* Hidden by default */
@@ -476,4 +626,20 @@
             text-decoration: none;
             cursor: pointer;
         }
+                 h5 {
+         color: #0987a4;
+        font-weight: bold;
+        display: block;
+        width: 150px;
+        float: left;
+
+ }
+ label {
+        color : #000;
+        font-weight: bold;
+        display: block;
+        width: 150px;
+        float: left;
+    }
+ label:after { content: ": " }
 </style>
