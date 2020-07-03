@@ -288,7 +288,8 @@
                             </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" onclick="PutO(this); updateUser(this); AdminUpdatee(this)" class="btn bg-info" data-id="Admin.Id + Owner.Id + User.Id"><i class="fas fa-save"></i></button>
+                                <button type="button" onclick="AdminUpdatee(this); updateUserA(this)" class="btn bg-teal" data-id="Admin.Id + User.Id" id="Adm"><i class="fas fa-save"></i></button>
+                                <button type="button" id="own" onclick="PutO(this); updateUser(this)" class="btn bg-info" data-id="Owner.Id + User.Id"><i class="fas fa-save"></i></button>
                                 <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                             </div>
                     </form>
@@ -366,6 +367,32 @@
         $(document).ready(function () {
             if (rol == "Owner") {
                 $('#renter').show();
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        var roly = window.localStorage.getItem("Role");
+        $(document).ready(function () {
+            if (roly == "Admin") {
+                $('#Adm').show();
+            };
+        });
+        $(document).ready(function () {
+            if (roly == "Owner") {
+                $('#Adm').hide();
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        var roly1 = window.localStorage.getItem("Role");
+        $(document).ready(function () {
+            if (roly1 == "Admin") {
+                $('#own').hide();
+            };
+        });
+        $(document).ready(function () {
+            if (roly1 == "Owner") {
+                $('#own').show();
             }
         });
     </script>
@@ -573,7 +600,7 @@
             });
         }
 
-    function updateUser(User) {
+    function updateUserA(User) {
         var id = window.localStorage.getItem("ID");
         var User = {};
         User.Email = $('#editemail').val();
@@ -592,10 +619,11 @@
         });
     }
     }
-
+</script>
+<script type="text/javascript">
     //UPDATEOwner
-    var ro = window.localStorage.getItem("Role");
-    if (ro == "Owner") {
+    var rol = window.localStorage.getItem("Role");
+    if (rol == "Owner") {
         function PutO(Owner) {
             var use1 = $("#editusId").val();
             var Owner = {};
