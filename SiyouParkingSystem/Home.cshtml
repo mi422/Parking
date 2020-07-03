@@ -288,7 +288,7 @@
                             </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" onclick="updateUser(this); AdminUpdatee(this)" class="btn bg-info" data-id="Admin.Id+User.Id"><i class="fas fa-save"></i></button>
+                                <button type="button" onclick="PutO(this); updateUser(this); AdminUpdatee(this)" class="btn bg-info" data-id="Admin.Id + Owner.Id + User.Id"><i class="fas fa-save"></i></button>
                                 <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                             </div>
                     </form>
@@ -461,6 +461,7 @@
 </script>
 
 <script type="text/javascript">
+    //GetByIdAdmin
     var role2 = window.localStorage.getItem("Role");
     if (role2 == "Admin") {
         function UserGet(ctl) {
@@ -504,6 +505,7 @@
     }
 </script>
 <script type="text/javascript">
+    //GetByIdOwner
     var role3 = window.localStorage.getItem("Role");
     if (role3 == "Owner") {
         function UserGet(ctl) {
@@ -523,6 +525,7 @@
         }
         function OwnToFields(Owner) {
             $("#editId").val(Owner.Id);
+            $("#editusId").val(Owner.UserId);
             $("#editFirst").val(Owner.FirstName);
             $("#editlast").val(Owner.LastName);
             $("#editphone").val(Owner.Phone);
@@ -536,7 +539,6 @@
             type: 'GET',
             dataType: 'json',
             success: function (User) {
-                $("#editusId").val(User.Id);
                 $("#editemail").val(User.Email);
                 $("#editpass").val(User.Password);
                 $("#editusern").val(User.Username);
@@ -548,7 +550,7 @@
     }
 </script>
 <script type="text/javascript">
-    //UPDATE
+    //UPDATEAdmin
     var ro = window.localStorage.getItem("Role");
     if (ro == "Admin") {
         function AdminUpdatee(Admin) {
@@ -591,6 +593,48 @@
     }
     }
 
+    //UPDATEOwner
+    var ro = window.localStorage.getItem("Role");
+    if (ro == "Owner") {
+        function PutO(Owner) {
+            var use1 = $("#editusId").val();
+            var Owner = {};
+            Owner.FirstName = $("#editFirst").val();
+            Owner.LastName = $("#editlast").val();
+            Owner.Phone = $("#editphone").val();
+            Owner.Adress = $("#editaddress").val();
+            $.ajax({
+                url: "api/owners/UpdateOwner/" + use1,
+                type: 'PUT',
+                contentType:
+                  "application/json;charset=utf-8",
+                data: JSON.stringify(Owner),
+                dataType: "JSON",
+                success: function (response) {
+                    window.location.href = "http://localhost:3156/Home.cshtml";
+                },
+
+            });
+        };
+        function updateUser(User) {
+            var id = window.localStorage.getItem("ID");
+            var User = {};
+            User.Email = $('#editemail').val();
+            User.Username = $('#editusern').val();
+            User.Password = $('#editpass').val();
+            $.ajax({
+                url: 'api/register/PutUs/' + id,
+                method: 'PUT',
+                contentType:
+                      "application/json;charset=utf-8",
+                data: JSON.stringify(User),
+                dataType: "JSON",
+                success: function (response) {
+                    window.location.href = "http://localhost:3156/Home.cshtml";
+                },
+            });
+        }
+    }
 </script>
 <style>
     .ProfileModal {
