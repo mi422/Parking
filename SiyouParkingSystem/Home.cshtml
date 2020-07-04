@@ -192,6 +192,14 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Home.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-id-badge"></i>
+                                <p>
+                                    Profile
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
                             <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
                                 <i class="nav-icon  fas fa-sign-out-alt text-danger"></i>
                                 <p>
@@ -209,7 +217,7 @@
                     <div class="row">
                         <div class="col-6">
                             <!-- Profile Image -->
-                            <div class="card card-orange card-outline">
+                            <div class="card card-maroon card-outline">
                                 <div class="card-body box-profile" onclick="ProfileGet(this)">
                                     <div class="text-center">
                                         <img class="profile-user-img brand-image img-circle" src="~/Content/dist/img/avat.svg" alt="User profile picture">
@@ -226,9 +234,9 @@
                                             <input type="text" name="name" class="form-control-plaintext" placeholder="Username" autocomplete="off" id="usee" readonly />
                                         </li>
                                     </ul>
-                                   <div class="col-sm-6">
-                                     <button type="button" class="btn bg-info" data-toggle='modal' data-target='#ProfileModal' onclick="UserGet(this);"><i class="fas fa-edit">Edit</i></button>
-                                   </div>
+                                    <div class="col-sm-6">
+                                        <button type="button" class="btn bg-info" data-toggle='modal' data-target='#ProfileModal' onclick="UserGet(this);"><i class="fas fa-edit">Edit</i></button>
+                                    </div>
 
                                     <!-- /.card-body -->
                                 </div>
@@ -238,7 +246,7 @@
                     </div>
                 </div>
             </section>
-        </div>
+            </div>
     </div>
     <div class="modal fade" id="ProfileModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -255,14 +263,14 @@
                             <input type="hidden" name="ID" class="form-control" id="editId" required>
                             <input type="hidden" name="usID" class="form-control" id="editusId" required>
                         </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="text" name="email" class="form-control" id="editemail" required autocomplete="off">
-                            </div>
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" name="username" class="form-control" id="editusern" required autocomplete="off">
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="form-control" id="editemail" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="form-control" id="editusern" required autocomplete="off">
+                        </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" name="password" class="form-control" id="editpass" required autocomplete="off">
@@ -279,26 +287,29 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="address">Address</label>                               
-                                    <input type="text" name="address" class="form-control" id="editaddress" required autocomplete="off">
-                                </div>
+                                <label for="address">Address</label>
+                                <input type="text" name="address" class="form-control" id="editaddress" required autocomplete="off">
+                            </div>
                             <div class="form-group col-md-6">
                                 <label for="phone">Phone</label>
                                 <input type="text" name="phone" class="form-control" id="editphone" required autocomplete="off">
                             </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" onclick="AdminUpdatee(this); updateUserA(this)" class="btn bg-teal" data-id="Admin.Id + User.Id" id="Adm"><i class="fas fa-save"></i></button>
-                                <button type="button" id="own" onclick="PutO(this); updateUser(this)" class="btn bg-info" data-id="Owner.Id + User.Id"><i class="fas fa-save"></i></button>
-                                <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="AdminUpdatee(this); updateUserA(this)" class="btn bg-teal" data-id="Admin.Id + User.Id" id="Adm"><i class="fas fa-save"></i></button>
+                            <button type="button" id="own" onclick="PutO(this); updateUser(this)" class="btn bg-info" data-id="Owner.Id + User.Id"><i class="fas fa-save"></i></button>
+                            <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="main-footer">
-        <strong class="text-navy" ></strong>
+    <footer class="page-footer font-small blue fixed-bottom">
+            <div class="footer-copyright text-center py-3">
+                © 2020 Copyright:
+                <a href="https://www.google.com/search?client=firefox-b-d&q=siyou+technology" style="color:#0099CC;">SiyouTech</a>
+            </div>
     </footer>
 
 
@@ -397,6 +408,7 @@
         });
     </script>
 </body>
+
 </html>
 <script type="text/javascript">
     $(document).ready(function () {
