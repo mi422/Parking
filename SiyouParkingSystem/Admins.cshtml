@@ -211,7 +211,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body p-0">
-                                            @*<div class="table-responsive">*@
+                                            <div class="table-responsive">
                                                 <table id="AdminTable" class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -224,12 +224,18 @@
                                                     </thead>
                                                     <tbody></tbody>
                                               </table>
-                                           </div>
+                                            <div id="try" class="card-footer clearfix">
+                                                <ul id="pag" class="pagination pagination-sm m-0 float-right">
+                                                   
+                                                </ul>
+                                            </div>
+                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </section>
                 </div>
                 <!--DELETE-->
                 <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -576,23 +582,22 @@
                       }
                     }
                     </script>
-                    <!-- AdminLTE for demo purposes -->
-                    @*<script type="text/javascript">
+                    <script type="text/javascript">
                         $(document).ready(function () {
-                            $('#AdminTable').after('<div id="nav"></div>');
-                            var rowsShown = 5;
+                            $('#try').after('<ul class="pagination pagination-sm m-0 float-right" id="pag"></ul>');
+                            var rowsShown = 3;
                             var rowsTotal = $('#AdminTable tbody tr').length;
                             var numPages = rowsTotal / rowsShown;
                             for (i = 0; i < numPages; i++) {
                                 var pageNum = i + 1;
-                                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                                $('#pag').append('<li class="page-item" ><a class="page-link" href="#" rel="' + i + '">' + pageNum + '</a></li> ');
                             }
                             $('#AdminTable tbody tr').hide();
                             $('#AdminTable tbody tr').slice(0, rowsShown).show();
-                            $('#nav a:first').addClass('active');
-                            $('#nav a').bind('click', function () {
+                            $('#pag a:first').addClass('active');
+                            $('#pag a').bind('click', function () {     
 
-                                $('#nav a').removeClass('active');
+                                $('#pag a').removeClass('active');
                                 $(this).addClass('active');
                                 var currPage = $(this).attr('rel');
                                 var startItem = currPage * rowsShown;
@@ -601,7 +606,93 @@
                                 css('display', 'table-row').animate({ opacity: 1 }, 300);
                             });
                         });
-                    </script>*@
+                        $(document).ready(function () {
+    $('#table').after('<div id="nav" style="width:800px; margin:0 auto;"></div>');
+    var rowsShown = 5;
+    var numLimit = 3;
+    var rowsTotal = $('#table tbody tr').length;
+    var numPages = rowsTotal / rowsShown;
+    for (var i = 0; i < numPages; i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a class="btn nums" href="#" rel="' + i + '">' + pageNum + '</a> ');
+    }
+    $('#table tbody tr').hide();
+    $('#table tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active').css("color", "blue");
+    if (numPages > numLimit) {
+        $('#nav').append('<a class="btn" href="#" rel="next">></a> ');
+        $('#nav').prepend('<a class="btn" href="#" rel="prev" style="display:none"><</a> ');
+        $('#nav').append('<a class="btn" href="#" rel="last">>|</a> ');
+        $('#nav').prepend('<a class="btn" href="#" rel="first" style="display:none">|<</a> ');
+    }
+    $('#nav').on('click', 'a', function () {
+        var $nums = $('.nums');
+        var currPage = $(this).attr('rel');
+        if (currPage == "next") {
+            currPage = $('#nav a.active').attr('rel');
+            currPage++;
+        } else if (currPage == "prev") {
+            currPage = $('#nav a.active').attr('rel');
+            currPage--;
+        }
+        if (currPage == "first") {
+            $nums.first().trigger('click');
+            return false;
+        } else if (currPage == "last") {
+            $nums.last().trigger('click');
+            return false;
+        }
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#nav a').removeClass('active').css("color", "black");;
+        $('#nav a[rel="' + currPage + '"]').addClass('active').css("color", "blue");
+        $('#table tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
+        css('display', 'table-row').animate({
+            opacity: 1
+        }, 300);
+        if ($nums.last().hasClass('active')) 
+        	$('#nav a[rel="next"]').hide();
+        else 
+        	$('#nav a[rel="next"]').show();
+        if (!$nums.first().hasClass('active')) 
+        	$('#nav a[rel="prev"]').show();
+        else 
+        	$('#nav a[rel="prev"]').hide();
+        $nums.hide();
+        if(numLimit < 1)
+        	numLimit = 2;
+        var $temp = {};
+        if ($nums.filter('.active').is($nums.first())){
+			$('#nav a[rel="first"]').hide();
+			$('#nav a[rel="last"]').show();
+        	$temp = $nums.first().show();
+        	for (var j = 0; j < numLimit; j++) {
+        		$temp = $temp.next().show();
+        	}
+        }
+        else if ($nums.filter('.active').is($nums.last())){
+			$('#nav a[rel="last"]').hide();
+			$('#nav a[rel="first"]').show();
+        	$temp = $nums.last().show();
+        	for (var j = 0; j < numLimit; j++) {
+        		$temp = $temp.prev().show();
+        	}
+        }
+        else {
+			$('#nav a[rel="first"]').show();
+			$('#nav a[rel="last"]').show();
+        	$temp = $('#nav a[rel="' + currPage + '"]').show();
+        	for (var j = 0; j < numLimit; j++) {
+        		$temp = $temp.prev().show();
+        	}
+        	$temp = $('#nav a[rel="' + currPage + '"]').show();
+        	for (var j = 0; j < numLimit; j++) {
+        		$temp = $temp.next().show();
+        	}
+        }
+    }).find('a.active').trigger('click');
+});
+                    </script>
             <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
             $(document).ready(function () {

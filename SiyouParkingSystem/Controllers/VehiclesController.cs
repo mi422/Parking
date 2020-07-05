@@ -149,6 +149,13 @@ namespace SiyouParkingSystem.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
-        }      
+        }
+        [Route("api/vehicles/PlateNumb/{plate}")]
+        [HttpGet]
+        public IHttpActionResult PlateNumb(int plate)
+        {
+            var result = !SYS.Vehicles.ToList().Exists(x => x.PlateNumber.Equals(plate));
+            return Ok(result);
+        }
     }
 }

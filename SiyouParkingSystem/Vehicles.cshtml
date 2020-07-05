@@ -317,21 +317,15 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" id="ModalForm" onclick="return validation()">
+                            <form action="" id="ModalForm" onclick="return validation();">
                                 <div class="form-group">
-                                    <input type="text" name="plate" class="form-control" id="Postplate" placeholder="Plate Number" autocomplete="off" onchange="return removeWarning()">
+                                    <input type="text" name="plate" class="form-control" id="Postplate" placeholder="Plate Number" autocomplete="off" onchange="return removeWarning();" onkeyup="return CheckPlate(this)" >
                                     <span class="text-danger" id="plateErr"></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="model" class="form-control" id="Postmodel" placeholder="Car Model" autocomplete="off" onchange="return removeWarning()">
                                     <span class="text-danger" id="modelErr"></span>
-                                </div>
-                                        @*<div class="form-group">
-                                            <select class="browser-default custom-select" id="UserList" onchange="return removeWarning()">
-                                                <option selected>Choose an Owner</option>                                                
-                                            </select>
-                                            <span class="text-danger" id="ownerchose"></span>
-                                        </div>*@
+                                </div>                                    
                                 <div class="modal-footer">
                                     <button type="button" onclick="PostVehicle();" class="btn bg-olive"><i class="fas fa-save"></i></button>
                                     <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
@@ -422,6 +416,25 @@
     <script src="~/Content/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Content/dist/js/demo.js"></script>
+    <script type="text/javascript">
+                    function CheckPlate(ctl) {
+                        var plate = $('#Postplate').val();
+                    $.ajax({
+                        url: "api/vehicles/PlateNumb/" + plate,
+                    type: "GET",
+                    datatype: "json",
+                    success: function (result)
+                    {
+                    if (result) {
+                        document.getElementById("plateErr").innerHTML = "";
+                    }
+                    else {
+                        document.getElementById('plateErr').innerHTML = "Plate number already exists...!";
+                    }
+                    }
+                    });
+                    }
+    </script>
     <script>
             function myFunction1() {
               // Declare variables
@@ -442,19 +455,6 @@
               }
             }
     </script>
-    @*<script type="text/javascript">
-            var role3 = window.localStorage.getItem("Role");
-            $(document).ready(function () {
-                if (role3 == "Admin") {
-                    $('#buton').hide();
-                };
-            });
-            $(document).ready(function () {
-                if (role3 == "Owner") {
-                    $('#buton').show();
-                }
-            });
-    </script>*@
     <script type="text/javascript">
             var role2 = window.localStorage.getItem("Role");
             $(document).ready(function () {
@@ -518,19 +518,17 @@
             function removeWarning() {
                 document.getElementById("plateErr").innerHTML = "";
                 document.getElementById("modelErr").innerHTML = "";
-                document.getElementById("ownerchose").innerHTML = "";
             }
             function validation() {
                 var valid = true;
                 var plate = document.getElementById('Postplate').value;
                 var model = document.getElementById('Postmodel').value;
-                var owner = document.getElementById('UserList').value;
 
                 if (plate == "") {
                     document.getElementById('plateErr').innerHTML = "please fill the field";
                     valid = false;
                 }
-                else if ((plate.length <= 10)) {
+                else if ((plate.length <= 6)) {
                     document.getElementById('plateErr').innerHTML = "plate number is not valid";
                     valid = false;
                 };
@@ -542,10 +540,6 @@
                     document.getElementById('modelErr').innerHTML = "model is not valid";
                     valid = false;
                 };
-                if (owner == "") {
-                    document.getElementById('ownerchose').innerHTML = "please fill the field";
-                    valid = false;
-                }
             }
         </script>
     <script type="text/javascript">
