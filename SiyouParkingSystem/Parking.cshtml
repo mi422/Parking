@@ -226,7 +226,6 @@
                                                     <tr>
                                                         <th>N°</th>
                                                         <th>Position</th>
-                                                        <th>State</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -288,12 +287,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="editposition">Position</label>
-                                        <input type="text" name="position" class="form-control" id="editposition" required>
+                                        <input type="text" name="position" class="form-control" id="editposition" required autocomplete="off">
                                     </div>
-                                <div class="form-group">
-                                    <label for="editstate">State</label>
-                                    <input type="text" name="state" class="form-control" id="editstate" required>
-                                </div>
                                 <div class="modal-footer">
                                     <button type="submit" onclick="ParkingUpdate(this)" class="btn bg-olive" data-id="Parking.Id" data-dismiss="modal"><i class="fas fa-save"></i></button>
                                     <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
@@ -317,16 +312,11 @@
                             <form action="" id="ModalForm">
                                 <div class="form-group">
                                     <div class="">                                       
-                                            <input type="text" name="position" class="form-control" id="Postposition" placeholder="Position" required>
+                                            <input type="text" name="position" class="form-control" id="Postposition" placeholder="Position" required autocomplete="off">
                                         </div>  
                                     </div>                                  
-                                    <div class="form-group">
-                                        <div class="">
-                                            <input type="text" name="state" class="form-control" id="Poststate" placeholder="State" required>
-                                        </div>
-                                    </div>
                                 <div class="form-group">
-                                    <select class="browser-default custom-select" id="UserList">
+                                    <select class="browser-default custom-select" id="UserList" required>
                                         <option selected>Choose an Owner</option>
                                     </select>
                                 </div>
@@ -357,10 +347,6 @@
                                 <div class="form-group">
                                     <label for="editposition">Position</label>
                                     <input type="text" name="position" class="form-control-plaintext" id="Consposition" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="editstate">State</label>
-                                    <input type="text" name="state" class="form-control-plaintext" id="Consstate" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="owner">Owner</label>
@@ -419,7 +405,7 @@
         <!-- AdminLTE for demo purposes -->
         <script src="~/Content/dist/js/demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script type="text/javascript">
+        <script type="text/javascript">
         $(document).ready(function () {
             $('#try').after('<ul class="pagination pagination-sm m-0 float-right" id="pag"></ul>');
             var rowsShown = 4;
@@ -507,7 +493,7 @@
                 }
             }).find('a.active').trigger('click');
         });
-    </script>
+        </script>
         <script>
             function myFunction1() {
               // Declare variables
@@ -626,7 +612,6 @@
     function ParkingToFields(Parking) {
         $("#editId").val(Parking.Id);
         $("#editposition").val(Parking.Position);
-        $("#editstate").val(Parking.State);
     }
     //ConsultGETBYID
     function SHOWParkingGet(ctl) {
@@ -648,7 +633,6 @@
     function showParkingToFields(Parking) {
         $("#ConsId").val(Parking.Id);
         $("#Consposition").val(Parking.Position);
-        $("#Consstate").val(Parking.State);
         $("#ConsOwner").val(Parking.UserId);
     }
     function ConsUserGet(ctl) {
@@ -679,10 +663,6 @@
 
             },
             error: function (request, message, error) {
-                swal.fire({
-                    icon: 'warning',
-                    title: 'There is an authorized contract for this parking!...'
-                })
         },
         });
     }
@@ -691,7 +671,6 @@
             var id = $("#editId").val();
             var Parking = {};
             Parking.Position = $("#editposition").val();
-            Parking.State = $("#editstate").val();
             Parking.UserId = $("#editUser").val();
             $.ajax({
                 url: "api/parkings/" + id,
@@ -717,7 +696,6 @@
                 method: 'POST',
                 data: {
                     Position: $('#Postposition').val(),
-                    State: $('#Poststate').val(),
                     UserId: strUser,
                     
                 },
@@ -765,7 +743,6 @@
            "<tr>" +
            "<td>" + Parking.Id + "</td>" +
             "<td>" + Parking.Position + "</td>" +
-                "<td>" + Parking.State + "</td>" +
                      "<td>" +
   "<button type='button' " + "onclick='ParkingGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Parking.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
   "</button>" + " " + "<button type='button' " + "onclick='ParkingGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Parking.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
@@ -821,36 +798,10 @@
     }
 </script>
 <script type="text/javascript">
-                        $(document).ready(function () {
-                            $('#ParkingTable').after('<div id="nav"></div>');
-                            var rowsShown = 3;
-                            var rowsTotal = $('#ParkingTable tbody tr').length;
-                            var numPages = rowsTotal / rowsShown;
-                            for (i = 0; i < numPages; i++) {
-                                var pageNum = i + 1;
-                                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
-                            }
-                            $('#ParkingTable tbody tr').hide();
-                            $('#ParkingTable tbody tr').slice(0, rowsShown).show();
-                            $('#nav a:first').addClass('active');
-                            $('#nav a').bind('click', function () {
-
-                                $('#nav a').removeClass('active');
-                                $(this).addClass('active');
-                                var currPage = $(this).attr('rel');
-                                var startItem = currPage * rowsShown;
-                                var endItem = startItem + rowsShown;
-                                $('#ParkingTable tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
-                                css('display', 'table-row').animate({ opacity: 1 }, 300);
-                            });
-                        });
-</script>
-<script type="text/javascript">
     $(document).ready(function () {
 
         $('#spanUsername').text(localStorage.getItem("userName"));
     });
-
 </script>
 <style>
     .myModal {

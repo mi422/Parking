@@ -38,19 +38,19 @@
 
                 </div>
                 <div class="col login">
-                    <form onclick="return validation()">
+                    <form>
                         <div class="titles">
                             <h3>Ready to Login</h3>
                         </div>
                         <div class="form-group has-feedback ">                        
-                            <input type="text" placeholder="Username" class="form-input" id="username" autocomplete="off" onchange="return removeWarning()">
+                            <input type="text" placeholder="Username" class="form-input" id="username" autocomplete="off">
                             <div class="input-icon">
                                 <i class="fas fa-user"></i>
                             </div>
                         </div>
                         <span id="UsernameErr" class="text-danger"></span>
                         <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-input" id="password" onchange="return removeWarning()">
+                            <input type="password" placeholder="Password" class="form-input" id="password">
                             <div class="input-icon">
                                 <i class="fas fa-user-lock"></i>
                             </div>
@@ -79,7 +79,7 @@
             });
         </script>
         <!--/Owl Effect-->
-        <!--Validation-->
+        <!--<!--Validation-->
         <script type="text/javascript">
             function removeWarning() {
                 document.getElementById("UsernameErr").innerHTML = "";
@@ -87,18 +87,19 @@
             }
 
             function validation() {
-                var valid = true;
-                var name = document.getElementById('username').value;
-                var pass = document.getElementById('password').value;
+               var valid = true;
+         var name = document.getElementById('username').value;
+ 
+        var pass = document.getElementById('password').value;
 
-                if (name == "" ) {
-                    document.getElementById('UsernameErr').innerHTML = "please fill the field";
-                    valid = false;
-                }
-                if (pass == "" ) {
-                    document.getElementById('PasswordErr').innerHTML = "please fill the field";
-                    valid = false;
-                }
+              if (name == "" ) {
+               document.getElementById('UsernameErr').innerHTML = "please fill the field";
+        valid = false;
+         }
+       if (pass == "" ) {
+                document.getElementById('PasswordErr').innerHTML = "please fill the field";
+                 valid = false;
+           }
                
             }
         </script>

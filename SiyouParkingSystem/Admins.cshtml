@@ -29,487 +29,492 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-        <div class="wrapper">
+    <div class="wrapper">
 
-            <!-- Navbar -->
-            <nav class="main-header navbar navbar-expand navbar-dark">
-                <!-- Left navbar links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="http://localhost:3156/Home.cshtml" class="nav-link"><i class="fas fa-home"></i></a>
-                </ul>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-dark">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="http://localhost:3156/Home.cshtml" class="nav-link"><i class="fas fa-home"></i></a>
+            </ul>
 
-                <!-- SEARCH FORM -->
-                <form class="form-inline ml-3">
-                    <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="text" placeholder="Search" id="MySearch" onkeyup="myFunction1()" autocomplete="off">
-                        <div class="input-group-append">
-                            <button class="btn btn-navbar" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
+            <!-- SEARCH FORM -->
+            <form class="form-inline ml-3">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" type="text" placeholder="Search" id="MySearch" onkeyup="myFunction1()" autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                </form>
-
-                <!-- Right navbar links -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Messages Dropdown Menu -->
-                    <li class="nav-item dropdown">
-                    </li>
-                </ul>
-            </nav>
-            <!-- /.navbar -->
-            <!-- Main Sidebar Container -->
-            <aside class="main-sidebar sidebar-dark-navy elevation-4">
-                <!-- Brand Logo -->
-                <a href="http://localhost:3156/Home.cshtml" class="brand-link">
-                    <img src="~/Content/dist/img/right-home-image.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                         style="opacity: .8">
-                    <span class="brand-text font-weight-light">SiyouParking</span>
-                </a>
-
-                <!-- Sidebar -->
-                <div class="sidebar">
-                    <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                            <img src="~/Content/dist/img/avat.svg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                                 style="opacity: .8">
-                                <span id="spanUsername" class="text-light"></span>
-                          </div>
-                    </div>
-
-                    <!-- Sidebar Menu -->
-                    <nav class="mt-2">
-                            <!-- Add icons to the links using the .nav-icon class
-                            with font-awesome or any other icon font library -->
-
-                            <p class="nav-header">Menubar</p>
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="Mymenu">
-                            <li class="nav-item has-treeview" id="users">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-user-secret"></i>
-                                    <p>
-                                        Users
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
-                                            <i class="nav-icon fas fa-user-circle"></i>
-                                            <p>Admins</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="http://localhost:3156/Owners.cshtml" class="nav-link">
-                                            <i class="nav-icon fas fa-user-circle"></i>
-                                            <p>Owners</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item has-treeview">
-                                <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
-                                    <i class="nav-icon fas fa-parking"></i>
-                                    <p>
-                                        Parking
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
-                                    <i class="nav-icon fab fa-tripadvisor"></i>
-                                    <p>
-                                        Sessions
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="http://localhost:3156/Renters.cshtml" id="renter" class="nav-link">
-                                    <i class="nav-icon fas fa-user-tie"></i>
-                                    <p>
-                                        Renters
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item has-treeview">
-                                <a href="http://localhost:3156/Vehicles.cshtml" id="veh" class="nav-link">
-                                    <i class="nav-icon fas fa-car"></i>
-                                    <p>
-                                        Vehicle
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item has-treeview">
-                                <a href="http://localhost:3156/Contracts.cshtml" class="nav-link">
-                                    <i class="nav-icon fas fa-file-contract"></i>
-                                    <p>
-                                        Contracts
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item has-treeview">
-                                <a href="http://localhost:3156/Home.cshtml" class="nav-link">
-                                    <i class="nav-icon fas fa-id-badge"></i>
-                                    <p>
-                                        Profile
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item has-treeview">
-                                <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
-                                    <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
-                                    <p>
-                                        Logout
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <!-- /.sidebar-menu -->
                 </div>
-                <!-- /.sidebar -->
-            </aside>
-            <div class="content-wrapper" style="min-height: 290px;">
-                <div class="content-header">
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <button type="button" class="info-box-icon btn bg-info elevation-1" data-toggle='modal' data-target="#PostModal"><i class="fas fa-user-plus"></i></button>
-                            <div class="info-box-content">
-                                <span class="info-box-text">New Admin</span>
-                                <span class="info-box-number">
-                                </span>
-                            </div>
-                            <!-- /.info-box-content -->
+            </form>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-navy elevation-4">
+            <!-- Brand Logo -->
+            <a href="http://localhost:3156/Home.cshtml" class="brand-link">
+                <img src="~/Content/dist/img/right-home-image.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">SiyouParking</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/Content/dist/img/avat.svg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                             style="opacity: .8">
+                        <span id="spanUsername" class="text-light"></span>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+
+                    <p class="nav-header">Menubar</p>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="Mymenu">
+                        <li class="nav-item has-treeview" id="users">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user-secret"></i>
+                                <p>
+                                    Users
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Admins.cshtml" class="nav-link">
+                                        <i class="nav-icon fas fa-user-circle"></i>
+                                        <p>Admins</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="http://localhost:3156/Owners.cshtml" class="nav-link">
+                                        <i class="nav-icon fas fa-user-circle"></i>
+                                        <p>Owners</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Parking.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-parking"></i>
+                                <p>
+                                    Parking
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/ParkingSessions.cshtml" class="nav-link">
+                                <i class="nav-icon fab fa-tripadvisor"></i>
+                                <p>
+                                    Sessions
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://localhost:3156/Renters.cshtml" id="renter" class="nav-link">
+                                <i class="nav-icon fas fa-user-tie"></i>
+                                <p>
+                                    Renters
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Vehicles.cshtml" id="veh" class="nav-link">
+                                <i class="nav-icon fas fa-car"></i>
+                                <p>
+                                    Vehicle
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Contracts.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-file-contract"></i>
+                                <p>
+                                    Contracts
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/Home.cshtml" class="nav-link">
+                                <i class="nav-icon fas fa-id-badge"></i>
+                                <p>
+                                    Profile
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost:3156/siyouTech.html" onclick="remove()" class="nav-link">
+                                <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
+                                <p>
+                                    Logout
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <div class="content-wrapper" style="min-height: 290px;">
+            <div class="content-header">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <button type="button" class="info-box-icon btn bg-info elevation-1" data-toggle='modal' data-target="#PostModal"><i class="fas fa-user-plus"></i></button>
+                        <div class="info-box-content">
+                            <span class="info-box-text">New Admin</span>
+                            <span class="info-box-number">
+                            </span>
                         </div>
-                        <!-- /.info-box -->
+                        <!-- /.info-box-content -->
                     </div>
-                    <div class="row mb-12">
-                    </div>
-                    <section class="content">
-                        <div class="container-fluid">
-                            <div class="row">
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card card-gray" style="margin-top: 5px;">
-                                        <div class="card-header border-transparent">
-                                            <h3 class="card-title"></h3>
-                                            <div class="card-tools">
-                                                <div class="input-group input-group-sm" style="width: 150px;">
-                                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search" id="searchadmin" onkeyup="myFunction()">
-                                                    <div class="input-group-append">
-                                                    </div>
-                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                        <i class="fas fa-minus"></i>
-                                                    </button>
+                    <!-- /.info-box -->
+                </div>
+                <div class="row mb-12">
+                </div>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-gray" style="margin-top: 5px;">
+                                    <div class="card-header border-transparent">
+                                        <h3 class="card-title"></h3>
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search" id="searchadmin" onkeyup="myFunction()">
+                                                <div class="input-group-append">
                                                 </div>
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="card-body p-0">
-                                            <div class="table-responsive">
-                                                <table id="AdminTable" class="table table-bordered table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th id="searchId">N°</th>
-                                                            <th>Full Name</th>
-                                                            <th>Phone Number</th>
-                                                            <th>Address</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody></tbody>
-                                              </table>
+                                    </div>
+                                    <div id="nav" class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table id="AdminTable" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th id="searchId">N°</th>
+                                                        <th>Full Name</th>
+                                                        <th>Phone Number</th>
+                                                        <th>Address</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
                                             <div id="try" class="card-footer clearfix">
-                                                <ul id="pag" class="pagination pagination-sm m-0 float-right">
-                                                   
-                                                </ul>
+                                                <ul id="pag" class="pagination pagination-sm m-0 float-right"></ul>
                                             </div>
-                                         </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                </div>
-                <!--DELETE-->
-                <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content bg-maroon">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="ModalLabel"></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
-                                    <div class="form-group">
-                                        <input type="hidden" name="ID" class="form-control" id="editId">
-                                        <input type="hidden" name="UserID" class="form-control" id="UserId">
-                                        <p>Are you Sure!</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" onclick="Delete(this)" class="btn bg-warning" data-id="Admin.Id" data-dismiss="modal">Delete</button>
-                                        <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+            </div>
+        </div>
+        <!--DELETE-->
+        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content bg-maroon">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="ModalLabel">Update Admin</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                    <div class="modal-body">
+                        <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                            <div class="form-group">
+                                <input type="hidden" name="ID" class="form-control" id="editId">
+                                <input type="hidden" name="UserID" class="form-control" id="UserId">
+                                <p>Are you Sure!</p>
                             </div>
-                            <div class="modal-body">
-                                <form id="ModalForm">
-                                    <div class="form-group">
-                                        <input type="hidden" name="Role" class="form-control" id="EditRole" value="Admin">
-                                        <input type="hidden" name="ID" class="form-control" id="editId" required>
-                                        <input type="hidden" name="UserID" class="form-control" id="UserId" required>
-                                    </div>
-                                    <fieldset>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
-                                                    </div>
-                                                    <input type="email" name="Email" class="form-control" id="editEmail" placeholder="Email" autocomplete="off" required>
-                                                </div>
-                                                </div>
-                                            <div class="form-group col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
-                                                    </div>
-                                                    <input type="text" name="Username" class="form-control" id="editusername" placeholder="Username" onchange="return removeWarning1()" onkeyup="return CheckUsername1(this)" autocomplete="off" required>
-                                                </div>
-                                                <span id="usern_error" class="text-danger"></span>
-                                        </div>
-                                            </div>
-                                    </fieldset>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <input type="text" name="name" class="form-control" id="editName" placeholder="Firstname" autocomplete="off" required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <input type="text" name="surname" class="form-control" id="editSurname" placeholder="LastName" autocomplete="off" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
-                                                </div>
-                                                <input type="text" name="mobilePhone" class="form-control" id="editphone" placeholder="Phone" autocomplete="off" required>
-                                            </div>
-                                            </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
-                                                </div>
-                                                <input type="tel" name="mobilePhone" class="form-control" id="editaddress" placeholder="Address" autocomplete="off" required>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-secondary"><i class="fas fa-key"></i></span>
-                                                </div>
-                                                <input type="password" name="Password" class="form-control" id="editpassword" autocomplete="off" required>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" onclick="AdminUpdate(this); updateUser(this)" class="btn bg-olive" data-id="Admin.Id+User.Id" data-dismiss="modal"><i class="fas fa-save"></i></button>
-                                            <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                                        </div>
-                                  </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Post Modal -->
-                <div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="ModalLabel">New Admin</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="ModalForm" onclick="return validation();">
-                                    <fieldset>
-                                        <input type="hidden" name="Role" class="form-control" id="PostRole" value="Admin">
-                                        <input type="hidden" name="ID" class="form-control" id="deleteId" placeholder="ID">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <input type="text" name="name" class="form-control" id="PostName" placeholder="Firstname" autocomplete="off" onchange="return removeWarning()" required>
-                                                <span id="FirstNam" class="text-danger"></span>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <input type="text" name="surname" class="form-control" id="PostLast" placeholder="Lastname" autocomplete="off" onchange="return removeWarning()" required>
-                                                <span id="LastNam" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
-                                                    </div>
-                                                    <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()" onkeyup="CheckEmail(this);" required>
-                                                </div>
-                                                <span id="eemail_error" class="text-danger"></span>
-                                                </div>
-                                            <div class="form-group col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
-                                                    </div>
-                                                    <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="return removeWarning();" onkeyup="return CheckUsername(this)" required>
-                                                </div>
-                                                <span id="usernameee_error" class="text-danger"></span>
-                                                </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text bg-secondary"><i class="fas fa-key"></i></span>
-                                                    </div>
-                                                    <input type="password" name="Password" class="form-control" id="Postpassword" placeholder="Password" autocomplete="off" onchange="return removeWarning()" required>
-                                                </div>
-                                                <span id="passworddd" class="text-danger"></span>
-                                                </div>
-                                            <div class="form-group col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
-                                                    </div>
-                                                    <input type="tel" name="Address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning();" required>
-                                                </div>
-                                                <span id="adrr" class="text-danger"></span>
-                                            </div>
-                                            </div>
-                                    </fieldset>
-                                    <fieldset>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
-                                                    </div>
-                                                    <input type="text" name="adress" class="form-control" id="postphone" placeholder="Phone" autocomplete="off" onchange="return removeWarning()" required>
-                                                </div>
-                                                <span id="numberr" class="text-danger"></span>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                                    <input type="text" name="date" class="form-control datetimepicker-input" id="birth" placeholder="Birth Date" data-target="#reservationdate" autocomplete="off" onchange="return removeWarning()">
-                                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                                        <div class="input-group-text bg-secondary"><i class="fa fa-calendar"></i></div>
-                                                    </div>
-                                                </div>
-                                                <span id="birr" class="text-danger"></span>
-                                            </div>
-                                        </div>
                             <div class="modal-footer">
-                                <button type="button" onclick="PostUser();" id="bt" class="btn bg-olive" ><i class="fas fa-save"></i></button>
+                                <button type="button" onclick="Delete(this)" class="btn bg-warning" data-id="Admin.Id" data-dismiss="modal">Delete</button>
                                 <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                             </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Update Admin</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="ModalForm" onchange="validation12()">
+                            <div class="form-group">
+                                <input type="hidden" name="Role" class="form-control" id="EditRole" value="Admin">
+                                <input type="hidden" name="ID" class="form-control" id="editId" required>
+                                <input type="hidden" name="UserID" class="form-control" id="UserId" required>
+                            </div>
+                            <fieldset>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
+                                            </div>
+                                            <input type="email" name="Email" class="form-control" id="editEmail" placeholder="Email" autocomplete="off" required onchange="removeWarning2()">
+                                        </div>
+                                        <span id="EmailE" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
+                                            </div>
+                                            <input type="text" name="Username" class="form-control" id="editusername" placeholder="Username" onchange="return removeWarning1()" onkeyup="return CheckUsername1(this)" autocomplete="off" required>
+                                        </div>
+                                        <span id="usern_error" class="text-danger"></span>
+                                    </div>
+                                </div>
                             </fieldset>
-                            </form>
-                        </div>
-                        </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="name" class="form-control" id="editName" placeholder="Firstname" autocomplete="off" required onchange="removeWarning2()">
+                                    <span id="Firstn" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="surname" class="form-control" id="editSurname" placeholder="LastName" autocomplete="off" required onchange="removeWarning2()">
+                                    <span id="Lastn" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
+                                        </div>
+                                        <input type="text" name="mobilePhone" class="form-control" id="editphone" placeholder="Phone" autocomplete="off" required onchange="removeWarning2()">
+                                    </div>
+                                    <span id="PhoneER" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
+                                        </div>
+                                        <input type="text" name="mobilePhone" class="form-control" id="editaddress" placeholder="Address" autocomplete="off" required onchange="removeWarning2()">
+                                    </div>
+                                    <span id="AddressER" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-secondary"><i class="fas fa-key"></i></span>
+                                        </div>
+                                        <input type="password" name="Password" class="form-control" id="editpassword" autocomplete="off" required onchange="removeWarning2()">
+                                    </div>
+                                    <span id="PasswordEr" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="bty" onclick="AdminUpdate(this); updateUser(this)" class="btn bg-olive" data-id="Admin.Id+User.Id" data-dismiss="modal" disabled="disabled"><i class="fas fa-save"></i></button>
+                                <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!--Consult-->
-                <div class="modal fade" id="consultModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="ModalLabel">Consult Admin</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
-                                    <div class="form-group">
-                                        <input type="hidden" name="ID" class="form-control" id="consultId" required>
-                                        <input type="hidden" name="UserID" class="form-control" id="consultuserId" required>
+            </div>
+        </div>
+        <!-- Post Modal -->
+        <div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">New Admin</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="ModalForm" onchange="validation();">
+                            <fieldset>
+                                <input type="hidden" name="Role" class="form-control" id="PostRole" value="Admin">
+                                <input type="hidden" name="ID" class="form-control" id="deleteId" placeholder="ID">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input type="text" name="name" class="form-control" id="PostName" placeholder="Firstname" autocomplete="off" onchange="return removeWarning()" required>
+                                        <span id="FirstNam" class="text-danger"></span>
                                     </div>
-                                    <fieldset>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label class="active" for="Email">Email</label>
-                                                    <input type="email" name="Email" class="form-control-plaintext" id="ConsEmail" readonly>
-                                                </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="username">Username</label>
-                                                    <input type="text" name="Username" class="form-control-plaintext" id="ConsUsername" readonly>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="name">Firstname</label>
-                                            <input type="text" name="name" class="form-control-plaintext" id="ConsName" readonly>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="last">Lastname</label>
-                                            <input type="text" name="surname" class="form-control-plaintext" id="ConsSurname" readonly>
-                                        </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" name="surname" class="form-control" id="PostLast" placeholder="Lastname" autocomplete="off" onchange="return removeWarning()" required>
+                                        <span id="LastNam" class="text-danger"></span>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="Email">Phone</label>
-                                                <input type="text" name="mobilePhone" class="form-control-plaintext" id="Consphone" readonly>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
                                             </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="address">Address</label>
-                                                <input type="text" name="address" class="form-control-plaintext" id="Consaddress" readonly>
-                                            </div>
-                                         </div>
-                                        <div class="form-group">
-                                            <label for="birth">Birth Date</label>
-                                                <input type="text" name="Birth" class="form-control-plaintext" id="ConBirth" readonly>
-                                                </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-check-square"></i></button>
+                                            <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()" onkeyup="CheckEmail(this);" required>
                                         </div>
-                                  </form>
-                            </div>
-                        </div>
+                                        <span id="eemail_error" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
+                                            </div>
+                                            <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="return removeWarning();" onkeyup="return CheckUsername(this)" required>
+                                        </div>
+                                        <span id="usernameee_error" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-key"></i></span>
+                                            </div>
+                                            <input type="password" name="Password" class="form-control" id="Postpassword" placeholder="Password" autocomplete="off" onchange="return removeWarning()" required>
+                                        </div>
+                                        <span id="passworddd" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
+                                            </div>
+                                            <input type="tel" name="Address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning();" required>
+                                        </div>
+                                        <span id="adrr" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
+                                            </div>
+                                            <input type="text" name="adress" class="form-control" id="postphone" placeholder="Phone" autocomplete="off" onchange="return removeWarning()" required>
+                                        </div>
+                                        <span id="numberr" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                            <input type="text" name="date" class="form-control datetimepicker-input" id="birth" placeholder="Birth Date" data-target="#reservationdate" autocomplete="off" onchange="return removeWarning()">
+                                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                                <div class="input-group-text bg-secondary"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                        <span id="birr" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" onclick="PostUser();" id="bt" class="btn bg-olive" disabled="disabled"><i class="fas fa-save"></i></button>
+                                    <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
-                <!--/Consult-->
-                <!-- Control Sidebar -->
-                <aside class="control-sidebar control-sidebar-dark">
-                    <!-- Control sidebar content goes here -->
-                </aside>
-                <!-- /.control-sidebar -->
-                 </div>
+            </div>
+        </div>
+        <!--Consult-->
+        <div class="modal fade" id="consultModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Consult Admin</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                            <div class="form-group">
+                                <input type="hidden" name="ID" class="form-control" id="consultId" required>
+                                <input type="hidden" name="UserID" class="form-control" id="consultuserId" required>
+                            </div>
+                            <fieldset>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="active" for="Email">Email</label>
+                                        <input type="email" name="Email" class="form-control-plaintext" id="ConsEmail" readonly>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="Username" class="form-control-plaintext" id="ConsUsername" readonly>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="name">Firstname</label>
+                                    <input type="text" name="name" class="form-control-plaintext" id="ConsName" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="last">Lastname</label>
+                                    <input type="text" name="surname" class="form-control-plaintext" id="ConsSurname" readonly>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Email">Phone</label>
+                                    <input type="text" name="mobilePhone" class="form-control-plaintext" id="Consphone" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="address">Address</label>
+                                    <input type="text" name="address" class="form-control-plaintext" id="Consaddress" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="birth">Birth Date</label>
+                                <input type="text" name="Birth" class="form-control-plaintext" id="ConBirth" readonly>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fas fa-check-square"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/Consult-->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
                     <!-- ./wrapper -->
                     <!-- jQuery -->
                     <script src="~/Content/plugins/jquery/jquery.min.js"></script>
@@ -543,25 +548,97 @@
                     <script src="~/Content/dist/js/adminlte.js"></script>
                     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
                     <script src="~/Content/dist/js/pages/dashboard.js"></script>
-                    <script type="text/javascript">
-                    function CheckEmail(ctl) {
-                        var email = $('#PostEmail').val();
-                    $.ajax({
-                    url: "/api/register/mail/" + email,
-                    type: "GET",
-                    datatype: "json",
-                    success: function (result)
-                    {
-                    if (result) {
-                        document.getElementById("eemail_error").innerHTML = "";
-                    }
-                    else {
-                        document.getElementById('eemail_error').innerHTML = "Email already exists...!";
-                    }
-                    }
-                    });
-                    }
-                    </script>
+                    <script src="~/Content/dist/js/demo.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>         
+    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#try').after('<ul class="pagination pagination-sm m-0 float-right" id="pag"></ul>');
+                            var rowsShown = 4;
+                            var numLimit = 3;
+                            var rowsTotal = $('#AdminTable tbody tr').length;
+                            var numPages = rowsTotal / rowsShown;
+                            for (var i = 0; i < numPages; i++) {
+                                var pageNum = i + 1;
+                                $('#pag').append('<li class="page-item" ><a class="btn nums page-link" href="#" rel="' + i + '">' + pageNum + '</a></li>');
+
+                            }
+                            $('#AdminTable tbody tr').hide();
+                            $('#AdminTable tbody tr').slice(0, rowsShown).show();
+                            $('#pag a:first').addClass('active').css("color", "blue");
+                            if (numPages > numLimit) {
+                                $('#pag').append('<li  class="page-item" ><a class="btn page-link" href="#" rel="next">>></a></li> ');
+                                $('#pag').prepend('<li  class="page-item" ><a  class="btn page-link" href="#" rel="prev" style="display:none"><<</a></li> ');
+                                $('#pag').append('<li  class="page-item" ><a class="btn page-link" href="#" rel="last">>>|</a></li>');
+                                $('#pag').prepend('<li  class="page-item" ><a class="btn page-link" href="#" rel="first" style="display:none">|<<</a></li> ');
+                            }
+                            $('#pag').on('click', 'a', function () {
+                                var $nums = $('.nums');
+                                var currPage = $(this).attr('rel');
+                                if (currPage == "next") {
+                                    currPage = $('#pag a.active').attr('rel');
+                                    currPage++;
+                                } else if (currPage == "prev") {
+                                    currPage = $('#pag a.active').attr('rel');
+                                    currPage--;
+                                }
+                                if (currPage == "first") {
+                                    $nums.first().trigger('click');
+                                    return false;
+                                } else if (currPage == "last") {
+                                    $nums.last().trigger('click');
+                                    return false;
+                                }
+                                var startItem = currPage * rowsShown;
+                                var endItem = startItem + rowsShown;
+                                $('#pag a').removeClass('active').css("color", "black");;
+                                $('#pag a[rel="' + currPage + '"]').addClass('active').css("color", "blue");
+                                $('#AdminTable tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
+                                css('display', 'table-row').animate({
+                                    opacity: 1
+                                }, 300);
+                                if ($nums.last().hasClass('active'))
+                                    $('#pag a[rel="next"]').hide();
+                                else
+                                    $('#pag a[rel="next"]').show();
+                                if (!$nums.first().hasClass('active'))
+                                    $('#pag a[rel="prev"]').show();
+                                else
+                                    $('#pag a[rel="prev"]').hide();
+                                $nums.hide();
+                                if (numLimit < 1)
+                                    numLimit = 2;
+                                var $temp = {};
+                                if ($nums.filter('.active').is($nums.first())) {
+                                    $('#pag a[rel="first"]').hide();
+                                    $('#pag a[rel="last"]').show();
+                                    $temp = $nums.first().show();
+                                    for (var j = 0; j < numLimit; j++) {
+                                        $temp = $temp.next().show();
+                                    }
+                                }
+                                else if ($nums.filter('.active').is($nums.last())) {
+                                    $('#pag a[rel="last"]').hide();
+                                    $('#pag a[rel="first"]').show();
+                                    $temp = $nums.last().show();
+                                    for (var j = 0; j < numLimit; j++) {
+                                        $temp = $temp.prev().show();
+                                    }
+                                }
+                                else {
+                                    $('#pag a[rel="first"]').show();
+                                    $('#pag a[rel="last"]').show();
+                                    $temp = $('#pag a[rel="' + currPage + '"]').show();
+                                    for (var j = 0; j < numLimit; j++) {
+                                        $temp = $temp.prev().show();
+                                    }
+                                    $temp = $('#pag a[rel="' + currPage + '"]').show();
+                                    for (var j = 0; j < numLimit; j++) {
+                                        $temp = $temp.next().show();
+                                    }
+                                }
+                            }).find('a.active').trigger('click');
+                        });
+    </script>                           
                     <script>
                     function myFunction1() {
                       // Declare variables
@@ -581,138 +658,14 @@
                         }
                       }
                     }
-                    </script>
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $('#try').after('<ul class="pagination pagination-sm m-0 float-right" id="pag"></ul>');
-                            var rowsShown = 3;
-                            var rowsTotal = $('#AdminTable tbody tr').length;
-                            var numPages = rowsTotal / rowsShown;
-                            for (i = 0; i < numPages; i++) {
-                                var pageNum = i + 1;
-                                $('#pag').append('<li class="page-item" ><a class="page-link" href="#" rel="' + i + '">' + pageNum + '</a></li> ');
-                            }
-                            $('#AdminTable tbody tr').hide();
-                            $('#AdminTable tbody tr').slice(0, rowsShown).show();
-                            $('#pag a:first').addClass('active');
-                            $('#pag a').bind('click', function () {     
-
-                                $('#pag a').removeClass('active');
-                                $(this).addClass('active');
-                                var currPage = $(this).attr('rel');
-                                var startItem = currPage * rowsShown;
-                                var endItem = startItem + rowsShown;
-                                $('#AdminTable tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
-                                css('display', 'table-row').animate({ opacity: 1 }, 300);
-                            });
-                        });
-                        $(document).ready(function () {
-    $('#table').after('<div id="nav" style="width:800px; margin:0 auto;"></div>');
-    var rowsShown = 5;
-    var numLimit = 3;
-    var rowsTotal = $('#table tbody tr').length;
-    var numPages = rowsTotal / rowsShown;
-    for (var i = 0; i < numPages; i++) {
-        var pageNum = i + 1;
-        $('#nav').append('<a class="btn nums" href="#" rel="' + i + '">' + pageNum + '</a> ');
-    }
-    $('#table tbody tr').hide();
-    $('#table tbody tr').slice(0, rowsShown).show();
-    $('#nav a:first').addClass('active').css("color", "blue");
-    if (numPages > numLimit) {
-        $('#nav').append('<a class="btn" href="#" rel="next">></a> ');
-        $('#nav').prepend('<a class="btn" href="#" rel="prev" style="display:none"><</a> ');
-        $('#nav').append('<a class="btn" href="#" rel="last">>|</a> ');
-        $('#nav').prepend('<a class="btn" href="#" rel="first" style="display:none">|<</a> ');
-    }
-    $('#nav').on('click', 'a', function () {
-        var $nums = $('.nums');
-        var currPage = $(this).attr('rel');
-        if (currPage == "next") {
-            currPage = $('#nav a.active').attr('rel');
-            currPage++;
-        } else if (currPage == "prev") {
-            currPage = $('#nav a.active').attr('rel');
-            currPage--;
-        }
-        if (currPage == "first") {
-            $nums.first().trigger('click');
-            return false;
-        } else if (currPage == "last") {
-            $nums.last().trigger('click');
-            return false;
-        }
-        var startItem = currPage * rowsShown;
-        var endItem = startItem + rowsShown;
-        $('#nav a').removeClass('active').css("color", "black");;
-        $('#nav a[rel="' + currPage + '"]').addClass('active').css("color", "blue");
-        $('#table tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
-        css('display', 'table-row').animate({
-            opacity: 1
-        }, 300);
-        if ($nums.last().hasClass('active')) 
-        	$('#nav a[rel="next"]').hide();
-        else 
-        	$('#nav a[rel="next"]').show();
-        if (!$nums.first().hasClass('active')) 
-        	$('#nav a[rel="prev"]').show();
-        else 
-        	$('#nav a[rel="prev"]').hide();
-        $nums.hide();
-        if(numLimit < 1)
-        	numLimit = 2;
-        var $temp = {};
-        if ($nums.filter('.active').is($nums.first())){
-			$('#nav a[rel="first"]').hide();
-			$('#nav a[rel="last"]').show();
-        	$temp = $nums.first().show();
-        	for (var j = 0; j < numLimit; j++) {
-        		$temp = $temp.next().show();
-        	}
-        }
-        else if ($nums.filter('.active').is($nums.last())){
-			$('#nav a[rel="last"]').hide();
-			$('#nav a[rel="first"]').show();
-        	$temp = $nums.last().show();
-        	for (var j = 0; j < numLimit; j++) {
-        		$temp = $temp.prev().show();
-        	}
-        }
-        else {
-			$('#nav a[rel="first"]').show();
-			$('#nav a[rel="last"]').show();
-        	$temp = $('#nav a[rel="' + currPage + '"]').show();
-        	for (var j = 0; j < numLimit; j++) {
-        		$temp = $temp.prev().show();
-        	}
-        	$temp = $('#nav a[rel="' + currPage + '"]').show();
-        	for (var j = 0; j < numLimit; j++) {
-        		$temp = $temp.next().show();
-        	}
-        }
-    }).find('a.active').trigger('click');
-});
-                    </script>
-            <script type="text/javascript">
-            var rol = window.localStorage.getItem("Role");
-            $(document).ready(function () {
-                if (rol == "Admin") {
-                    $('#users').show();
-                };
-            });
-            $(document).ready(function () {
-                if (rol == "Owner") {
-                    $('#users').hide();
-                }
-            });
-            </script>
-      <script>
-          $('#reservationdate').datetimepicker({
-              format: 'L'
-          });
-      </script>
-            <script type="text/javascript">
-                function removeWarning() {
+                    </script>               
+                  <script>
+                      $('#reservationdate').datetimepicker({
+                          format: 'L'
+                      });
+                  </script>
+                  <script type="text/javascript">
+                    function removeWarning() {
                         document.getElementById("eemail_error").innerHTML = "";
                         document.getElementById("usernameee_error").innerHTML = "";
                         document.getElementById("passworddd").innerHTML = "";
@@ -724,7 +677,7 @@
 
                     }
                 function validation() {
-                    var valid = true;
+                    var valid = false;
                     var email = document.getElementById('PostEmail').value;
                     var user = document.getElementById('Postusername').value;
                     var pass = document.getElementById('Postpassword').value;
@@ -733,88 +686,88 @@
                     var phone = document.getElementById('postphone').value;
                     var address = document.getElementById('postaddress').value;
                     var birth = document.getElementById('birth').value;
-
+                   
                     if (email == "") {
                         document.getElementById('eemail_error').innerHTML = "please fill the field";
-                        valid = false;
+                        valid = true;
                     }
                     else if (email.indexOf("@@") <= 0) {
                         document.getElementById('eemail_error').innerHTML = "please insert a valid email address";
-                        valid = false;
+                        valid = true;
                     }
                     else if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
                         document.getElementById('eemail_error').innerHTML = "please insert a valid email address";
-                        valid = false;
+                        valid = true;
                     };
                     if (user == "") {
                         document.getElementById('usernameee_error').innerHTML = "please fill the field";
-                        valid = false;
+                        valid = true;
                     }
                     else if ((user.length <= 3) || (user.length > 10)) {
                         document.getElementById('usernameee_error').innerHTML = "please insert a valid username";
-                        valid = false;
+                        valid = true;
                     };
                     if (pass == "") {
                         document.getElementById('passworddd').innerHTML = "please fill the field";
-                        valid = false;
+                        valid = true;
                     }
                     else if ((pass.length <= 6) || (pass.length > 10)) {
                         document.getElementById('passworddd').innerHTML = "please insert a valid password";
-                        valid = false;
+                        valid = true;
                     };
                     if (Fname == "") {
                         document.getElementById('FirstNam').innerHTML = "please fill the field";
-                        valid = false;
+                        valid = true;
                     }
                     else if ((Fname.length <= 3) || (Fname.length > 10)) {
                         document.getElementById('FirstNam').innerHTML = "please insert a valid firstname";
-                        valid = false;
+                        valid = true;
                     }
                     else if (!isNaN(Fname)) {
                         document.getElementById('FirstNam').innerHTML = "only characters are allowed";
-                        valid = false;
+                        valid = true;
                     };
                     if (Lname == "") {
                         document.getElementById('LastNam').innerHTML = "please fill the field";
-                        valid = false;
+                        valid = true;
                     }
                     else if ((Lname.length <= 3) || (Lname.length > 10)) {
                         document.getElementById('LastNam').innerHTML = "please insert a valid lastname";
-                        valid = false;
+                        valid = true;
                     }
                     else if (!isNaN(Lname)) {
                         document.getElementById('LastNam').innerHTML = "only characters are allowed";
-                        valid = false;
+                        valid = true;
                     };
                     if (phone == "") {
                         document.getElementById('numberr').innerHTML = "please fill the field";
-                        valid = false;
+                        valid = true;
                     }
                     else if (isNaN(phone)) {
                         document.getElementById('numberr').innerHTML = "please insert a valid phone";
-                        valid = false;
+                        valid = true;
                     }
                     else if (phone.length != 8) {
                         document.getElementById('numberr').innerHTML = "please insert a valid phone number";
-                        valid = false;
+                        valid = true;
                     };
                     if (address == "") {
                         document.getElementById('adrr').innerHTML = "please fill the field";
-                        valid = false;
+                        valid = true;
                     }
                     else if ((address.length <= 2) || (address.length > 10)) {
                         document.getElementById('adrr').innerHTML = "please insert a valid address";
-                        valid = false;
+                        valid = true;
                     }
                     else if (!isNaN(address)) {
                         document.getElementById('adrr').innerHTML = "only characters are allowed";
-                        valid = false;
+                        valid = true;
                     };
-                    if (birth == "") {
-                        document.getElementById('birr').innerHTML = "Please fill the field";
-                        valid = false;
+                    if ( valid ) {
+                        $('#bt').attr('disabled', 'disabled');
+                    } else {
+                        $('#bt').removeAttr('disabled');
                     }
-                    return valid;
                 };
             </script>
             <script type="text/javascript">
@@ -1183,7 +1136,110 @@
     });
 
 </script>
+<script type="text/javascript">
+    function removeWarning2() {
+        document.getElementById("EmailE").innerHTML = "";
+        document.getElementById("usern_error").innerHTML = "";
+        document.getElementById("Firstn").innerHTML = "";
+        document.getElementById("Lastn").innerHTML = "";
+        document.getElementById("PhoneER").innerHTML = "";
+        document.getElementById("AddressER").innerHTML = "";
+        document.getElementById("PasswordEr").innerHTML = "";
+    }
+     function validation12() {
+                    var valid = false;
+                    var email = document.getElementById('editEmail').value;
+                    var user = document.getElementById('editusername').value;
+                    var pass = document.getElementById('editpassword').value;
+                    var Fname = document.getElementById('editName').value;
+                    var Lname = document.getElementById('editSurname').value;
+                    var phone = document.getElementById('editphone').value;
+                    var address = document.getElementById('editaddress').value;
 
+                    if (email == "") {
+                        document.getElementById('EmailE').innerHTML = "please fill the field";
+                        valid = true;
+                    }
+                    else if (email.indexOf("@@") <= 0) {
+                        document.getElementById('EmailE').innerHTML = "please insert a valid email address";
+                        valid = true;
+                    }
+                    else if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
+                        document.getElementById('EmailE').innerHTML = "please insert a valid email address";
+                        valid = true;
+                    };
+                    if (user == "") {
+                        document.getElementById('usern_error').innerHTML = "please fill the field";
+                        valid = true;
+                    }
+                    else if ((user.length <= 3) || (user.length > 10)) {
+                        document.getElementById('usern_error').innerHTML = "please insert a valid username";
+                        valid = true;
+                    };
+                    if (pass == "") {
+                        document.getElementById('PasswordEr').innerHTML = "please fill the field";
+                        valid = true;
+                    }
+                    else if ((pass.length <= 6) || (pass.length > 10)) {
+                        document.getElementById('PasswordEr').innerHTML = "please insert a valid password";
+                        valid = true;
+                    };
+                    if (Fname == "") {
+                        document.getElementById('Firstn').innerHTML = "please fill the field";
+                        valid = true;
+                    }
+                    else if ((Fname.length <= 3) || (Fname.length > 10)) {
+                        document.getElementById('Firstn').innerHTML = "please insert a valid firstname";
+                        valid = true;
+                    }
+                    else if (!isNaN(Fname)) {
+                        document.getElementById('Firstn').innerHTML = "only characters are allowed";
+                        valid = true;
+                    };
+                    if (Lname == "") {
+                        document.getElementById('Lastn').innerHTML = "please fill the field";
+                        valid = true;
+                    }
+                    else if ((Lname.length <= 3) || (Lname.length > 10)) {
+                        document.getElementById('Lastn').innerHTML = "please insert a valid lastname";
+                        valid = true;
+                    }
+                    else if (!isNaN(Lname)) {
+                        document.getElementById('Lastn').innerHTML = "only characters are allowed";
+                        valid = true;
+                    };
+                    if (phone == "") {
+                        document.getElementById('PhoneER').innerHTML = "please fill the field";
+                        valid = true;
+                    }
+                    else if (isNaN(phone)) {
+                        document.getElementById('PhoneER').innerHTML = "please insert a valid phone";
+                        valid = true;
+                    }
+                    else if (phone.length != 8) {
+                        document.getElementById('PhoneER').innerHTML = "please insert a valid phone number";
+                        valid = true;
+                    };
+                    if (address == "") {
+                        document.getElementById('AddressER').innerHTML = "please fill the field";
+                        valid = true;
+                    }
+                    else if ((address.length <= 2) || (address.length > 10)) {
+                        document.getElementById('AddressER').innerHTML = "please insert a valid address";
+                        valid = true;
+                    }
+                    else if (!isNaN(address)) {
+                        document.getElementById('AddressER').innerHTML = "only characters are allowed";
+                        valid = true;
+                    };
+                    if ( valid ) {
+                        $('#bty').attr('disabled', 'disabled');
+                    } else {
+                        $('#bty').removeAttr('disabled');
+                    }
+                };
+</script>
+</script>
 <style>
   .myModal {
   display: none; /* Hidden by default */
