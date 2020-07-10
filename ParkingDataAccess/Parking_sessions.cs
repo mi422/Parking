@@ -15,10 +15,10 @@ namespace ParkingDataAccess
     public partial class Parking_sessions
     {
         public int Id { get; set; }
-        public System.DateTime Entry_Date { get; set; }
-        public System.DateTime Extry_Date { get; set; }
-        public System.DateTime Created_at { get; set; }
-        public System.DateTime Updated_at { get; set; }
+        public DateTime Entry_Date { get; set; }
+        public DateTime Extry_Date { get; set; }
+        public DateTime Created_at { get; set; }
+        public DateTime Updated_at { get; set; }
         public int VehicleId { get; set; }
     
         public virtual Vehicle Vehicle { get; set; }

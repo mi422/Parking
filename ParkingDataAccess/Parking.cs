@@ -22,7 +22,6 @@ namespace ParkingDataAccess
     
         public int Id { get; set; }
         public string Position { get; set; }
-        public string State { get; set; }
         public System.DateTime Created_at { get; set; }
         public System.DateTime Updated_at { get; set; }
         public int UserId { get; set; }

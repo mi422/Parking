@@ -10,7 +10,6 @@ namespace SiyouParkingSystem.Models
     {
         public int Id { get; set; }
         public string Position { get; set; }
-        public string State { get; set; }
         public DateTime Created_at { get; set; }
         public DateTime Updated_at { get; set; }
         public int UserId { get; set; }

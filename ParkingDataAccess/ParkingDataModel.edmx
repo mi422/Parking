@@ -51,10 +51,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Entry_Date" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="Extry_Date" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="Created_at" Type="date" Nullable="false" />
-          <Property Name="Updated_at" Type="date" Nullable="false" />
+          <Property Name="Entry_Date" Type="date" />
+          <Property Name="Extry_Date" Type="date" />
+          <Property Name="Created_at" Type="date" />
+          <Property Name="Updated_at" Type="date" />
           <Property Name="VehicleId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Parkings">
@@ -63,7 +63,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="State" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Created_at" Type="date" Nullable="false" />
           <Property Name="Updated_at" Type="date" Nullable="false" />
           <Property Name="UserId" Type="int" />
@@ -105,7 +104,9 @@
           <Property Name="UserId" Type="int" />
         </EntityType>
         <Association Name="FK__Admins__UserId__1DE57479">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -117,7 +118,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Contracts__Parki__02FC7413">
-          <End Role="Parkings" Type="Self.Parkings" Multiplicity="1" />
+          <End Role="Parkings" Type="Self.Parkings" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Parkings">
@@ -128,20 +131,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contracts__Rente__02084FDA">
-          <End Role="Renters" Type="Self.Renters" Multiplicity="1" />
-          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Renters">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Contracts">
-              <PropertyRef Name="RenterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Owners__UserId__1ED998B2">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Owners" Type="Self.Owners" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -153,7 +146,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Parking_s__Vehic__31EC6D26">
-          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Parking_sessions" Type="Self.Parking_sessions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vehicles">
@@ -165,7 +160,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Parkings__UserId__5CD6CB2B">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Parkings" Type="Self.Parkings" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -177,7 +174,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Renters__UserId__14270015">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Renters" Type="Self.Renters" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -189,7 +188,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Vehicles__UserId__5EBF139D">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -215,10 +216,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__Contracts__Parki__02FC7413" Association="Self.FK__Contracts__Parki__02FC7413">
             <End Role="Parkings" EntitySet="Parkings" />
-            <End Role="Contracts" EntitySet="Contracts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Contracts__Rente__02084FDA" Association="Self.FK__Contracts__Rente__02084FDA">
-            <End Role="Renters" EntitySet="Renters" />
             <End Role="Contracts" EntitySet="Contracts" />
           </AssociationSet>
           <AssociationSet Name="FK__Owners__UserId__1ED998B2" Association="Self.FK__Owners__UserId__1ED998B2">
@@ -282,10 +279,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Entry_Date" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Extry_Date" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Created_at" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="Updated_at" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Entry_Date" Type="DateTime" Precision="0" />
+          <Property Name="Extry_Date" Type="DateTime" Precision="0" />
+          <Property Name="Created_at" Type="DateTime" Precision="0" />
+          <Property Name="Updated_at" Type="DateTime" Precision="0" />
           <Property Name="VehicleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Vehicle" Relationship="Self.FK__Parking_s__Vehic__31EC6D26" FromRole="Parking_sessions" ToRole="Vehicles" />
         </EntityType>
@@ -295,7 +292,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Created_at" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="Updated_at" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="UserId" Type="Int32" />
@@ -554,7 +550,6 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Created_at" ColumnName="Created_at" />
                 <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
               </MappingFragment>

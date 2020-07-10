@@ -20,7 +20,6 @@ namespace SiyouParkingSystem.Controllers
             SYS.Parkings.Add(new Parking()
             {
                 Position = par.Position,
-                State = par.State,
                 Created_at = today,
                 Updated_at = today,
                 UserId = par.UserId,
@@ -44,7 +43,6 @@ namespace SiyouParkingSystem.Controllers
                     ParkingClass parkingClass = new ParkingClass();
                     parkingClass.Id = parking.Id;
                     parkingClass.Position = parking.Position;
-                    parkingClass.State = parking.State;
                     parkingClass.Created_at = parking.Created_at;
                     parkingClass.Updated_at = parking.Updated_at;
                     parkingClass.UserId = parking.UserId;
@@ -66,20 +64,6 @@ namespace SiyouParkingSystem.Controllers
             }
             return Ok(par);
         }
-        //}
-        //[Route("api/parkings/getbyuser/{userid}")]
-        //[HttpGet]
-        //public IHttpActionResult getbyuser(int userid)
-        //{
-        //    List<ParkingClass> list = new List<ParkingClass>();
-
-        //    var par = SYS.Parkings.Where(e => e.UserId == userid);
-        //    if (par == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(list);
-        //}
         [Route("api/parkings/getbyuser/{userid}")]
         [HttpGet]
         public IEnumerable<ParkingClass> getbyuser(int userid)
@@ -94,7 +78,6 @@ namespace SiyouParkingSystem.Controllers
                     ParkingClass parkingClass = new ParkingClass();
                     parkingClass.Id = parking.Id;
                     parkingClass.Position = parking.Position;
-                    parkingClass.State = parking.State;
                     parkingClass.Created_at = parking.Created_at;
                     parkingClass.Updated_at = parking.Updated_at;
                     parkingClass.UserId = parking.UserId;
@@ -123,7 +106,6 @@ namespace SiyouParkingSystem.Controllers
                 else
                 {
                     entity.Position = par.Position;
-                    entity.State = par.State;
                     entity.Updated_at = today;
                     SYS.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, entity);
