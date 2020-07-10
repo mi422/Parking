@@ -282,7 +282,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="ModalForm">
+                            <form id="ModalForm" onchange="validation5()">
                                 <div class="form-group">  
                                     <input type="hidden" name="Role" class="form-control" id="EditRole" value="Owner">                                
                                     <input type="hidden" name="ID" class="form-control" id="editId" required>
@@ -292,7 +292,8 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="email">Email</label>
-                                            <input type="email" name="Email" class="form-control" id="editEmail" placeholder="Email" autocomplete="off" required>
+                                            <input type="email" name="Email" class="form-control" id="editEmail" placeholder="Email" autocomplete="off" required onchange="removeWarning5()">
+                                            <span id="emailer" class="text-danger"></span>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="username">Username</label>
@@ -304,29 +305,34 @@
                                 <div class="form-row">                                  
                                     <div class="form-group col-md-6">
                                         <label for="first">Firstname</label>
-                                        <input type="text" name="name" class="form-control" id="editName" placeholder="Firstname" autocomplete="off" required>
+                                        <input type="text" name="name" class="form-control" id="editName" placeholder="Firstname" autocomplete="off" required onchange="removeWarning5()">
+                                        <span id="frts" class="text-danger"></span>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="last">Lastname</label>
-                                        <input type="text" name="surname" class="form-control" id="editSurname" placeholder="Lastname" autocomplete="off" required>
-                                    </div>
+                                        <input type="text" name="surname" class="form-control" id="editSurname" placeholder="Lastname" autocomplete="off" required onchange="removeWarning5()">
+                                        <span id="lster" class="text-danger"></span>
+                                    </div>                                    
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="phon">Phone</label>
-                                        <input type="tel" name="phone" class="form-control" id="editphone" placeholder="Phone" autocomplete="off" required>
+                                        <input type="tel" name="phone" class="form-control" id="editphone" placeholder="Phone" autocomplete="off" required onchange="removeWarning5()">
+                                        <span id="phn" class="text-danger"></span>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="address">Address</label>
-                                        <input type="text" name="address" class="form-control" id="editaddress" placeholder="Address" autocomplete="off" required>
+                                        <input type="text" name="address" class="form-control" id="editaddress" placeholder="Address" autocomplete="off" required onchange="removeWarning5()">
+                                        <span id="adre" class="text-danger"></span>
                                     </div>
                                     </div>
                                 <div class="form-group">
                                     <label for="pass">Password</label>
-                                    <input type="password" name="Password" class="form-control" id="editpassword" placeholder="Password" autocomplete="off" required>
+                                    <input type="password" name="Password" class="form-control" id="editpassword" placeholder="Password" autocomplete="off" required onchange="removeWarning5()" />
+                                    <span id="pswr" class="text-danger"></span>
                                 </div>
                                     <div class="modal-footer">
-                                        <button type="button" onclick="OwnerUpdate(this); updateUser(this)" class="btn btn-info" data-id="Owner.Id+User.Id" data-dismiss="modal"><i class="fas fa-save"></i></button>
+                                        <button type="button" id="btny" onclick="OwnerUpdate(this); updateUser(this)" class="btn btn-success" data-id="Owner.Id+User.Id" data-dismiss="modal" disabled="disabled"><i class="fas fa-save"></i></button>
                                         <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                                     </div>
                             </form>
@@ -426,7 +432,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" onclick="PostUser();" class="btn bg-olive"><i class="fas fa-save"></i></button>
+                                        <button type="button" id="ownerr" onclick="PostUser();" class="btn bg-olive" disabled="disabled"><i class="fas fa-save"></i></button>
                                         <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                                     </div>
                                 </fieldset>
@@ -796,7 +802,7 @@
                 document.getElementById("PassErr").innerHTML = "";
             }
             function validation() {
-                var valid = true;
+                var valid = false;
                 var FirstName = document.getElementById('PostName').value;
                 var LastName = document.getElementById('PostLast').value;
                 var Identity = document.getElementById('postqrcode').value;
@@ -809,89 +815,93 @@
 
                 if (FirstName == "") {
                     document.getElementById('FirstErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 }
                 else if ((FirstName.length <= 3) || (FirstName.length > 10)) {
                     document.getElementById('FirstErr').innerHTML = "please insert a valid username";
-                    valid = false;
+                    valid = true;
                 }
                 else if (!isNaN(FirstName)) {
                     document.getElementById('FirstErr').innerHTML = "only characters are allowed";
-                    valid = false;
+                    valid = true;
                 };
                 if (LastName == "") {
                     document.getElementById('LastErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 }
                 else if ((LastName.length <= 3) || (LastName.length > 10)) {
                     document.getElementById('LastErr').innerHTML = "please insert a valid lastname";
-                    valid = false;
+                    valid = true;
                 }
                 else if (!isNaN(LastName)) {
                     document.getElementById('LastErr').innerHTML = "only characters are allowed";
-                    valid = false;
+                    valid = true;
                 };
                 if (Identity == "") {
                     document.getElementById('IdentityErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 };
                 if (Birth == "") {
                     document.getElementById('TimeErr').innerHTML = "Please fill the field";
-                    valid = false;
+                    valid = true;
                 };
                 if (Phone == "") {
                     document.getElementById('PhoneErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 }
                 else if (isNaN(Phone)) {
                     document.getElementById('PhoneErr').innerHTML = "please insert a valid phone";
-                    valid = false;
+                    valid = true;
                 }
                 else if (Phone.length != 8) {
                     document.getElementById('PhoneErr').innerHTML = "please insert a valid phone number";
-                    valid = false;
+                    valid = true;
                 };
                 if (Address == "") {
                     document.getElementById('AddressErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 }
                 else if ((Address.length <= 3) || (Address.length > 10)) {
                     document.getElementById('AddressErr').innerHTML = "please insert a valid address";
-                    valid = false;
+                    valid = true;
                 };
                 if (email == "") {
                     document.getElementById('EmailErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 }
                 else if (email.indexOf("@@") <= 0) {
                     document.getElementById('EmailErr').innerHTML = "please insert a valid email address";
-                    valid = false;
+                    valid = true;
                 }
                 else if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
                     document.getElementById('EmailErr').innerHTML = "please insert a valid email address";
-                    valid = false;
+                    valid = true;
                 };
                 if (username == "") {
                     document.getElementById('UserErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 }
                 else if ((username.length <= 3) || (username.length > 10)) {
                     document.getElementById('UserErr').innerHTML = "please insert a valid username";
-                    valid = false;
+                    valid = true;
                 }
                 else if (!isNaN(username)) {
                     document.getElementById('UserErr').innerHTML = "only characters are allowed";
-                    valid = false;
+                    valid = true;
                 };
                 if (password == "") {
                     document.getElementById('PassErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 }
                 else if ((password.length <= 6) || (password.length > 10)) {
-                    document.getElementById('PassErr').innerHTML = "please insert a valid password";
-                    valid = false;
+                    document.getElementById('PassErr').innerHTML = "password must be between 6 and 10";
+                    valid = true;
                 };
-                return valid;
+                if (valid) {
+                    $('#ownerr').attr('disabled', 'disabled');
+                } else {
+                    $('#ownerr').removeAttr('disabled');
+                }
             };
             </script>
         <script type="text/javascript">
@@ -1169,24 +1179,6 @@
 
             });
         }
-        //function updateUser(User) {
-        //    var id = $("#UserId").val();
-        //    var User = {};
-        //    User.Email = $('#editEmail').val(),
-        //    User.Username = $('#editusername').val(),
-        //    User.Password = $('#editpassword').val(),
-        //    User.Role = $('#EditRole').val(),
-        //    $.ajax({
-        //        url: 'api/register/' + id,
-        //        method: 'PUT',
-        //        contentType:
-        //           "application/json;charset=utf-8",
-        //        data: JSON.stringify(User),
-        //        dataType: "JSON",
-        //        success: function () {
-        //        }
-        //    });
-        //}
         function updateUser(User) {
             var id = $("#UserId").val();
             var User = {};
@@ -1239,6 +1231,109 @@
         $('#spanUsername').text(localStorage.getItem("userName"));
     });
 
+</script>
+<script type="text/javascript">
+    function removeWarning5() {
+        document.getElementById("emailer").innerHTML = "";
+        document.getElementById("UserError").innerHTML = "";
+        document.getElementById("frts").innerHTML = "";
+        document.getElementById("lster").innerHTML = "";
+        document.getElementById("phn").innerHTML = "";
+        document.getElementById("pswr").innerHTML = "";
+        document.getElementById("adre").innerHTML = "";
+    }
+     function validation5() {
+                var valid = false;
+                var FirstName = document.getElementById('editName').value;
+                var LastName = document.getElementById('editSurname').value;
+                var Phone = document.getElementById('editphone').value;
+                var Address = document.getElementById('editaddress').value;
+                var email = document.getElementById('editEmail').value;
+                var username = document.getElementById('editusername').value;
+                var password = document.getElementById('editpassword').value;
+
+                if (FirstName == "") {
+                    document.getElementById('frts').innerHTML = "please fill the field";
+                    valid = true;
+                }
+                else if ((FirstName.length <= 3) || (FirstName.length > 10)) {
+                    document.getElementById('frts').innerHTML = "please insert a valid username";
+                    valid = true;
+                }
+                else if (!isNaN(FirstName)) {
+                    document.getElementById('frts').innerHTML = "only characters are allowed";
+                    valid = true;
+                };
+                if (LastName == "") {
+                    document.getElementById('lster').innerHTML = "please fill the field";
+                    valid = true;
+                }
+                else if ((LastName.length <= 3) || (LastName.length > 10)) {
+                    document.getElementById('lster').innerHTML = "please insert a valid lastname";
+                    valid = true;
+                }
+                else if (!isNaN(LastName)) {
+                    document.getElementById('lster').innerHTML = "only characters are allowed";
+                    valid = true;
+                };
+                if (Phone == "") {
+                    document.getElementById('phn').innerHTML = "please fill the field";
+                    valid = true;
+                }
+                else if (isNaN(Phone)) {
+                    document.getElementById('phn').innerHTML = "please insert a valid phone";
+                    valid = true;
+                }
+                else if (Phone.length != 8) {
+                    document.getElementById('phn').innerHTML = "please insert a valid phone number";
+                    valid = true;
+                };
+                if (Address == "") {
+                    document.getElementById('adre').innerHTML = "please fill the field";
+                    valid = true;
+                }
+                else if ((Address.length <= 3) || (Address.length > 10)) {
+                    document.getElementById('adre').innerHTML = "please insert a valid address";
+                    valid = true;
+                };
+                if (email == "") {
+                    document.getElementById('emailer').innerHTML = "please fill the field";
+                    valid = true;
+                }
+                else if (email.indexOf("@@") <= 0) {
+                    document.getElementById('emailer').innerHTML = "please insert a valid email address";
+                    valid = true;
+                }
+                else if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
+                    document.getElementById('emailer').innerHTML = "please insert a valid email address";
+                    valid = true;
+                };
+                if (username == "") {
+                    document.getElementById('UserErr').innerHTML = "please fill the field";
+                    valid = true;
+                }
+                else if ((username.length <= 3) || (username.length > 10)) {
+                    document.getElementById('UserErr').innerHTML = "please insert a valid username";
+                    valid = true;
+                }
+                else if (!isNaN(username)) {
+                    document.getElementById('UserErr').innerHTML = "only characters are allowed";
+                    valid = true;
+                };
+                if (password == "") {
+                    document.getElementById('pswr').innerHTML = "please fill the field";
+                    valid = true;
+                }
+                else if ((password.length <= 6) || (password.length > 10)) {
+                    document.getElementById('pswr').innerHTML = "password must be between 6 and 10";
+                    valid = true;
+                };
+                if (valid) {
+                    $('#btny').attr('disabled', 'disabled');
+                } else {
+                    $('#btny').removeAttr('disabled');
+                }
+            };
 </script>
 <style>
     .myModal {
