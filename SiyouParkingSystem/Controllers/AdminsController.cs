@@ -7,12 +7,10 @@ using System.Web.Http;
 using ParkingDataAccess;
 using SiyouParkingSystem.Models;
 
-
-
 namespace SiyouParkingSystem.Controllers
-{
+{  
     public class AdminsController : ApiController
-    {       //master oumayma missa
+    {  //master oumayma missa
         SYSDATAEntities SYS = new SYSDATAEntities();
 
         DateTime today = DateTime.UtcNow.Date;
