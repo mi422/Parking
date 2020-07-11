@@ -296,9 +296,9 @@
                                             <span id="emailer" class="text-danger"></span>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="username">Username</label>
-                                            <input type="text" name="Username" class="form-control" id="editusername" placeholder="Username" onchange="return removeWarning2()" onkeyup="return CheckUsername2(this)" autocomplete="off" required>
-                                            <span id="UserError" class="text-danger"></span>
+                                            <label for="pass">Password</label>
+                                            <input type="password" name="Password" class="form-control" id="editpassword" placeholder="Password" autocomplete="off" required onchange="removeWarning5()" />
+                                            <span id="pswr" class="text-danger"></span>
                                         </div>                                       
                                     </div>
                                 </fieldset>
@@ -326,11 +326,11 @@
                                         <span id="adre" class="text-danger"></span>
                                     </div>
                                     </div>
-                                <div class="form-group">
-                                    <label for="pass">Password</label>
-                                    <input type="password" name="Password" class="form-control" id="editpassword" placeholder="Password" autocomplete="off" required onchange="removeWarning5()" />
-                                    <span id="pswr" class="text-danger"></span>
-                                </div>
+                                <div class="form-group">                                   
+                                    <label for="username">Username</label>
+                                    <input type="text" name="Username" class="form-control" id="editusername" placeholder="Username" onchange="removeWarning2(); CheckUsername2(this)" autocomplete="off" required>
+                                    <span id="UserError" class="text-danger"></span>
+                                </div>                                                
                                     <div class="modal-footer">
                                         <button type="button" id="btny" onclick="OwnerUpdate(this); updateUser(this)" class="btn btn-success" data-id="Owner.Id+User.Id" data-dismiss="modal" disabled="disabled"><i class="fas fa-save"></i></button>
                                         <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
@@ -341,105 +341,105 @@
                 </div>
             </div>
             <!-- Post Modal -->
-            <div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">New Owner</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="" id="ModalForm" onclick="return validation()">
-                                <fieldset>
-                                    <input type="hidden" name="ID" class="form-control" id="deleteId" placeholder="ID">
-                                    <input type="hidden" name="Role" class="form-control" id="PostRole" value="Owner">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <input type="text" name="name" class="form-control" id="PostName" placeholder="Firstname" autocomplete="off" onchange="return removeWarning()">
-                                            <span id="FirstErr" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <input type="text" name="surname" class="form-control" id="PostLast" placeholder="Lastname" autocomplete="off" onchange="return removeWarning()">
-                                            <span id="LastErr" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <input type="text" name="qrcode" class="form-control" id="postqrcode" placeholder="Identity card number" onchange="GenerateQR()" autocomplete="off">
-                                            <span id="IdentityErr" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                                <input type="text" class="form-control datetimepicker-input" id="birth" placeholder="Birth Date" data-target="#reservationdate" autocomplete="off" onchange="return removeWarning()">
-                                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                                    <div class="input-group-text bg-secondary"><i class="fa fa-calendar"></i></div>
-                                                </div>
-                                            </div>
-                                            <span id="TimeErr" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
-                                                </div>
-                                                <input type="text" name="phone" class="form-control" id="postphone" placeholder="Phone Number" autocomplete="off" onchange="return removeWarning()">
-                                            </div>
-                                            <span id="PhoneErr" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
-                                                </div>
-                                                <input type="tel" name="address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning()">
-                                            </div>
-                                            <span id="AddressErr" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
-                                                </div>
-                                                <input type="email" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning();" onkeyup="CheckEmail(this)">
-                                            </div>
-                                            <span id="EmailErr" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
-                                                </div>
-                                                <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="return removeWarning()" onkeyup="return CheckUsername1(this)">
-                                            </div>
-                                            <span id="UserErr" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text bg-secondary"><i class="fas fa-key"></i></span>
-                                                </div>
-                                                <input type="password" name="Password" class="form-control" id="Postpassword" placeholder="Password" autocomplete="off" onchange="return removeWarning()">
-                                            </div>
-                                            <span id="PassErr" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" id="ownerr" onclick="PostUser();" class="btn bg-olive" disabled="disabled"><i class="fas fa-save"></i></button>
-                                        <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                                    </div>
-                                </fieldset>
-                            </form>    
-                            <div id="qrcode"></div>                      
-                        </div>
+        <div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">New Owner</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="modal-body">
+                        <form action="" id="ModalForm" onchange="return validation()" onclick="return GenerateQR();">
+                            <fieldset>
+                                <input type="hidden" name="ID" class="form-control" id="deleteId" placeholder="ID">
+                                <input type="hidden" name="Role" class="form-control" id="PostRole" value="Owner">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input type="text" name="name" class="form-control" id="PostName" placeholder="Firstname" autocomplete="off" onchange="return removeWarning()">
+                                        <span id="FirstErr" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" name="surname" class="form-control" id="PostLast" placeholder="Lastname" autocomplete="off" onchange="return removeWarning()">
+                                        <span id="LastErr" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input type="text" name="qrcode" class="form-control" id="postqrcode" placeholder="Identity card number" autocomplete="off">
+                                        <span id="IdentityErr" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input" id="birth" placeholder="Birth Date" data-target="#reservationdate" autocomplete="off" onchange="return removeWarning()">
+                                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                                <div class="input-group-text bg-secondary"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                        <span id="TimeErr" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
+                                            </div>
+                                            <input type="text" name="phone" class="form-control" id="postphone" placeholder="Phone Number" autocomplete="off" onchange="return removeWarning()">
+                                        </div>
+                                        <span id="PhoneErr" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
+                                            </div>
+                                            <input type="tel" name="address" class="form-control" id="postaddress" placeholder="Address" autocomplete="off" onchange="return removeWarning()">
+                                        </div>
+                                        <span id="AddressErr" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
+                                            </div>
+                                            <input type="email" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning();">
+                                        </div>
+                                        <span id="EmailErr" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-secondary"><i class="fas fa-key"></i></span>
+                                            </div>
+                                            <input type="password" name="Password" class="form-control" id="Postpassword" placeholder="Password" autocomplete="off" onchange="return removeWarning()">
+                                        </div>
+                                        <span id="PassErr" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
+                                                    </div>
+                                                    <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="removeWarning(); CheckUsername1(this)">
+                                                </div>
+                                                <span id="UserErr" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="ownerr" onclick="PostUser();" class="btn bg-olive" disabled="disabled"><i class="fas fa-save"></i></button>
+                                            <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                                        </div>
+                            </fieldset>
+                        </form>
+                        <div id="qrcode"></div>
+                    </div> 
+                  </div>
                 </div>
             </div>
             <!--Consult-->
@@ -647,25 +647,6 @@
         });
     </script>
         <script type="text/javascript">
-                    function CheckEmail(ctl) {
-                        var email = $('#PostEmail').val();
-                    $.ajax({
-                    url: "/api/register/mail/" + email,
-                    type: "GET",
-                    datatype: "json",
-                    success: function (result)
-                    {
-                    if (result) {
-                        document.getElementById("EmailErr").innerHTML = "";
-                    }
-                    else {
-                        document.getElementById('EmailErr').innerHTML = "Email already exists...!";
-                    }
-                    }
-                    });
-                    }
-        </script>
-        <script type="text/javascript">
             function CheckUsername1(ctl) {
                 var usernam2 = $('#Postusername').val();
             $.ajax({
@@ -676,9 +657,11 @@
             {
             if (result) {
                 document.getElementById("UserErr").innerHTML = "";
+                $('#ownerr').removeAttr('disabled');
             }
             else {
                 document.getElementById('UserErr').innerHTML = "Username already exists...!";
+                $('#ownerr').attr('disabled', 'disabled');
             }
             }
             });
@@ -698,9 +681,11 @@
             {
             if (result) {
                 document.getElementById("UserError").innerHTML = "";
+                $('#btny').removeAttr('disabled');
             }
             else {
                 document.getElementById('UserError').innerHTML = "Username already exists...!";
+                $('#btny').attr('disabled', 'disabled');
             }
             }
             });
@@ -758,21 +743,22 @@
               var data = qrdata.value;
               if (data == "") {
                   document.getElementById('IdentityErr').innerHTML = "please fill the field";
-                  valid = false;
+                  $('#ownerr').attr('disabled', 'disabled');
               }
-              else if (data.length != 8) {
+             else if (data.length != 8) {
                   document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
-                  valid = false;
+                  $('#ownerr').attr('disabled', 'disabled');
               }
-              else if (isNaN(data)) {
-                  document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
-                  valid = false;
+             else if (isNaN(data)) {
+                  document.getElementById('IdentityErr').innerHTML = "identity number must have only numbers";
+                  $('#ownerr').attr('disabled', 'disabled');
               }
               else {
                   qrcodee.makeCode(data);
                   document.getElementById("IdentityErr").innerHTML = "";
-              }
-          }
+                  $('#ownerr').removeAttr('disabled');
+              };
+          };
         </script>
         <script>
             var qrdata2 = document.getElementById('ConQR');
@@ -817,7 +803,7 @@
                     document.getElementById('FirstErr').innerHTML = "please fill the field";
                     valid = true;
                 }
-                else if ((FirstName.length <= 3) || (FirstName.length > 10)) {
+                else if ((FirstName.length <= 2) || (FirstName.length > 10)) {
                     document.getElementById('FirstErr').innerHTML = "please insert a valid username";
                     valid = true;
                 }
@@ -829,7 +815,7 @@
                     document.getElementById('LastErr').innerHTML = "please fill the field";
                     valid = true;
                 }
-                else if ((LastName.length <= 3) || (LastName.length > 10)) {
+                else if ((LastName.length <= 2) || (LastName.length > 10)) {
                     document.getElementById('LastErr').innerHTML = "please insert a valid lastname";
                     valid = true;
                 }
@@ -837,14 +823,10 @@
                     document.getElementById('LastErr').innerHTML = "only characters are allowed";
                     valid = true;
                 };
-                if (Identity == "") {
-                    document.getElementById('IdentityErr').innerHTML = "please fill the field";
-                    valid = true;
-                };
-                if (Birth == "") {
-                    document.getElementById('TimeErr').innerHTML = "Please fill the field";
-                    valid = true;
-                };
+                //if (Identity == "") {
+                //    document.getElementById('IdentityErr').innerHTML = "please fill the field";
+                //    valid = true;
+                //};
                 if (Phone == "") {
                     document.getElementById('PhoneErr').innerHTML = "please fill the field";
                     valid = true;
@@ -861,7 +843,7 @@
                     document.getElementById('AddressErr').innerHTML = "please fill the field";
                     valid = true;
                 }
-                else if ((Address.length <= 3) || (Address.length > 10)) {
+                else if ((Address.length <= 2) || (Address.length > 10)) {
                     document.getElementById('AddressErr').innerHTML = "please insert a valid address";
                     valid = true;
                 };
@@ -881,7 +863,7 @@
                     document.getElementById('UserErr').innerHTML = "please fill the field";
                     valid = true;
                 }
-                else if ((username.length <= 3) || (username.length > 10)) {
+                else if ((username.length <= 2) || (username.length > 10)) {
                     document.getElementById('UserErr').innerHTML = "please insert a valid username";
                     valid = true;
                 }
