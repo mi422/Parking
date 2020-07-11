@@ -280,17 +280,18 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                            <form id="ModalForm" onchange="validation45()">
                                 <div class="form-group">
                                     <input type="hidden" name="ID" class="form-control" id="editId" required>
                                     <input type="hidden" name="UserID" class="form-control" id="UserId" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="editposition">Position</label>
-                                        <input type="text" name="position" class="form-control" id="editposition" required autocomplete="off">
+                                        <input type="text" name="position" class="form-control" id="editposition" required autocomplete="off" onchange="removeWarning1()">
+                                    <span id="editpsit" class="text-danger"></span>
                                     </div>
                                 <div class="modal-footer">
-                                    <button type="submit" onclick="ParkingUpdate(this)" class="btn bg-olive" data-id="Parking.Id" data-dismiss="modal"><i class="fas fa-save"></i></button>
+                                    <button type="submit" onclick="ParkingUpdate(this)" class="btn bg-olive" data-id="Parking.Id" data-dismiss="modal" id="editpos" disabled="disabled"><i class="fas fa-save"></i></button>
                                     <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                                 </div>
                             </form>
@@ -309,19 +310,20 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" id="ModalForm">
+                            <form action="" id="ModalForm" onchange="validation()">
                                 <div class="form-group">
                                     <div class="">                                       
-                                            <input type="text" name="position" class="form-control" id="Postposition" placeholder="Position" required autocomplete="off">
+                                            <input type="text" name="position" class="form-control" id="Postposition" placeholder="Position" required autocomplete="off" onchange="removeWarning()">
+                                        <span id="pospark" class="text-danger"></span>
                                         </div>  
                                     </div>                                  
                                 <div class="form-group">
                                     <select class="browser-default custom-select" id="UserList" required>
                                         <option selected>Choose an Owner</option>
-                                    </select>
-                                </div>
+                                    </select>                                 
+                                </div>                             
                                    <div class="modal-footer">
-                                  <button type="submit" onclick="PostParking();" class="btn bg-olive" data-dismiss="modal"><i class="fas fa-save"></i></button>
+                                  <button type="submit" onclick="PostParking();" class="btn bg-olive" data-dismiss="modal" id="pospa" disabled="disabled"><i class="fas fa-save"></i></button>
                                 <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                             </div>
                             </form>
@@ -494,6 +496,64 @@
             }).find('a.active').trigger('click');
         });
         </script>
+    <script type="text/javascript">
+        function removeWarning() {
+            document.getElementById("pospark").innerHTML = "";
+            document.getElementById("selus").innerHTML = "";
+        }
+        function validation() {
+            var valid = false;
+            var position = document.getElementById('Postposition').value;
+            var listu = document.getElementById('UserList').value;
+
+            if (position == "") {
+                document.getElementById('pospark').innerHTML = "please fill the field";
+                valid = true;
+            }
+            else if ((position.length <= 3)) {
+                document.getElementById('pospark').innerHTML = "position is not valid";
+                valid = true;
+            }
+            else if (isNaN(position)) {
+                document.getElementById('pospark').innerHTML = "position must have only numbers";
+                valid = true;
+            }
+            if (valid) {
+                $('#pospa').attr('disabled', 'disabled');
+            }
+            else {
+                $('#pospa').removeAttr('disabled');
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function removeWarning1() {
+            document.getElementById("editpsit").innerHTML = "";
+        }
+        function validation45() {
+            var valid = false;
+            var position = document.getElementById('editposition').value;
+
+            if (position == "") {
+                document.getElementById('editpsit').innerHTML = "please fill the field";
+                valid = true;
+            }
+            else if ((position.length <= 3)) {
+                document.getElementById('editpsit').innerHTML = "position is not valid";
+                valid = true;
+            }
+            else if (isNaN(position)) {
+                document.getElementById('editpsit').innerHTML = "position must have only numbers";
+                valid = true;
+            }
+            if (valid) {
+                $('#editpos').attr('disabled', 'disabled');
+            }
+            else {
+                $('#editpos').removeAttr('disabled');
+            }
+        }
+    </script>
         <script>
             function myFunction1() {
               // Declare variables

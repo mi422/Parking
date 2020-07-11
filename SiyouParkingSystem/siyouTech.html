@@ -38,19 +38,19 @@
 
                 </div>
                 <div class="col login">
-                    <form>
+                    <form onclick="return validation()">
                         <div class="titles">
                             <h3>Ready to Login</h3>
                         </div>
                         <div class="form-group has-feedback ">                        
-                            <input type="text" placeholder="Username" class="form-input" id="username" autocomplete="off">
+                            <input type="text" placeholder="Username" class="form-input" id="username" autocomplete="off" onchange="removeWarning()">
                             <div class="input-icon">
                                 <i class="fas fa-user"></i>
                             </div>
                         </div>
                         <span id="UsernameErr" class="text-danger"></span>
                         <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-input" id="password">
+                            <input type="password" placeholder="Password" class="form-input" id="password" onchange="removeWarning()">
                             <div class="input-icon">
                                 <i class="fas fa-user-lock"></i>
                             </div>
@@ -87,21 +87,16 @@
             }
 
             function validation() {
-               var valid = true;
-         var name = document.getElementById('username').value;
- 
-        var pass = document.getElementById('password').value;
+                var name = document.getElementById('username').value;
+                var pass = document.getElementById('password').value;
 
-              if (name == "" ) {
-               document.getElementById('UsernameErr').innerHTML = "please fill the field";
-        valid = false;
-         }
-       if (pass == "" ) {
-                document.getElementById('PasswordErr').innerHTML = "please fill the field";
-                 valid = false;
-           }
-               
-            }
+                if (name == "") {
+                    document.getElementById('UsernameErr').innerHTML = "please fill the field";
+                }
+                if (pass == "") {
+                    document.getElementById('PasswordErr').innerHTML = "please fill the field";
+                }
+            };
         </script>
         <!--/Validation-->
     <!--SWeet alert-->

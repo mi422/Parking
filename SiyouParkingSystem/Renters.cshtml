@@ -282,14 +282,15 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                            <form id="ModalForm" onchange="return validation3()">
                                 <div class="form-group">
                                     <input type="hidden" name="ID" class="form-control" id="editId" required>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="name">Name</label>
-                                        <input type="text" name="name" class="form-control" id="editName" placeholder="Name" required>
+                                        <input type="text" name="name" class="form-control" id="editName" placeholder="Name" required onchange="removeWarning5()">
+                                        <span id="EditNaErr" class="text-danger"></span>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="phone">Phone</label>
@@ -297,8 +298,9 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-secondary"><i class="fas fa-phone"></i></span>
                                             </div>
-                                            <input type="text" name="phone" class="form-control" id="editphone" placeholder="Phone" required>
+                                            <input type="text" name="phone" class="form-control" id="editphone" placeholder="Phone" required onchange="removeWarning5()">
                                         </div>
+                                        <span id="EditphoErr" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -307,11 +309,12 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-secondary"><i class="fas fa-map-marker-alt"></i></span>
                                             </div>
-                                            <input type="tel" name="address" class="form-control" id="editaddress" placeholder="Address" required>
+                                            <input type="tel" name="address" class="form-control" id="editaddress" placeholder="Address" required onchange="removeWarning5()">
                                         </div>
+                                        <span id="EditAdrErr" class="text-danger"></span>
                                         </div>
                                     <div class="modal-footer">
-                                        <button type="button" onclick="RenterUpdate(this)" class="btn bg-olive" data-id="Renter.Id" data-dismiss="modal"><i class="fas fa-save"></i></button>
+                                        <button type="button" id="editrentey" onclick="RenterUpdate(this)" class="btn bg-olive" data-id="Renter.Id" data-dismiss="modal" disabled="disabled"><i class="fas fa-save"></i></button>
                                         <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                                     </div>
                             </form>
@@ -330,7 +333,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" id="ModalForm" onclick="return validation()">
+                            <form action="" id="ModalForm" onchange="return validation()" onclick="return GenerateQR()">
                                     <input type="hidden" name="ID" class="form-control" id="PostId" placeholder="ID">
                                 <fieldset>
                                     <div class="form-row">
@@ -350,7 +353,7 @@
                                         </div>                                 
                                         <div class="form-row"  id="barcode">
                                             <div class="form-group col-md-6">
-                                                <input type="text" name="Identity" class="form-control" id="postqrcode" placeholder="Identity card number" onchange="GenerateQR()" autocomplete="off">
+                                                <input type="text" name="Identity" class="form-control" id="postqrcode" placeholder="Identity card number" autocomplete="off">
                                                 <span id="IdentityErr" class="text-danger"></span>                                            
                                             </div>                                   
                                             <div class="form-group col-md-6">                                               
@@ -364,7 +367,7 @@
                                                 </div>                                   
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" onclick="PostRenter();" class="btn bg-olive"><i class="fas fa-save"></i></button>
+                                            <button type="button" id="renty" onclick="PostRenter();" class="btn bg-olive" disabled="disabled"><i class="fas fa-save"></i></button>
                                             <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                                         </div>
                                </fieldset> 
@@ -525,19 +528,6 @@
                 }
             });
         </script>
-        @*<script type="text/javascript">
-            var role = window.localStorage.getItem("Role");
-            $(document).ready(function () {
-                if (role == "Admin") {
-                    $('#buton').hide();
-                };
-            });
-            $(document).ready(function () {
-                if (role == "Owner") {
-                    $('#buton').show();
-                }
-            });
-        </script>*@
         <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
             $(document).ready(function () {
@@ -560,32 +550,31 @@
         <script>
             var qrdata = document.getElementById('postqrcode');
             var qrcodee = new QRCode(document.getElementById('qrcode'), {
-                width: 100,
-                height: 100,
+                width: 140,
+                height: 140,
                 colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
 
             function GenerateQR() {
-
                 var data = qrdata.value;
                 if (data == "") {
                     document.getElementById('IdentityErr').innerHTML = "please fill the field";
-                    valid = false;
+                    $('#renty').attr('disabled', 'disabled');
                 }
                 else if (data.length != 8) {
                     document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
-                    valid = false;
+                    $('#renty').attr('disabled', 'disabled');
                 }
                 else if (isNaN(data)) {
                     document.getElementById('IdentityErr').innerHTML = "please insert a valid identity number";
-                    valid = false;
+                    $('#renty').attr('disabled', 'disabled');
                 }
                 else {
-
                     qrcodee.makeCode(data);
                     document.getElementById("IdentityErr").innerHTML = "";
+                    $('#renty').removeAttr('disabled');
                 }
             }
         </script>
@@ -612,51 +601,104 @@
             }
 
                     function validation() {
-                        var valid = true;
+                        var valid = false;
                         var name = document.getElementById('PostName').value;
                         var phone = document.getElementById('postphone').value;
                         var address = document.getElementById('postaddress').value;
-                        var identit = document.getElementById('postqrcode').value;
-                        
 
                         if (name == "") {
                             document.getElementById('NameErr').innerHTML = "please fill the field";
-                            valid = false;
+                            valid = true;
                         }
                         else if ((name.length <= 5) || (name.length > 20)) {
                             document.getElementById('NameErr').innerHTML = "Full name is between 5 & 20";
-                            valid = false;
+                            valid = true;
                         }
                         else if (!isNaN(name)) {
                             document.getElementById('NameErr').innerHTML = "only characters are allowed";
-                            valid = false;
+                            valid = true;
                         };
                         if (phone == "") {
                             document.getElementById('PhoneErr').innerHTML = "please fill the field";
-                            valid = false;
+                            valid = true;
                         }
                         else if (isNaN(phone)) {
                             document.getElementById('PhoneErr').innerHTML = "phone must have only numbers";
-                            valid = false;
+                            valid = true;
                         }
                         else if (phone.length != 8) {
                             document.getElementById('PhoneErr').innerHTML = "phone must have only 8 numbers";
-                            valid = false;
+                            valid = true;
                         };
                         if (address == "") {
                             document.getElementById('AdrErr').innerHTML = "please fill the field";
-                            valid = false;
+                            valid = true;
                         }
                         else if ((address.length <= 3) || (address.length > 10)) {
                             document.getElementById('AdrErr').innerHTML = "please insert a valid address";
-                            valid = false;
+                            valid = true;
                         }
-                        if (identit == "") {
-                            document.getElementById('IdentityErr').innerHTML = "please fill the field";
-                            valid = false;
+                        if (valid) {
+                            $('#renty').attr('disabled', 'disabled');
+                        }
+                        else {
+                            $('#renty').removeAttr('disabled');
                         }
                     }
                     </script>
+        <script type="text/javascript">
+            function removeWarning5() {
+                document.getElementById("EditNaErr").innerHTML = "";
+                document.getElementById("EditphoErr").innerHTML = "";
+                document.getElementById("EditAdrErr").innerHTML = "";
+            }
+
+                    function validation3() {
+                        var valid = false;
+                        var name = document.getElementById('editName').value;
+                        var phone = document.getElementById('editphone').value;
+                        var address = document.getElementById('editaddress').value;
+
+                        if (name == "") {
+                            document.getElementById('NameErr').innerHTML = "please fill the field";
+                            valid = true;
+                        }
+                        else if ((name.length <= 5) || (name.length > 20)) {
+                            document.getElementById('NameErr').innerHTML = "Full name is between 5 & 20";
+                            valid = true;
+                        }
+                        else if (!isNaN(name)) {
+                            document.getElementById('NameErr').innerHTML = "only characters are allowed";
+                            valid = true;
+                        };
+                        if (phone == "") {
+                            document.getElementById('PhoneErr').innerHTML = "please fill the field";
+                            valid = true;
+                        }
+                        else if (isNaN(phone)) {
+                            document.getElementById('PhoneErr').innerHTML = "phone must have only numbers";
+                            valid = true;
+                        }
+                        else if (phone.length != 8) {
+                            document.getElementById('PhoneErr').innerHTML = "phone must have only 8 numbers";
+                            valid = true;
+                        };
+                        if (address == "") {
+                            document.getElementById('AdrErr').innerHTML = "please fill the field";
+                            valid = true;
+                        }
+                        else if ((address.length <= 3) || (address.length > 10)) {
+                            document.getElementById('AdrErr').innerHTML = "please insert a valid address";
+                            valid = true;
+                        }
+                        if (valid) {
+                            $('#editrentey').attr('disabled', 'disabled');
+                        }
+                        else {
+                            $('#editrentey').removeAttr('disabled');
+                        }
+                    }
+        </script>
         <script type="text/javascript">
             var roll = window.localStorage.getItem("Role");
             $(document).ready(function () {
@@ -747,77 +789,6 @@
             document.querySelector('#getmodal').style.display = 'flex';
         });
     }
-    //{
-    //    if (role == "Admin") {
-    //        $.ajax({
-    //            url: 'api/Renters',
-    //            type: 'GET',
-    //            dataType: 'json',
-    //            success: function (Renters) {
-    //                RenterListSuccess(Renters);
-    //            },
-    //            error: function (request, message, error) {
-    //                handleException(request, message, error);
-    //            }
-    //        });
-    //    }
-    //    function RenterListSuccess(Renters) {
-    //        // Iterate over the collection of data
-    //        $.each(Renters, function (index, Renter) {
-    //            // Add a row to the Admin table
-    //            RenterAddRow(Renter);
-    //        });
-    //    }
-    //    function RenterAddRow(Renter) {
-    //        // Check if <tbody> tag exists, add one if not
-    //        if ($("#RenterTable tbody").length == 0) {
-    //            $("#RenterTable").append("<tbody></tbody>");
-    //        }
-    //        // Append row to <table>
-    //        $("#RenterTable tbody").append(
-    //          RenterBuildTableRow(Renter));
-    //    }
-    //    function deleteRow(btn) {
-    //        var row = btn.parentNode.parentNode;
-    //        row.parentNode.removeChild(row);
-    //    }
-    //    function RenterBuildTableRow(Renter) {
-    //        var ret =
-    //           "<tr>" +
-    //           "<td>" + Renter.Id + "</td>" +
-    //            "<td>" + Renter.Name + "</td>" +
-    //                "<td>" + Renter.Phone + "</td>"
-    //                 + "<td>" + Renter.Adress + "</td>"
-    //                 + "<td>" +
-    //  //"<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#editModal'" + "class='btn bg-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-user-edit'></i>" +
-    //  //"</button>" + " " + "<button type='button' " + "onclick='RenterGet(this)'" + "data-toggle='modal'" + "data-target='#DeleteModal'" + "class='btn bg-maroon' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-trash-alt'></i>" +
-    //  //"</button>" +
-    //  " " + "<button type='button'" + "onclick='consultRenterGet(this);getQR(this);' " + "data-toggle='modal'" + "data-target='#ConsultModal'" + "class='btn btn-outline-info' " + "data-id='" + Renter.Id + "'>" + "<i class='fas fa-eye'></i>" +
-    //  "</button>" +
-    //"</td>" +
-    //               "</tr>";
-    //        return ret;
-    //    }
-    //    function handleException(request, message,
-    //                         error) {
-    //        var msg = "";
-    //        msg += "Code: " + request.status + "\n";
-    //        msg += "Text: " + request.statusText + "\n";
-    //        if (request.responseJSON != null) {
-    //            msg += "Message" +
-    //                request.responseJSON.Message + "\n";
-    //        }
-    //        alert(msg);
-    //    }
-    //    $(document).ready(function () {
-    //        RenterList();
-    //    });
-    //    $(document).getElementByClass('.btn btn-default').addEventListener('click', function () {
-    //        document.querySelector('#getmodal').style.display = 'flex';
-    //    });
-    //}
-        
-    
 //GETBYID
     function RenterGet(ctl) {
         var id = $(ctl).data("id");

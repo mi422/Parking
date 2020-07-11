@@ -284,21 +284,23 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="POST" enctype="multipart/form-data" id="ModalForm">
+                            <form action="" id="ModalForm" onchange="return validation25()">
                                 <div class="form-group">
                                     <input type="hidden" name="ID" class="form-control" id="editId" required>
                                     <input type="hidden" name="UserID" class="form-control" id="UserId" required>
                                 </div>
                                 <label for="plate">Plate Number</label>
                                     <div class="form-group">
-                                        <input type="text" name="Plate" class="form-control" id="editplate" placeholder="Plate Number" required>
+                                        <input type="text" name="Plate" class="form-control" id="editplate" placeholder="Plate Number" required onchange="removeWarning1()">
+                                        <span id="editErrplate" class="text-danger"></span>
                                     </div>   
                                 <label for="model">Vehicle Model</label>                                 
                                         <div class="form-group">
-                                            <input type="text" name="model" class="form-control" id="editmodel" placeholder="Model" required>
+                                            <input type="text" name="model" class="form-control" id="editmodel" placeholder="Model" required onchange="removeWarning1()">
+                                            <span id="editmodelveh" class="text-danger"></span>
                                         </div>
                                     <div class="modal-footer">
-                                        <button type="button" onclick="VehicleUpdate(this)" class="btn bg-olive" data-id="Vehicle.Id" data-dismiss="modal"><i class="fas fa-save"></i></button>
+                                        <button type="button" onclick="VehicleUpdate(this)" class="btn bg-olive" data-id="Vehicle.Id" data-dismiss="modal" id="editvehu" disabled="disabled"><i class="fas fa-save"></i></button>
                                         <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                                     </div>
                             </form>
@@ -317,7 +319,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" id="ModalForm" onclick="return validation();">
+                            <form action="" id="ModalForm" onchange="return validation();">
                                 <div class="form-group">
                                     <input type="text" name="plate" class="form-control" id="Postplate" placeholder="Plate Number" autocomplete="off" onchange="return removeWarning();" onkeyup="return CheckPlate(this)" >
                                     <span class="text-danger" id="plateErr"></span>
@@ -327,7 +329,7 @@
                                     <span class="text-danger" id="modelErr"></span>
                                 </div>                                    
                                 <div class="modal-footer">
-                                    <button type="button" onclick="PostVehicle();" class="btn bg-olive"><i class="fas fa-save"></i></button>
+                                    <button type="button" onclick="PostVehicle();" class="btn bg-olive" id="vehpo" disabled="disabled"><i class="fas fa-save"></i></button>
                                     <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                                 </div>
                             </form>
@@ -520,28 +522,72 @@
                 document.getElementById("modelErr").innerHTML = "";
             }
             function validation() {
-                var valid = true;
+                var valid = false;
                 var plate = document.getElementById('Postplate').value;
                 var model = document.getElementById('Postmodel').value;
 
                 if (plate == "") {
                     document.getElementById('plateErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 }
                 else if ((plate.length <= 6)) {
                     document.getElementById('plateErr').innerHTML = "plate number is not valid";
-                    valid = false;
-                };
+                    valid = true;
+                }
+                else if (isNaN(plate)) {
+                    document.getElementById('plateErr').innerHTML = "plate number must have only numbers";
+                    valid = true;
+                }
                 if (model == "") {
                     document.getElementById('modelErr').innerHTML = "please fill the field";
-                    valid = false;
+                    valid = true;
                 }
                 else if ((model.length <= 2) || (model.length > 20)) {
                     document.getElementById('modelErr').innerHTML = "model is not valid";
-                    valid = false;
+                    valid = true;
                 };
+                if (valid) {
+                    $('#vehpo').attr('disabled', 'disabled');
+                }
+                else {
+                    $('#vehpo').removeAttr('disabled');
+                }
             }
         </script>
+    <script type="text/javascript">
+            function removeWarning1() {
+                document.getElementById("editErrplate").innerHTML = "";
+                document.getElementById("editmodelveh").innerHTML = "";
+            }
+            function validation25() {
+                var valid = false;
+                var plate = document.getElementById('editplate').value;
+                var model = document.getElementById('editmodel').value;
+
+                if (plate == "") {
+                    document.getElementById('plateErr').innerHTML = "please fill the field";
+                    valid = true;
+                }
+                else if ((plate.length <= 6)) {
+                    document.getElementById('plateErr').innerHTML = "plate number is not valid";
+                    valid = true;
+                };
+                if (model == "") {
+                    document.getElementById('modelErr').innerHTML = "please fill the field";
+                    valid = true;
+                }
+                else if ((model.length <= 2) || (model.length > 20)) {
+                    document.getElementById('modelErr').innerHTML = "model is not valid";
+                    valid = true;
+                };
+                if (valid) {
+                    $('#editvehu').attr('disabled', 'disabled');
+                }
+                else {
+                    $('#editvehu').removeAttr('disabled');
+                }
+            }
+    </script>
     <script type="text/javascript">
             var roll = window.localStorage.getItem("Role");
             $(document).ready(function () {
