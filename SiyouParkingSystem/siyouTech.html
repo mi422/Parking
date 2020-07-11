@@ -38,19 +38,19 @@
 
                 </div>
                 <div class="col login">
-                    <form onclick="return validation()">
+                    <form>
                         <div class="titles">
                             <h3>Ready to Login</h3>
                         </div>
                         <div class="form-group has-feedback ">                        
-                            <input type="text" placeholder="Username" class="form-input" id="username" autocomplete="off" onchange="removeWarning()">
+                            <input type="text" placeholder="Username" class="form-input" id="username" autocomplete="off" onchange="removeWarning()"/>
                             <div class="input-icon">
                                 <i class="fas fa-user"></i>
                             </div>
                         </div>
                         <span id="UsernameErr" class="text-danger"></span>
                         <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-input" id="password" onchange="removeWarning()">
+                            <input type="password" placeholder="Password" class="form-input" id="password" required onchange="removeWarning()" />
                             <div class="input-icon">
                                 <i class="fas fa-user-lock"></i>
                             </div>
@@ -79,26 +79,26 @@
             });
         </script>
         <!--/Owl Effect-->
-        <!--<!--Validation-->
-        <script type="text/javascript">
+    <script type="text/javascript">
             function removeWarning() {
                 document.getElementById("UsernameErr").innerHTML = "";
                 document.getElementById("PasswordErr").innerHTML = "";
             }
-
-            function validation() {
-                var name = document.getElementById('username').value;
-                var pass = document.getElementById('password').value;
-
-                if (name == "") {
-                    document.getElementById('UsernameErr').innerHTML = "please fill the field";
-                }
-                if (pass == "") {
-                    document.getElementById('PasswordErr').innerHTML = "please fill the field";
-                }
-            };
-        </script>
-        <!--/Validation-->
+            $(document).ready(function(){
+                $('#username').click(function(){
+                    if  (($('#username').val()) == "" ) {
+                        document.getElementById('UsernameErr').innerHTML = "please fill the field";
+                    };
+                });
+            });
+            $(document).ready(function () {
+                $('#password').click(function () {
+                    if (($('#password').val()) == "") {
+                        document.getElementById('PasswordErr').innerHTML = "please fill the field";
+                    };
+                });
+            });
+    </script>
     <!--SWeet alert-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!--/SWeet alert-->
