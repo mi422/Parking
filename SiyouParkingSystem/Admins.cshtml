@@ -295,7 +295,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
                                             </div>
-                                            <input type="text" name="Username" class="form-control" id="editusername" placeholder="Username" onchange="return removeWarning1()" onkeyup="return CheckUsername1(this)" autocomplete="off" required>
+                                            <input type="text" name="Username" class="form-control" id="editusername" placeholder="Username" onchange="removeWarning1(); CheckUsername1(this)" autocomplete="off" required>
                                         </div>
                                         <span id="usern_error" class="text-danger"></span>
                                     </div>
@@ -382,7 +382,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-secondary"><i class="fas fa-envelope"></i></span>
                                             </div>
-                                            <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="return removeWarning()" onkeyup="CheckEmail(this);" required>
+                                            <input type="text" name="Email" class="form-control" id="PostEmail" placeholder="Email" autocomplete="off" onchange="removeWarning();" required>
                                         </div>
                                         <span id="eemail_error" class="text-danger"></span>
                                     </div>
@@ -391,7 +391,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-secondary"><i class="fas fa-user-circle"></i></span>
                                             </div>
-                                            <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="return removeWarning();" onkeyup="return CheckUsername(this)" required>
+                                            <input type="text" name="Username" class="form-control" id="Postusername" placeholder="Username" autocomplete="off" onchange="removeWarning(); CheckUsername(this)" required>
                                         </div>
                                         <span id="usernameee_error" class="text-danger"></span>
                                     </div>
@@ -550,7 +550,7 @@
                     <script src="~/Content/dist/js/pages/dashboard.js"></script>
                     <script src="~/Content/dist/js/demo.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>         
-    <script type="text/javascript">
+                    <script type="text/javascript">
                         $(document).ready(function () {
                             $('#try').after('<ul class="pagination pagination-sm m-0 float-right" id="pag"></ul>');
                             var rowsShown = 4;
@@ -638,7 +638,7 @@
                                 }
                             }).find('a.active').trigger('click');
                         });
-    </script>                           
+                    </script>                           
                     <script>
                     function myFunction1() {
                       // Declare variables
@@ -784,32 +784,36 @@
             {
             if (result) {
                 document.getElementById("usern_error").innerHTML = "";
+                $('#bty').removeAttr('disabled');
             }
             else {
                 document.getElementById('usern_error').innerHTML = "Username already exists...!";
+                $('#bty').attr('disabled', 'disabled');
             }
             }
             });
             }
             </script>
             <script type="text/javascript">
-            function CheckUsername(ctl) {
-            var usernam = $('#Postusername').val();
-            $.ajax({
-            url: "/api/register/CheckUsername/" + usernam,
-            type: "GET",
-            datatype: "json",
-            success: function (result)
-            {
-            if (result) {
-            document.getElementById("usernameee_error").innerHTML = "";
-            }
-            else {
-            document.getElementById('usernameee_error').innerHTML = "Username already exists...!";
-            }
-            }
-            });
-            }
+                function CheckUsername(ctl) {
+                    var usernam = $('#Postusername').val();
+                    $.ajax({
+                        url: "/api/register/CheckUsername/" + usernam,
+                        type: "GET",
+                        datatype: "json",
+                        success: function (result) {
+                            if (result) {
+                                document.getElementById("usernameee_error").innerHTML = "";
+                                $('#bt').removeAttr('disabled');
+                            }
+                            else {
+                                document.getElementById('usernameee_error').innerHTML = "Username already exists...!";
+                                $('#bt').attr('disabled', 'disabled');
+
+                            }
+                        }
+                    });
+                }
             </script>
             <script type="text/javascript">
             var rol = window.localStorage.getItem("Role");
@@ -1238,7 +1242,6 @@
                         $('#bty').removeAttr('disabled');
                     }
                 };
-</script>
 </script>
 <style>
   .myModal {
