@@ -155,6 +155,12 @@ namespace SiyouParkingSystem.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
-        }     
+        }
+        [Route("api/renters/QRCode/{QR}")]
+        public IHttpActionResult QRCode(int QR)
+        {
+            var result = !SYS.Renters.ToList().Exists(x => x.QR_code.Equals(QR));
+            return Ok(result);
+        }
     }
 }

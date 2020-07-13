@@ -174,5 +174,12 @@ namespace SiyouParkingSystem.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
+        [Route("api/owners/OwnQr/{qr}")]
+        [HttpGet]
+        public IHttpActionResult OwnQr(int qr)
+        {
+            var result = !SYS.Owners.ToList().Exists(x => x.QR_code.Equals(qr));
+            return Ok(result);
+        }
     }
 }

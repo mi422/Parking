@@ -230,13 +230,9 @@
                                                 </thead>
                                                 <tbody></tbody>
                                             </table>
-                                            <div class="card-footer clearfix">
-                                                <ul class="pagination pagination-sm m-0 float-right">
-                                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                            <div id="try" class="card-footer clearfix">
+                                                <ul id="pag" class="pagination pagination-sm m-0 float-right">
+                                                  
                                                 </ul>
                                             </div>
                                         </div>
@@ -418,6 +414,95 @@
     <script src="~/Content/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Content/dist/js/demo.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#try').after('<ul class="pagination pagination-sm m-0 float-right" id="pag"></ul>');
+            var rowsShown = 4;
+            var numLimit = 1;
+            var rowsTotal = $('#VehicleTable tbody tr').length;
+            var numPages = rowsTotal / rowsShown;
+            for (var i = 0; i < numPages; i++) {
+                var pageNum = i + 1;
+                $('#pag').append('<li class="page-item" ><a class="btn nums page-link" href="#" rel="' + i + '">' + pageNum + '</a></li>');
+
+            }
+            $('#VehicleTable tbody tr').hide();
+            $('#VehicleTable tbody tr').slice(0, rowsShown).show();
+            $('#pag a:first').addClass('active').css("color", "blue");
+            if (numPages >= numLimit) {
+                $('#pag').append('<li  class="page-item" ><a class="btn page-link" href="#" rel="next">>></a></li> ');
+                $('#pag').prepend('<li  class="page-item" ><a  class="btn page-link" href="#" rel="prev" style="display:none"><<</a></li> ');
+                $('#pag').append('<li  class="page-item" ><a class="btn page-link" href="#" rel="last">>>|</a></li>');
+                $('#pag').prepend('<li  class="page-item" ><a class="btn page-link" href="#" rel="first" style="display:none">|<<</a></li> ');
+            }
+            $('#pag').on('click', 'a', function () {
+                var $nums = $('.nums');
+                var currPage = $(this).attr('rel');
+                if (currPage == "next") {
+                    currPage = $('#pag a.active').attr('rel');
+                    currPage++;
+                } else if (currPage == "prev") {
+                    currPage = $('#pag a.active').attr('rel');
+                    currPage--;
+                }
+                if (currPage == "first") {
+                    $nums.first().trigger('click');
+                    return false;
+                } else if (currPage == "last") {
+                    $nums.last().trigger('click');
+                    return false;
+                }
+                var startItem = currPage * rowsShown;
+                var endItem = startItem + rowsShown;
+                $('#pag a').removeClass('active').css("color", "black");;
+                $('#pag a[rel="' + currPage + '"]').addClass('active').css("color", "blue");
+                $('#VehicleTable tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
+                css('display', 'table-row').animate({
+                    opacity: 1
+                }, 300);
+                if ($nums.last().hasClass('active'))
+                    $('#pag a[rel="next"]').hide();
+                else
+                    $('#pag a[rel="next"]').show();
+                if (!$nums.first().hasClass('active'))
+                    $('#pag a[rel="prev"]').show();
+                else
+                    $('#pag a[rel="prev"]').hide();
+                $nums.hide();
+                if (numLimit < 1)
+                    numLimit = 2;
+                var $temp = {};
+                if ($nums.filter('.active').is($nums.first())) {
+                    $('#pag a[rel="first"]').hide();
+                    $('#pag a[rel="last"]').show();
+                    $temp = $nums.first().show();
+                    for (var j = 0; j < numLimit; j++) {
+                        $temp = $temp.next().show();
+                    }
+                }
+                else if ($nums.filter('.active').is($nums.last())) {
+                    $('#pag a[rel="last"]').hide();
+                    $('#pag a[rel="first"]').show();
+                    $temp = $nums.last().show();
+                    for (var j = 0; j < numLimit; j++) {
+                        $temp = $temp.prev().show();
+                    }
+                }
+                else {
+                    $('#pag a[rel="first"]').show();
+                    $('#pag a[rel="last"]').show();
+                    $temp = $('#pag a[rel="' + currPage + '"]').show();
+                    for (var j = 0; j < numLimit; j++) {
+                        $temp = $temp.prev().show();
+                    }
+                    $temp = $('#pag a[rel="' + currPage + '"]').show();
+                    for (var j = 0; j < numLimit; j++) {
+                        $temp = $temp.next().show();
+                    }
+                }
+            }).find('a.active').trigger('click');
+        });
+    </script>
     <script type="text/javascript">
                     function CheckPlate(ctl) {
                         var plate = $('#Postplate').val();
